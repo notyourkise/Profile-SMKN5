@@ -37,7 +37,7 @@
                             </svg>
                             {{ $item->user->name ?? 'Admin' }}
                         </span>
-                        <a href="{{ route('berita.show', $item->slug) }}" class="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-800 dark:hover:text-blue-300">
+                        <a href="{{ route('berita.show', $item->slug) }}" class="text-primary dark:text-secondary font-semibold hover:text-secondary dark:hover:text-primary">
                             Baca &rarr;
                         </a>
                     </div>

@@ -13,18 +13,18 @@
                 @if($item->image)
                 <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->nama }}" class="w-full h-48 object-cover">
                 @else
-                <div class="w-full h-48 bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                    <span class="text-6xl text-blue-600 dark:text-blue-400 font-bold">{{ $item->kode }}</span>
+                <div class="w-full h-48 bg-primary/10 dark:bg-gray-700 flex items-center justify-center">
+                    <span class="text-6xl text-primary dark:text-secondary font-bold">{{ $item->kode }}</span>
                 </div>
                 @endif
                 <div class="p-6">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="bg-blue-600 dark:bg-blue-700 text-white px-3 py-1 rounded text-sm font-semibold">{{ $item->kode }}</span>
+                        <span class="bg-primary dark:bg-primary text-white px-3 py-1 rounded text-sm font-semibold">{{ $item->kode }}</span>
                         <span class="text-gray-600 dark:text-gray-400 text-sm">{{ $item->durasi_tahun }} Tahun</span>
                     </div>
                     <h2 class="text-2xl font-bold mb-3 dark:text-white">{{ $item->nama }}</h2>
                     <p class="text-gray-600 dark:text-gray-300 mb-4">{{ Str::limit($item->deskripsi, 150) }}</p>
-                    <a href="{{ route('jurusan.show', $item->id) }}" class="inline-block bg-blue-600 dark:bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-700 dark:hover:bg-blue-600 transition">
+                    <a href="{{ route('jurusan.show', $item->id) }}" class="inline-block bg-primary dark:bg-primary text-white px-6 py-2 rounded hover:bg-secondary dark:hover:bg-secondary transition">
                         Lihat Detail
                     </a>
                 </div>

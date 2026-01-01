@@ -9,11 +9,11 @@
             <!-- Breadcrumb -->
             <nav class="mb-8">
                 <ol class="flex space-x-2 text-gray-600 dark:text-gray-400">
-                    <li><a href="{{ route('home') }}" class="hover:text-blue-600 dark:hover:text-blue-400">Beranda</a></li>
+                    <li><a href="{{ route('home') }}" class="hover:text-primary dark:hover:text-secondary">Beranda</a></li>
                     <li>/</li>
-                    <li><a href="{{ route('berita.index') }}" class="hover:text-blue-600 dark:hover:text-blue-400">Berita</a></li>
+                    <li><a href="{{ route('berita.index') }}" class="hover:text-primary dark:hover:text-secondary">Berita</a></li>
                     <li>/</li>
-                    <li class="text-blue-600 dark:text-blue-400">{{ Str::limit($berita->judul, 50) }}</li>
+                    <li class="text-primary dark:text-secondary">{{ Str::limit($berita->judul, 50) }}</li>
                 </ol>
             </nav>
 
