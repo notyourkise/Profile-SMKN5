@@ -7,11 +7,19 @@ use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $berita = Berita::where('status', 'published')
-            ->orderBy('published_at', 'desc')
-            ->paginate(12);
+        $query = Berita::where('status', 'published');
+
+        // Filter berdasarkan pencarian
+        if ($request->has('q') && $request->q != '') {
+            $searchTerm = $request->q;
+            $query->where('judul', 'like', '%' . $searchTerm . '%');
+        }
+
+        $berita = $query->orderBy('published_at', 'desc')
+            ->paginate(12)
+            ->appends(['q' => $request->q]); // Maintain search query in pagination
 
         return view('berita.index', compact('berita'));
     }

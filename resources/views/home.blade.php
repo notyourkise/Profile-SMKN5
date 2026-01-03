@@ -4,10 +4,10 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="bg-white dark:bg-gray-900 py-20 transition-colors duration-200 -mt-20 pt-32">
+<section class="bg-blue-900 py-20 transition-colors duration-200 -mt-20 pt-32">
     <div class="container mx-auto px-4 text-center">
-        <h1 class="text-5xl font-bold mb-4 text-gray-900 dark:text-white">Selamat Datang di SMKN 5 Samarinda</h1>
-        <p class="text-xl mb-8 text-gray-600 dark:text-gray-300">Membangun Generasi Unggul dan Berkarakter</p>
+        <h1 class="text-5xl font-bold mb-4 text-white">Selamat Datang di SMKN 5 Samarinda</h1>
+        <p class="text-xl mb-8 text-gray-300">Membangun Generasi Unggul dan Berkarakter</p>
         <a href="{{ route('jurusan.index') }}" class="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 dark:hover:bg-green-500 transition shadow-md hover:shadow-lg">
             Lihat Jurusan
         </a>
@@ -31,7 +31,7 @@
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2 dark:text-white">{{ $item->nama }}</h3>
                     <p class="text-gray-600 dark:text-gray-400 mb-4">{{ Str::limit($item->deskripsi, 100) }}</p>
-                    <a href="{{ route('jurusan.show', $item->id) }}" class="text-green-600 dark:text-green-500 font-semibold hover:text-green-700 dark:hover:text-green-400 transition">
+                    <a href="{{ route('jurusan.show', $item->kode) }}" class="text-green-600 dark:text-green-500 font-semibold hover:text-green-700 dark:hover:text-green-400 transition">
                         Selengkapnya &rarr;
                     </a>
                 </div>

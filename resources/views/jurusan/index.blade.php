@@ -24,7 +24,7 @@
                     </div>
                     <h2 class="text-2xl font-bold mb-3 dark:text-white">{{ $item->nama }}</h2>
                     <p class="text-gray-600 dark:text-gray-300 mb-4">{{ Str::limit($item->deskripsi, 150) }}</p>
-                    <a href="{{ route('jurusan.show', $item->id) }}" class="inline-block bg-primary dark:bg-primary text-white px-6 py-2 rounded hover:bg-secondary dark:hover:bg-secondary transition">
+                    <a href="{{ route('jurusan.show', $item->kode) }}" class="inline-block bg-primary dark:bg-primary text-white px-6 py-2 rounded hover:bg-secondary dark:hover:bg-secondary transition">
                         Lihat Detail
                     </a>
                 </div>

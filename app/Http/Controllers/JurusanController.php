@@ -13,9 +13,16 @@ class JurusanController extends Controller
         return view('jurusan.index', compact('jurusan'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $jurusan = Jurusan::where('is_active', true)->findOrFail($id);
+        // Cari berdasarkan kode (slug) atau ID
+        $jurusan = Jurusan::where('is_active', true)
+            ->where(function($query) use ($slug) {
+                $query->where('kode', $slug)
+                      ->orWhere('id', $slug);
+            })
+            ->firstOrFail();
+            
         return view('jurusan.show', compact('jurusan'));
     }
 }

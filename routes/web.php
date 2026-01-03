@@ -10,7 +10,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('jurusan')->group(function () {
     Route::get('/', [JurusanController::class, 'index'])->name('jurusan.index');
-    Route::get('/{id}', [JurusanController::class, 'show'])->name('jurusan.show');
+    Route::get('/{slug}', [JurusanController::class, 'show'])->name('jurusan.show');
 });
 
 Route::prefix('berita')->group(function () {

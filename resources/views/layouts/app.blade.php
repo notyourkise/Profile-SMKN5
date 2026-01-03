@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'SMKN 5 Samarinda')</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="{{ asset('images/logo-smk-utama.webp') }}">
+    <link rel="shortcut icon" type="image/webp" href="{{ asset('images/logo-smk-utama.webp') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo-smk-utama.webp') }}">
+    
+    <!-- FontAwesome 6 Free CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         // Dark mode initialization
