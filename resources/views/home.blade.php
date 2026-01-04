@@ -3,16 +3,46 @@
 @section('title', 'Beranda - SMKN 5 Samarinda')
 
 @section('content')
-<!-- Hero Section -->
-<section class="bg-blue-900 py-20 transition-colors duration-200 -mt-20 pt-32">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-5xl font-bold mb-4 text-white">Selamat Datang di SMKN 5 Samarinda</h1>
-        <p class="text-xl mb-8 text-gray-300">Membangun Generasi Unggul dan Berkarakter</p>
-        <a href="{{ route('jurusan.index') }}" class="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 dark:hover:bg-green-500 transition shadow-md hover:shadow-lg">
-            Lihat Jurusan
-        </a>
+<!-- Hero Section - Full Screen Parallax -->
+<section class="relative h-screen w-full bg-fixed bg-center bg-cover bg-no-repeat -mt-20" style="background-image: url('{{ asset('images/hero-drone-school.webp') }}')">
+    <!-- Gradient Overlay (Dark Bottom → Transparent Top) -->
+    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-black/10"></div>
+    
+    <!-- Content Container -->
+    <div class="relative z-10 h-full flex items-end pb-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl">
+                <!-- Headline -->
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-lg leading-tight">
+                    SMK NEGERI 5 SAMARINDA
+                </h1>
+                
+                <!-- Subheadline -->
+                <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl font-medium drop-shadow-md">
+                    Mewujudkan Lingkungan Belajar Unggul, Hijau, dan Berkarakter dengan Fasilitas Terlengkap.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <!-- Primary Button -->
+                    <a href="{{ route('jurusan.index') }}" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-bold transition shadow-lg flex items-center justify-center gap-2">
+                        <span>Jelajahi Jurusan</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    
+                    <!-- Secondary Button (Glassmorphism) -->
+                    <a href="/ppdb" class="backdrop-blur-md bg-white/10 border border-white/30 text-white hover:bg-white/20 px-8 py-3 rounded-full font-bold transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span>Info PPDB</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+<!-- Statistics Section -->
+@include('components.statistics-section')
 
 <!-- Jurusan Section -->
 <section class="py-16">

@@ -1,4 +1,7 @@
 @php
+    // Check if current page is homepage
+    $isHomepage = request()->routeIs('home');
+
     // Profil Dropdown Items
     $profilItems = [
         ['label' => 'Visi & Misi', 'url' => '/profil/visi-misi', 'icon' => 'fa-solid fa-bullseye', 'desc' => 'Tujuan dan cita-cita sekolah'],
@@ -33,16 +36,20 @@
         profilDropdownOpen: false,
         jurusanDropdownOpen: false,
         kesiswaanDropdownOpen: false,
-        searchOpen: false 
+        searchOpen: false,
+        isHomepage: {{ $isHomepage ? 'true' : 'false' }}
     }" 
     @scroll.window="scrolled = (window.pageYOffset > 20)"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
-    :class="{ 
+    @class([
+        'fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out',
+        'bg-white shadow-md' => !$isHomepage
+    ])
+    :class="isHomepage ? { 
         'bg-white shadow-md': scrolled || hover,
         'bg-transparent': !scrolled && !hover
-    }"
-    class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out"
+    } : {}"
 >
     <!-- Centered Container -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,8 +63,14 @@
                     class="h-14 w-auto transition-all duration-300"
                 >
                 <div class="flex items-center gap-2">
-                    <span class="text-gray-400 text-2xl font-light">|</span>
-                    <span class="text-gray-900 text-lg font-bold tracking-wide">
+                    <span 
+                        :class="isHomepage ? ((scrolled || hover) ? 'text-gray-400' : 'text-white/60 drop-shadow-md') : 'text-gray-400'" 
+                        class="text-2xl font-light transition-all duration-300"
+                    >|</span>
+                    <span 
+                        :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900' : 'text-white drop-shadow-md') : 'text-gray-900'" 
+                        class="text-lg font-bold tracking-wide transition-all duration-300"
+                    >
                         SMK NEGERI 5
                     </span>
                 </div>
@@ -69,7 +82,8 @@
                 <!-- Beranda -->
                 <a 
                     href="{{ route('home') }}" 
-                    class="relative group py-2 font-medium text-gray-800 hover:text-green-600 transition-colors duration-300"
+                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
+                    class="relative group py-2 font-medium transition-all duration-300"
                 >
                     Beranda
                     <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
@@ -79,7 +93,8 @@
                 <div class="relative" @click.away="profilDropdownOpen = false">
                     <button 
                         @click="profilDropdownOpen = !profilDropdownOpen"
-                        class="flex items-center gap-1 py-2 font-medium text-gray-800 hover:text-green-600 transition-colors duration-300"
+                        :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
+                        class="flex items-center gap-1 py-2 font-medium transition-all duration-300"
                     >
                         Profil
                         <svg 
@@ -126,7 +141,8 @@
                 <div class="relative" @click.away="jurusanDropdownOpen = false">
                     <button 
                         @click="jurusanDropdownOpen = !jurusanDropdownOpen"
-                        class="flex items-center gap-1 py-2 font-medium text-gray-800 hover:text-green-600 transition-colors duration-300"
+                        :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
+                        class="flex items-center gap-1 py-2 font-medium transition-all duration-300"
                     >
                         Jurusan
                         <svg 
@@ -173,7 +189,8 @@
                 <div class="relative" @click.away="kesiswaanDropdownOpen = false">
                     <button 
                         @click="kesiswaanDropdownOpen = !kesiswaanDropdownOpen"
-                        class="flex items-center gap-1 py-2 font-medium text-gray-800 hover:text-green-600 transition-colors duration-300"
+                        :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
+                        class="flex items-center gap-1 py-2 font-medium transition-all duration-300"
                     >
                         Kesiswaan
                         <svg 
@@ -219,7 +236,8 @@
                 <!-- Berita (TANPA IKON) -->
                 <a 
                     href="{{ route('berita.index') }}" 
-                    class="relative group py-2 font-medium text-gray-800 hover:text-green-600 transition-colors duration-300"
+                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
+                    class="relative group py-2 font-medium transition-all duration-300"
                 >
                     Berita
                     <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
@@ -228,7 +246,8 @@
                 <!-- Kontak (TANPA IKON) -->
                 <a 
                     href="/kontak" 
-                    class="relative group py-2 font-medium text-gray-800 hover:text-green-600 transition-colors duration-300"
+                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
+                    class="relative group py-2 font-medium transition-all duration-300"
                 >
                     Kontak
                     <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
@@ -254,7 +273,8 @@
                             type="text" 
                             name="q" 
                             placeholder="Cari berita..."
-                            class="w-48 px-4 py-1.5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-green-500 border border-gray-300 text-gray-700 placeholder-gray-400 bg-white/90 transition-colors duration-300"
+                            :class="isHomepage ? ((scrolled || hover) ? 'border-gray-300 text-gray-700 placeholder-gray-400 bg-white' : 'border-white/30 text-white placeholder-white/70 bg-white/10 backdrop-blur-sm') : 'border-gray-300 text-gray-700 placeholder-gray-400 bg-white'"
+                            class="w-48 px-4 py-1.5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-green-500 border transition-all duration-300"
                             x-ref="searchInput"
                         >
                     </form>
@@ -262,7 +282,8 @@
                     <!-- Search Icon Button -->
                     <button 
                         @click="searchOpen = !searchOpen; $nextTick(() => { if(searchOpen) $refs.searchInput.focus() })"
-                        class="p-2 text-gray-800 hover:text-green-600 transition-colors duration-300"
+                        :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
+                        class="p-2 transition-all duration-300"
                         :aria-label="searchOpen ? 'Close search' : 'Open search'"
                     >
                         <i class="fa-solid fa-magnifying-glass text-lg"></i>
@@ -275,7 +296,8 @@
             <div class="md:hidden flex items-center">
                 <button 
                     @click="mobileMenuOpen = !mobileMenuOpen" 
-                    class="text-gray-800 focus:outline-none"
+                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900' : 'text-white drop-shadow-md') : 'text-gray-900'"
+                    class="focus:outline-none transition-all duration-300"
                 >
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -289,19 +311,19 @@
     <div 
         x-show="mobileMenuOpen" 
         x-transition 
-        :class="(scrolled || hover) ? 'bg-white' : 'bg-gray-900/95'"
+        :class="isHomepage ? ((scrolled || hover) ? 'bg-white' : 'bg-gray-900/95') : 'bg-white'"
         class="md:hidden shadow-lg absolute w-full left-0 top-full backdrop-blur-sm"
         style="display: none;"
     >
         <div class="flex flex-col px-4 py-4 space-y-3">
             <!-- Beranda -->
-            <a href="{{ route('home') }}" :class="(scrolled || hover) ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300'" class="py-2 transition">Beranda</a>
+            <a href="{{ route('home') }}" :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300') : 'text-gray-700 hover:text-green-600'" class="py-2 transition">Beranda</a>
             
             <!-- Mobile Profil Dropdown -->
             <div x-data="{ mobileProfilOpen: false }">
                 <button 
                     @click="mobileProfilOpen = !mobileProfilOpen"
-                    :class="(scrolled || hover) ? 'text-gray-700' : 'text-white'"
+                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700' : 'text-white') : 'text-gray-700'"
                     class="w-full flex justify-between items-center py-2"
                 >
                     <span>Profil</span>
@@ -319,7 +341,7 @@
                     @foreach($profilItems as $item)
                         <a 
                             href="{{ $item['url'] }}" 
-                            :class="(scrolled || hover) ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-300'"
+                            :class="isHomepage ? ((scrolled || hover) ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-300') : 'text-gray-600 hover:text-green-600'"
                             class="flex items-center gap-2 py-1.5 text-sm transition"
                         >
                             <i class="{{ $item['icon'] }} text-green-600 text-sm"></i>
@@ -333,7 +355,7 @@
             <div x-data="{ mobileJurusanOpen: false }">
                 <button 
                     @click="mobileJurusanOpen = !mobileJurusanOpen"
-                    :class="(scrolled || hover) ? 'text-gray-700' : 'text-white'"
+                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700' : 'text-white') : 'text-gray-700'"
                     class="w-full flex justify-between items-center py-2"
                 >
                     <span>Jurusan</span>
@@ -351,7 +373,7 @@
                     @foreach($jurusanItems as $jurusan)
                         <a 
                             href="{{ $jurusan['url'] }}" 
-                            :class="(scrolled || hover) ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-300'"
+                            :class="isHomepage ? ((scrolled || hover) ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-300') : 'text-gray-600 hover:text-green-600'"
                             class="flex items-center gap-2 py-1.5 text-sm transition"
                         >
                             <i class="{{ $jurusan['icon'] }} text-green-600 text-sm"></i>
@@ -365,7 +387,7 @@
             <div x-data="{ mobileKesiswaanOpen: false }">
                 <button 
                     @click="mobileKesiswaanOpen = !mobileKesiswaanOpen"
-                    :class="(scrolled || hover) ? 'text-gray-700' : 'text-white'"
+                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700' : 'text-white') : 'text-gray-700'"
                     class="w-full flex justify-between items-center py-2"
                 >
                     <span>Kesiswaan</span>
@@ -383,7 +405,7 @@
                     @foreach($kesiswaanItems as $item)
                         <a 
                             href="{{ $item['url'] }}" 
-                            :class="(scrolled || hover) ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-300'"
+                            :class="isHomepage ? ((scrolled || hover) ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-300') : 'text-gray-600 hover:text-green-600'"
                             class="flex items-center gap-2 py-1.5 text-sm transition"
                         >
                             <i class="{{ $item['icon'] }} text-green-600 text-sm"></i>
@@ -393,8 +415,8 @@
                 </div>
             </div>
             
-            <a href="{{ route('berita.index') }}" :class="(scrolled || hover) ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300'" class="py-2 transition">Berita</a>
-            <a href="/kontak" :class="(scrolled || hover) ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300'" class="py-2 transition">Kontak</a>
+            <a href="{{ route('berita.index') }}" :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300') : 'text-gray-700 hover:text-green-600'" class="py-2 transition">Berita</a>
+            <a href="/kontak" :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300') : 'text-gray-700 hover:text-green-600'" class="py-2 transition">Kontak</a>
         </div>
     </div>
 </nav>
