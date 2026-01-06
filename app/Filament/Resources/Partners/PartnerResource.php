@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class PartnerResource extends Resource
 {
@@ -22,7 +23,16 @@ class PartnerResource extends Resource
 
     protected static ?string $navigationLabel = 'Partners';
 
+    protected static UnitEnum|string|null $navigationGroup = 'Konfigurasi Sistem';
+
+    protected static ?int $navigationSort = 2;
+
     protected static ?string $recordTitleAttribute = 'company_name';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('Admin');
+    }
 
     public static function form(Schema $schema): Schema
     {

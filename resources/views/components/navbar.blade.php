@@ -20,11 +20,9 @@
         ['label' => 'MPLB (Perkantoran)', 'url' => '/jurusan/mplb', 'icon' => 'fa-solid fa-briefcase', 'desc' => 'Manajemen Perkantoran dan Layanan Bisnis'],
     ];
 
-    // Kesiswaan Dropdown Items
+    // Kesiswaan Dropdown Items - Simplified: Only Ekstrakurikuler
     $kesiswaanItems = [
         ['label' => 'Ekstrakurikuler', 'url' => '/kesiswaan/ekskul', 'icon' => 'fa-solid fa-futbol', 'desc' => 'Kegiatan di luar jam pelajaran'],
-        ['label' => 'Prestasi Siswa', 'url' => '/kesiswaan/prestasi', 'icon' => 'fa-solid fa-trophy', 'desc' => 'Penghargaan dan pencapaian siswa'],
-        ['label' => 'OSIS', 'url' => '/kesiswaan/osis', 'icon' => 'fa-solid fa-users-line', 'desc' => 'Organisasi Siswa Intra Sekolah'],
     ];
 @endphp
 

@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class FacilityResource extends Resource
 {
@@ -22,7 +23,16 @@ class FacilityResource extends Resource
 
     protected static ?string $navigationLabel = 'Facilities';
 
+    protected static UnitEnum|string|null $navigationGroup = 'Konten Akademik';
+
+    protected static ?int $navigationSort = 2;
+
     protected static ?string $recordTitleAttribute = 'name';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('Admin');
+    }
 
     public static function form(Schema $schema): Schema
     {

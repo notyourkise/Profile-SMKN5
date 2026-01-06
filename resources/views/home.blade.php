@@ -24,16 +24,15 @@
                 
                 <!-- CTA Buttons -->
                 <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                    <!-- Primary Button -->
-                    <a href="{{ route('jurusan.index') }}" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-bold transition shadow-lg flex items-center justify-center gap-2">
-                        <span>Jelajahi Jurusan</span>
+                    <!-- Primary Button (Green) -->
+                    <a href="https://smkn5samarinda.sch.id" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-bold transition shadow-lg flex items-center justify-center gap-2">
+                        <span>Portal SMKN 5</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                     
-                    <!-- Secondary Button (Glassmorphism) -->
-                    <a href="/ppdb" class="backdrop-blur-md bg-white/10 border border-white/30 text-white hover:bg-white/20 px-8 py-3 rounded-full font-bold transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-file-lines"></i>
-                        <span>Info PPDB</span>
+                    <!-- Secondary Button (Outline White) -->
+                    <a href="#jurusan" class="backdrop-blur-md bg-white/10 border-2 border-white/70 text-white hover:bg-white/20 px-8 py-3 rounded-full font-bold transition flex items-center justify-center gap-2">
+                        <span>Kompetensi Keahlian</span>
                     </a>
                 </div>
             </div>
@@ -44,75 +43,78 @@
 <!-- Statistics Section -->
 @include('components.statistics-section')
 
-<!-- Jurusan Section -->
-<section class="py-16">
+<!-- Headmaster Welcome Section -->
+<section class="py-16 bg-white">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Program Keahlian</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            @forelse($jurusan as $item)
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
-                @if($item->image)
-                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->nama }}" class="w-full h-48 object-cover">
-                @else
-                <div class="w-full h-48 bg-primary/10 dark:bg-gray-700 flex items-center justify-center">
-                    <span class="text-4xl text-primary dark:text-secondary">{{ $item->kode }}</span>
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Column: Headmaster Photo -->
+                <div class="order-2 lg:order-1 flex justify-center">
+                    <div class="w-64 md:w-80 lg:w-96">
+                        <!-- Main Image - No Border, No Background -->
+                        <img 
+                            src="{{ asset('images/kepala-sekolah.webp') }}" 
+                            alt="Kepala Sekolah SMKN 5 Samarinda" 
+                            class="w-full h-auto object-contain"
+                            onerror="this.src='https://via.placeholder.com/400x450/10b981/ffffff?text=Kepala+Sekolah'"
+                        >
+                    </div>
                 </div>
-                @endif
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2 dark:text-white">{{ $item->nama }}</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">{{ Str::limit($item->deskripsi, 100) }}</p>
-                    <a href="{{ route('jurusan.show', $item->kode) }}" class="text-green-600 dark:text-green-500 font-semibold hover:text-green-700 dark:hover:text-green-400 transition">
-                        Selengkapnya &rarr;
-                    </a>
+                
+                <!-- Right Column: Welcome Message -->
+                <div class="order-1 lg:order-2">
+                    <!-- Section Title -->
+                    <div class="mb-6">
+                        <span class="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-4">
+                            <i class="fa-solid fa-user-tie mr-2"></i>Sambutan
+                        </span>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+                            Sambutan Kepala Sekolah
+                        </h2>
+                        <div class="w-20 h-1 bg-gradient-to-r from-green-600 to-teal-600"></div>
+                    </div>
+                    
+                    <!-- Headmaster Info -->
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-gray-800">Hariyadi, S.Pd., M.Pd.</h3>
+                        <p class="text-gray-600">Kepala SMK Negeri 5 Samarinda</p>
+                    </div>
+                    
+                    <!-- Quote -->
+                    <div class="mb-6 pl-4 border-l-4 border-green-600">
+                        <p class="text-lg italic text-gray-700 leading-relaxed">
+                            "Pendidikan bukan sekadar mengisi wadah, tetapi menyalakan api semangat untuk masa depan yang gemilang."
+                        </p>
+                    </div>
+                    
+                    <!-- Welcome Text -->
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <p>
+                            Selamat datang di website resmi <strong>SMK Negeri 5 Samarinda</strong>. 
+                            Kami berkomitmen mencetak lulusan yang kompeten, berkarakter, dan siap bersaing di dunia industri global.
+                        </p>
+                        <p>
+                            Dengan didukung oleh tenaga pendidik profesional, fasilitas modern, dan kemitraan dengan berbagai industri terkemuka, 
+                            kami terus berinovasi dalam memberikan pendidikan kejuruan yang berkualitas dan relevan dengan kebutuhan dunia kerja.
+                        </p>
+                        <p>
+                            Mari bersama-sama kita wujudkan generasi muda yang unggul, berakhlak mulia, dan siap berkontribusi bagi kemajuan bangsa.
+                        </p>
+                    </div>
+                    
+                    <!-- Signature (Optional) -->
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <p class="font-semibold text-gray-800">Hariyadi, S.Pd., M.Pd.</p>
+                        <p class="text-sm text-gray-600">Kepala Sekolah</p>
+                    </div>
                 </div>
+                
             </div>
-            @empty
-            <div class="col-span-3 text-center text-gray-500 dark:text-gray-400">
-                <p>Belum ada data jurusan.</p>
-            </div>
-            @endforelse
         </div>
     </div>
 </section>
 
-<!-- Berita Section -->
-<section class="py-16 bg-gray-100 dark:bg-gray-800 transition-colors duration-200">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Berita Terbaru</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            @forelse($beritaTerbaru as $berita)
-            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
-                @if($berita->gambar)
-                <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="w-full h-48 object-cover">
-                @else
-                <div class="w-full h-48 bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
-                    <span class="text-gray-400 dark:text-gray-500">No Image</span>
-                </div>
-                @endif
-                <div class="p-6">
-                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                        {{ $berita->published_at ? $berita->published_at->format('d M Y') : '' }}
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 dark:text-white">{{ $berita->judul }}</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">{{ Str::limit(strip_tags($berita->konten), 100) }}</p>
-                    <a href="{{ route('berita.show', $berita->slug) }}" class="text-green-600 dark:text-green-500 font-semibold hover:text-green-700 dark:hover:text-green-400 transition">
-                        Baca Selengkapnya &rarr;
-                    </a>
-                </div>
-            </div>
-            @empty
-            <div class="col-span-3 text-center text-gray-500 dark:text-gray-400">
-                <p>Belum ada berita.</p>
-            </div>
-            @endforelse
-        </div>
-        @if($beritaTerbaru->count() > 0)
-        <div class="text-center mt-8">
-            <a href="{{ route('berita.index') }}" class="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 dark:hover:bg-green-500 transition shadow-md hover:shadow-lg">
-                Lihat Semua Berita
-            </a>
-        </div>
-        @endif
-    </div>
-</section>
+<!-- Berita Section (Swiper Slider) -->
+@include('components.news-slider-section')
 @endsection

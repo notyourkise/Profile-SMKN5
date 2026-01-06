@@ -14,6 +14,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use UnitEnum;
 
 class BeritaResource extends Resource
 {
@@ -27,7 +28,17 @@ class BeritaResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Berita';
 
+    protected static UnitEnum|string|null $navigationGroup = 'Pengaturan Website';
+
+    protected static ?int $navigationSort = 2;
+
     protected static ?string $recordTitleAttribute = 'judul';
+
+    // All roles can see Berita menu (Admin, Redaktur, Jurnalis)
+    public static function shouldRegisterNavigation(): bool
+    {
+        return true;
+    }
 
     /**
      * ROLE-BASED QUERY SCOPE
@@ -41,7 +52,7 @@ class BeritaResource extends Resource
         $user = auth()->user();
 
         // If Jurnalis, only show their own posts
-        if ($user && $user->role === 'jurnalis') {
+        if ($user && $user->hasRole('Jurnalis')) {
             return $query->where('user_id', $user->id);
         }
 

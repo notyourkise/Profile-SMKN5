@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class JurusanResource extends Resource
 {
@@ -26,7 +27,16 @@ class JurusanResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Jurusan';
 
+    protected static UnitEnum|string|null $navigationGroup = 'Pengaturan Website';
+
+    protected static ?int $navigationSort = 3;
+
     protected static ?string $recordTitleAttribute = 'nama';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole(['Admin', 'Redaktur']);
+    }
 
     public static function form(Schema $schema): Schema
     {

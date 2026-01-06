@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('konten');
             $table->string('gambar')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->enum('status', ['draft', 'published'])->default('draft');
+            $table->enum('status', ['draft', 'review', 'published'])->default('draft');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

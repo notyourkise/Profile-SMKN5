@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class SettingResource extends Resource
 {
@@ -21,6 +22,15 @@ class SettingResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
     protected static ?string $navigationLabel = 'Pengaturan';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Konfigurasi Sistem';
+
+    protected static ?int $navigationSort = 3;
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('Admin');
+    }
 
     protected static ?string $modelLabel = 'Pengaturan';
 
