@@ -1,0 +1,33 @@
+<svg width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sun/Spiral Pattern Decoration for Bottom Right Corner -->
+  
+  <!-- Outer Circle -->
+  <circle cx="175" cy="175" r="120" stroke="white" stroke-width="2" fill="none" opacity="0.2"/>
+  <circle cx="175" cy="175" r="100" stroke="white" stroke-width="2" fill="none" opacity="0.25"/>
+  <circle cx="175" cy="175" r="80" stroke="white" stroke-width="2" fill="none" opacity="0.3"/>
+  
+  <!-- Sun Rays -->
+  <line x1="175" y1="55" x2="175" y2="25" stroke="white" stroke-width="3" opacity="0.2"/>
+  <line x1="245" y1="105" x2="265" y2="85" stroke="white" stroke-width="3" opacity="0.2"/>
+  <line x1="295" y1="175" x2="325" y2="175" stroke="white" stroke-width="3" opacity="0.2"/>
+  <line x1="245" y1="245" x2="265" y2="265" stroke="white" stroke-width="3" opacity="0.2"/>
+  <line x1="175" y1="295" x2="175" y2="325" stroke="white" stroke-width="3" opacity="0.2"/>
+  <line x1="105" y1="245" x2="85" y2="265" stroke="white" stroke-width="3" opacity="0.2"/>
+  <line x1="55" y1="175" x2="25" y2="175" stroke="white" stroke-width="3" opacity="0.2"/>
+  <line x1="105" y1="105" x2="85" y2="85" stroke="white" stroke-width="3" opacity="0.2"/>
+  
+  <!-- Spiral Pattern -->
+  <path d="M 175 175 Q 200 150, 225 175 T 250 225 Q 225 250, 175 250 T 100 225 Q 100 175, 125 150 T 175 125" 
+        stroke="white" stroke-width="2" fill="none" opacity="0.15"/>
+  
+  <!-- Inner Decorative Circles -->
+  <circle cx="175" cy="175" r="60" stroke="white" stroke-width="1.5" fill="none" opacity="0.15"/>
+  <circle cx="175" cy="175" r="40" fill="white" opacity="0.1"/>
+  <circle cx="175" cy="175" r="20" fill="white" opacity="0.2"/>
+  
+  <!-- Additional Dots -->
+  <circle cx="130" cy="130" r="8" fill="white" opacity="0.15"/>
+  <circle cx="220" cy="130" r="8" fill="white" opacity="0.15"/>
+  <circle cx="220" cy="220" r="8" fill="white" opacity="0.15"/>
+  <circle cx="130" cy="220" r="8" fill="white" opacity="0.15"/>
+</svg>

@@ -4,11 +4,9 @@
 
     // Profil Dropdown Items
     $profilItems = [
-        ['label' => 'Visi & Misi', 'url' => '/profil/visi-misi', 'icon' => 'fa-solid fa-bullseye', 'desc' => 'Tujuan dan cita-cita sekolah'],
-        ['label' => 'Sejarah', 'url' => '/profil/sejarah', 'icon' => 'fa-solid fa-clock-rotate-left', 'desc' => 'Riwayat pendirian sekolah'],
-        ['label' => 'Struktur Organisasi', 'url' => '/profil/organisasi', 'icon' => 'fa-solid fa-sitemap', 'desc' => 'Hirarki kepemimpinan sekolah'],
-        ['label' => 'Sarana Prasarana', 'url' => '/profil/sarpras', 'icon' => 'fa-solid fa-building', 'desc' => 'Fasilitas dan infrastruktur'],
-        ['label' => 'Guru & Staf', 'url' => '/profil/guru', 'icon' => 'fa-solid fa-chalkboard-user', 'desc' => 'Tenaga pendidik dan kependidikan'],
+        ['label' => 'Tentang SMK 5', 'route' => 'profil.tentang', 'icon' => 'fa-solid fa-school', 'desc' => 'Sejarah, visi misi, dan profil sekolah'],
+        ['label' => 'Unit & Pegawai', 'route' => 'profil.unit', 'icon' => 'fa-solid fa-users', 'desc' => 'Daftar unit kerja dan kepegawaian'],
+        ['label' => 'Struktur Organisasi', 'route' => 'profil.struktur', 'icon' => 'fa-solid fa-sitemap', 'desc' => 'Bagan struktur organisasi sekolah'],
     ];
 
     // Jurusan Dropdown Items
@@ -51,31 +49,31 @@
 >
     <!-- Centered Container -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row justify-center items-center h-auto md:h-20 py-4 md:py-0 gap-4 md:gap-8">
+        <div class="flex flex-row justify-between md:justify-center items-center h-16 md:h-20 gap-4 md:gap-8">
             
-            <!-- LOGO & BRANDING (Centered) -->
-            <a href="{{ route('home') }}" class="flex items-center gap-3 group">
+            <!-- LOGO & BRANDING -->
+            <a href="{{ route('home') }}" class="flex items-center gap-2 md:gap-3 group">
                 <img 
                     src="{{ asset('images/logo-smk-utama.webp') }}" 
                     alt="Logo SMK Negeri 5 Samarinda" 
-                    class="h-14 w-auto transition-all duration-300"
+                    class="h-10 md:h-14 w-auto transition-all duration-300"
                 >
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1 md:gap-2">
                     <span 
                         :class="isHomepage ? ((scrolled || hover) ? 'text-gray-400' : 'text-white/60 drop-shadow-md') : 'text-gray-400'" 
-                        class="text-2xl font-light transition-all duration-300"
+                        class="text-xl md:text-2xl font-light transition-all duration-300"
                     >|</span>
                     <span 
                         :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900' : 'text-white drop-shadow-md') : 'text-gray-900'" 
-                        class="text-lg font-bold tracking-wide transition-all duration-300"
+                        class="text-sm md:text-lg font-bold tracking-wide transition-all duration-300"
                     >
                         SMK NEGERI 5
                     </span>
                 </div>
             </a>
 
-            <!-- DESKTOP MENU (Centered) -->
-            <div class="flex items-center space-x-6 lg:space-x-8">
+            <!-- DESKTOP MENU (Centered, Hidden on Mobile) -->
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
                 
                 <!-- Beranda -->
                 <a 
@@ -121,7 +119,7 @@
                         <div class="py-2">
                             @foreach($profilItems as $item)
                                 <a 
-                                    href="{{ $item['url'] }}" 
+                                    href="{{ route($item['route']) }}" 
                                     class="flex items-start gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors duration-200 group"
                                 >
                                     <i class="{{ $item['icon'] }} text-green-600 group-hover:text-green-700 mt-1"></i>
@@ -243,7 +241,7 @@
 
                 <!-- Kontak (TANPA IKON) -->
                 <a 
-                    href="/kontak" 
+                    href="#footer" 
                     :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
                     class="relative group py-2 font-medium transition-all duration-300"
                 >
@@ -290,131 +288,173 @@
 
             </div>
 
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden flex items-center">
-                <button 
-                    @click="mobileMenuOpen = !mobileMenuOpen" 
-                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900' : 'text-white drop-shadow-md') : 'text-gray-900'"
-                    class="focus:outline-none transition-all duration-300"
-                >
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+            <!-- Mobile Hamburger Button (Right Side) -->
+            <button 
+                @click="mobileMenuOpen = true" 
+                :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900' : 'text-white drop-shadow-md') : 'text-gray-900'"
+                class="md:hidden p-2 focus:outline-none transition-all duration-300"
+                aria-label="Open Menu"
+            >
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
         </div>
     </div>
 
-    <!-- MOBILE MENU -->
+    <!-- MOBILE SIDEBAR DRAWER -->
     <div 
         x-show="mobileMenuOpen" 
-        x-transition 
-        :class="isHomepage ? ((scrolled || hover) ? 'bg-white' : 'bg-gray-900/95') : 'bg-white'"
-        class="md:hidden shadow-lg absolute w-full left-0 top-full backdrop-blur-sm"
+        @click="mobileMenuOpen = false"
+        x-transition:enter="transition-opacity ease-linear duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition-opacity ease-linear duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm md:hidden"
         style="display: none;"
     >
-        <div class="flex flex-col px-4 py-4 space-y-3">
-            <!-- Beranda -->
-            <a href="{{ route('home') }}" :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300') : 'text-gray-700 hover:text-green-600'" class="py-2 transition">Beranda</a>
-            
-            <!-- Mobile Profil Dropdown -->
-            <div x-data="{ mobileProfilOpen: false }">
-                <button 
-                    @click="mobileProfilOpen = !mobileProfilOpen"
-                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700' : 'text-white') : 'text-gray-700'"
-                    class="w-full flex justify-between items-center py-2"
-                >
-                    <span>Profil</span>
-                    <svg 
-                        :class="{ 'rotate-180': mobileProfilOpen }" 
-                        class="w-4 h-4 transition-transform" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
+        <!-- Sidebar Panel (Slide from Right) -->
+        <div 
+            @click.stop
+            x-show="mobileMenuOpen"
+            x-transition:enter="transition ease-in-out duration-300 transform"
+            x-transition:enter-start="translate-x-full"
+            x-transition:enter-end="translate-x-0"
+            x-transition:leave="transition ease-in-out duration-300 transform"
+            x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+            class="absolute right-0 top-0 h-full w-80 bg-white shadow-2xl overflow-y-auto"
+        >
+            <!-- Sidebar Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <div class="flex items-center gap-3">
+                    <img 
+                        src="{{ asset('images/logo-smk-utama.webp') }}" 
+                        alt="Logo SMKN 5" 
+                        class="h-10 w-auto"
                     >
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div x-show="mobileProfilOpen" x-transition class="pl-4 space-y-2 mt-2">
-                    @foreach($profilItems as $item)
-                        <a 
-                            href="{{ $item['url'] }}" 
-                            :class="isHomepage ? ((scrolled || hover) ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-300') : 'text-gray-600 hover:text-green-600'"
-                            class="flex items-center gap-2 py-1.5 text-sm transition"
-                        >
-                            <i class="{{ $item['icon'] }} text-green-600 text-sm"></i>
-                            {{ $item['label'] }}
-                        </a>
-                    @endforeach
+                    <span class="text-lg font-bold text-gray-900">SMK NEGERI 5</span>
                 </div>
+                <button 
+                    @click="mobileMenuOpen = false" 
+                    class="p-2 text-gray-500 hover:text-gray-700 transition-colors"
+                    aria-label="Close Menu"
+                >
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
             </div>
             
-            <!-- Mobile Jurusan Dropdown -->
-            <div x-data="{ mobileJurusanOpen: false }">
-                <button 
-                    @click="mobileJurusanOpen = !mobileJurusanOpen"
-                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700' : 'text-white') : 'text-gray-700'"
-                    class="w-full flex justify-between items-center py-2"
+            <!-- Sidebar Menu Items -->
+            <div class="flex flex-col p-6 space-y-1">
+                <!-- Beranda -->
+                <a 
+                    href="{{ route('home') }}" 
+                    class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg transition-colors text-base font-medium"
                 >
-                    <span>Jurusan</span>
-                    <svg 
-                        :class="{ 'rotate-180': mobileJurusanOpen }" 
-                        class="w-4 h-4 transition-transform" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
+                    <i class="fa-solid fa-home w-5"></i>
+                    <span>Beranda</span>
+                </a>
+                
+                <!-- Profil Dropdown -->
+                <div x-data="{ mobileProfilOpen: false }">
+                    <button 
+                        @click="mobileProfilOpen = !mobileProfilOpen"
+                        class="w-full flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors text-base font-medium"
                     >
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div x-show="mobileJurusanOpen" x-transition class="pl-4 space-y-2 mt-2">
-                    @foreach($jurusanItems as $jurusan)
-                        <a 
-                            href="{{ $jurusan['url'] }}" 
-                            :class="isHomepage ? ((scrolled || hover) ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-300') : 'text-gray-600 hover:text-green-600'"
-                            class="flex items-center gap-2 py-1.5 text-sm transition"
-                        >
-                            <i class="{{ $jurusan['icon'] }} text-green-600 text-sm"></i>
-                            {{ $jurusan['label'] }}
-                        </a>
-                    @endforeach
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-building-columns w-5"></i>
+                            <span>Profil</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform" :class="{ 'rotate-180': mobileProfilOpen }"></i>
+                    </button>
+                    <div x-show="mobileProfilOpen" x-transition class="pl-8 mt-1 space-y-1">
+                        @foreach($profilItems as $item)
+                            <a 
+                                href="{{ route($item['route']) }}" 
+                                class="flex items-center gap-3 py-2 px-4 text-gray-600 hover:text-green-600 rounded-lg transition-colors text-sm"
+                            >
+                                <i class="{{ $item['icon'] }} text-green-600 w-4 text-xs"></i>
+                                <span>{{ $item['label'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
+                
+                <!-- Jurusan Dropdown -->
+                <div x-data="{ mobileJurusanOpen: false }">
+                    <button 
+                        @click="mobileJurusanOpen = !mobileJurusanOpen"
+                        class="w-full flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors text-base font-medium"
+                    >
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-graduation-cap w-5"></i>
+                            <span>Jurusan</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform" :class="{ 'rotate-180': mobileJurusanOpen }"></i>
+                    </button>
+                    <div x-show="mobileJurusanOpen" x-transition class="pl-8 mt-1 space-y-1">
+                        @foreach($jurusanItems as $jurusan)
+                            <a 
+                                href="{{ $jurusan['url'] }}" 
+                                class="flex items-center gap-3 py-2 px-4 text-gray-600 hover:text-green-600 rounded-lg transition-colors text-sm"
+                            >
+                                <i class="{{ $jurusan['icon'] }} text-green-600 w-4 text-xs"></i>
+                                <span>{{ $jurusan['label'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+                
+                <!-- Kesiswaan Dropdown -->
+                <div x-data="{ mobileKesiswaanOpen: false }">
+                    <button 
+                        @click="mobileKesiswaanOpen = !mobileKesiswaanOpen"
+                        class="w-full flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors text-base font-medium"
+                    >
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-users w-5"></i>
+                            <span>Kesiswaan</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-sm transition-transform" :class="{ 'rotate-180': mobileKesiswaanOpen }"></i>
+                    </button>
+                    <div x-show="mobileKesiswaanOpen" x-transition class="pl-8 mt-1 space-y-1">
+                        @foreach($kesiswaanItems as $item)
+                            <a 
+                                href="{{ $item['url'] }}" 
+                                class="flex items-center gap-3 py-2 px-4 text-gray-600 hover:text-green-600 rounded-lg transition-colors text-sm"
+                            >
+                                <i class="{{ $item['icon'] }} text-green-600 w-4 text-xs"></i>
+                                <span>{{ $item['label'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+                
+                <!-- Berita -->
+                <a 
+                    href="{{ route('berita.index') }}" 
+                    class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg transition-colors text-base font-medium"
+                >
+                    <i class="fa-solid fa-newspaper w-5"></i>
+                    <span>Berita</span>
+                </a>
+                
+                <!-- Kontak -->
+                <a 
+                    href="#footer" 
+                    class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg transition-colors text-base font-medium"
+                >
+                    <i class="fa-solid fa-envelope w-5"></i>
+                    <span>Kontak</span>
+                </a>
             </div>
             
-            <!-- Mobile Kesiswaan Dropdown -->
-            <div x-data="{ mobileKesiswaanOpen: false }">
-                <button 
-                    @click="mobileKesiswaanOpen = !mobileKesiswaanOpen"
-                    :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700' : 'text-white') : 'text-gray-700'"
-                    class="w-full flex justify-between items-center py-2"
-                >
-                    <span>Kesiswaan</span>
-                    <svg 
-                        :class="{ 'rotate-180': mobileKesiswaanOpen }" 
-                        class="w-4 h-4 transition-transform" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                    >
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div x-show="mobileKesiswaanOpen" x-transition class="pl-4 space-y-2 mt-2">
-                    @foreach($kesiswaanItems as $item)
-                        <a 
-                            href="{{ $item['url'] }}" 
-                            :class="isHomepage ? ((scrolled || hover) ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-300') : 'text-gray-600 hover:text-green-600'"
-                            class="flex items-center gap-2 py-1.5 text-sm transition"
-                        >
-                            <i class="{{ $item['icon'] }} text-green-600 text-sm"></i>
-                            {{ $item['label'] }}
-                        </a>
-                    @endforeach
-                </div>
+            <!-- Sidebar Footer -->
+            <div class="p-6 border-t border-gray-200 mt-auto">
+                <p class="text-xs text-gray-500 text-center">
+                    &copy; {{ date('Y') }} SMK Negeri 5 Samarinda
+                </p>
             </div>
-            
-            <a href="{{ route('berita.index') }}" :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300') : 'text-gray-700 hover:text-green-600'" class="py-2 transition">Berita</a>
-            <a href="/kontak" :class="isHomepage ? ((scrolled || hover) ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300') : 'text-gray-700 hover:text-green-600'" class="py-2 transition">Kontak</a>
         </div>
     </div>
 </nav>

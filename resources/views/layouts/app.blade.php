@@ -13,6 +13,9 @@
     <!-- FontAwesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     {{-- Additional Styles Stack --}}
@@ -39,33 +42,8 @@
         @yield('content')
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 dark:bg-gray-950 text-white mt-16 transition-colors duration-200">
-        <div class="container mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-lg font-bold mb-4">SMKN 5 Samarinda</h3>
-                    <p class="text-gray-400 dark:text-gray-500">Sekolah Menengah Kejuruan Negeri 5 Samarinda</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Menu</h3>
-                    <ul class="space-y-2">
-                        <li><a href="{{ route('home') }}" class="text-gray-400 dark:text-gray-500 hover:text-white">Beranda</a></li>
-                        <li><a href="{{ route('jurusan.index') }}" class="text-gray-400 dark:text-gray-500 hover:text-white">Jurusan</a></li>
-                        <li><a href="{{ route('berita.index') }}" class="text-gray-400 dark:text-gray-500 hover:text-white">Berita</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Kontak</h3>
-                    <p class="text-gray-400 dark:text-gray-500">Email: info@smkn5samarinda.sch.id</p>
-                    <p class="text-gray-400 dark:text-gray-500">Telp: (0541) 123456</p>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 dark:border-gray-800 mt-8 pt-8 text-center text-gray-400 dark:text-gray-500">
-                <p>&copy; {{ date('Y') }} SMKN 5 Samarinda. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Component -->
+    <x-footer />
     
     {{-- Additional Scripts Stack --}}
     @stack('scripts')

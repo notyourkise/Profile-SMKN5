@@ -1,0 +1,16 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wave Pattern Decoration for Top Left Corner -->
+  <path d="M0 150C50 100, 100 100, 150 150C200 200, 250 200, 300 150C350 100, 400 100, 450 150" stroke="white" stroke-width="3" fill="none" opacity="0.3"/>
+  <path d="M0 180C50 130, 100 130, 150 180C200 230, 250 230, 300 180C350 130, 400 130, 450 180" stroke="white" stroke-width="3" fill="none" opacity="0.2"/>
+  <path d="M0 210C50 160, 100 160, 150 210C200 260, 250 260, 300 210C350 160, 400 160, 450 210" stroke="white" stroke-width="3" fill="none" opacity="0.1"/>
+  
+  <!-- Additional Wave Elements -->
+  <circle cx="50" cy="50" r="30" fill="white" opacity="0.1"/>
+  <circle cx="120" cy="80" r="20" fill="white" opacity="0.15"/>
+  <circle cx="200" cy="40" r="25" fill="white" opacity="0.08"/>
+  
+  <!-- Sparkle Effect -->
+  <path d="M 80 120 L 85 125 L 80 130 L 75 125 Z" fill="white" opacity="0.2"/>
+  <path d="M 180 100 L 185 105 L 180 110 L 175 105 Z" fill="white" opacity="0.15"/>
+  <path d="M 250 70 L 255 75 L 250 80 L 245 75 Z" fill="white" opacity="0.1"/>
+</svg>

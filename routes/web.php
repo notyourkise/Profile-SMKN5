@@ -3,6 +3,7 @@
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
@@ -17,3 +18,20 @@ Route::prefix('berita')->group(function () {
     Route::get('/', [BeritaController::class, 'index'])->name('berita.index');
     Route::get('/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 });
+
+// Profile Routes
+Route::prefix('profil')->group(function () {
+    Route::get('/tentang', [ProfileController::class, 'tentang'])->name('profil.tentang');
+    Route::get('/unit', [ProfileController::class, 'unit'])->name('profil.unit');
+    Route::get('/struktur', [ProfileController::class, 'struktur'])->name('profil.struktur');
+});
+
+// Temporary Facilities Route (Placeholder)
+Route::get('/fasilitas', function () {
+    return redirect()->route('home');
+})->name('facilities.index');
+
+// Temporary Agenda Route (Placeholder)
+Route::get('/agenda', function () {
+    return redirect()->route('home');
+})->name('agenda.index');

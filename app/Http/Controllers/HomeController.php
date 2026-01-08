@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agenda;
 use App\Models\Berita;
 use App\Models\Jurusan;
 use App\Models\Statistic;
@@ -38,6 +39,12 @@ class HomeController extends Controller
         // Get statistics from database ordered by order column
         $statistics = Statistic::orderBy('order')->get();
 
-        return view('home', compact('beritaTerbaru', 'jurusan', 'statistics'));
+        // Get agendas (5 days ago to 2 weeks ahead)
+        $agendas = Agenda::active()
+            ->upcoming()
+            ->orderBy('date', 'asc')
+            ->get();
+
+        return view('home', compact('beritaTerbaru', 'jurusan', 'statistics', 'agendas'));
     }
 }

@@ -30,6 +30,13 @@ class BeritaController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        return view('berita.show', compact('berita'));
+        // Get 5 recent news for sidebar (excluding current news)
+        $recentNews = Berita::where('status', 'published')
+            ->where('id', '!=', $berita->id)
+            ->orderBy('published_at', 'desc')
+            ->take(5)
+            ->get();
+
+        return view('berita.show', compact('berita', 'recentNews'));
     }
 }

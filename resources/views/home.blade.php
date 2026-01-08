@@ -117,4 +117,13 @@
 
 <!-- Berita Section (Swiper Slider) -->
 @include('components.news-slider-section')
+
+<!-- Fasilitas Section (Background Slideshow with Fade) -->
+@include('components.facilities-section')
+
+<!-- Alumni Testimonials Section -->
+@include('components.alumni-testimonials-section')
+
+<!-- Agenda Sekolah Section (Scrollable List) -->
+@include('components.agenda-list-section')
 @endsection
