@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Hero Section - Full Screen Parallax -->
-<section class="relative h-screen w-full bg-fixed bg-center bg-cover bg-no-repeat -mt-20" style="background-image: url('{{ asset('images/hero-drone-school.webp') }}')">
+<section class="relative h-screen w-full bg-fixed bg-center bg-cover bg-no-repeat -mt-20" style="background-image: url('{{ asset('images/drone-smk-2.webp') }}')">
     <!-- Gradient Overlay (Dark Bottom → Transparent Top) -->
     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-black/10"></div>
     
@@ -77,7 +77,7 @@
                     
                     <!-- Headmaster Info -->
                     <div class="mb-6">
-                        <h3 class="text-xl font-bold text-gray-800">Hariyadi, S.Pd., M.Pd.</h3>
+                        <h3 class="text-xl font-bold text-gray-800">Maryono S.Pd</h3>
                         <p class="text-gray-600">Kepala SMK Negeri 5 Samarinda</p>
                     </div>
                     
@@ -105,7 +105,7 @@
                     
                     <!-- Signature (Optional) -->
                     <div class="mt-8 pt-6 border-t border-gray-200">
-                        <p class="font-semibold text-gray-800">Hariyadi, S.Pd., M.Pd.</p>
+                        <p class="font-semibold text-gray-800">Maryono S.Pd</p>
                         <p class="text-sm text-gray-600">Kepala Sekolah</p>
                     </div>
                 </div>

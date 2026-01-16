@@ -5,17 +5,21 @@
 @section('content')
 
 {{-- Hero Section with Overlapping Card --}}
-<section class="relative mb-32 md:mb-40">
-    {{-- Image Container --}}
-    <div class="relative h-[450px] w-full bg-cover bg-center bg-no-repeat" 
-         style="background-image: url('{{ asset('images/hero-drone-school.webp') }}');">
-        {{-- Light Overlay (agar foto tidak terlalu silau) --}}
-        <div class="absolute inset-0 bg-black/30"></div>
-    </div>
+<section class="relative w-full h-[500px] mb-[200px] md:mb-[250px] z-10">
     
-    {{-- Overlapping Card (Kartu menumpuk di perbatasan foto) --}}
-    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full px-4">
-        <div class="bg-[#1e5494] text-white rounded-xl shadow-2xl max-w-4xl mx-auto p-8 md:p-10">
+    {{-- 1. Background Image (Layer Paling Bawah) --}}
+    <img 
+        src="{{ asset('images/drone-smk-1.webp') }}" 
+        alt="Pemandangan udara SMKN 5 Samarinda"
+        class="absolute inset-0 w-full h-full object-cover z-0"
+    >
+    
+    {{-- 2. Dark Overlay (Agar teks putih terbaca jelas) --}}
+    <div class="absolute inset-0 bg-black/50 z-10"></div>
+    
+    {{-- 3. Overlapping Card (Kartu menumpuk di perbatasan foto) --}}
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full px-4 z-20">
+        <div class="relative bg-[#1e5494] text-white rounded-xl shadow-2xl max-w-4xl mx-auto p-8 md:p-10">
             {{-- Badge --}}
             <div class="mb-4">
                 <span class="inline-block px-4 py-1 bg-white/20 text-white text-sm font-semibold rounded-full">
@@ -42,161 +46,163 @@
     </div>
 </section>
 
-{{-- Intro Section (Asymmetric Grid) --}}
-<section class="py-20 md:py-28 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                
-                {{-- Left: Sambutan Text --}}
-                <div>
-                    <div class="mb-6">
-                        <span class="inline-block px-4 py-2 bg-[#1e5494]/10 text-[#1e5494] text-sm font-semibold rounded-full">
-                            Sambutan Kepala Sekolah
-                        </span>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                        Membangun Generasi Unggul & Berkarakter
-                    </h2>
-                    <div class="space-y-4 text-gray-600 leading-relaxed text-lg">
-                        <p>
-                            Selamat datang di <strong class="text-gray-900">SMK Negeri 5 Samarinda</strong>. 
-                            Kami berkomitmen memberikan pendidikan kejuruan berkualitas yang mengintegrasikan kompetensi teknis dengan pembentukan karakter kuat.
-                        </p>
-                        <p>
-                            Dengan didukung oleh tenaga pendidik profesional, fasilitas modern, dan kemitraan strategis dengan dunia industri, 
-                            kami terus berinovasi untuk menghasilkan lulusan yang siap bersaing di tingkat nasional maupun global.
-                        </p>
-                        <p class="text-[#1e5494] font-semibold italic">
-                            "Pendidikan bukan sekadar mengisi wadah, tetapi menyalakan api semangat untuk masa depan gemilang."
-                        </p>
-                    </div>
-                    <div class="mt-8 pt-8 border-t border-gray-200">
-                        <div class="flex items-center gap-4">
-                            <img 
-                                src="{{ asset('images/kepsek.webp') }}" 
-                                alt="Kepala Sekolah" 
-                                class="w-16 h-16 rounded-full object-cover border-2 border-[#1e5494]"
-                                onerror="this.src='https://via.placeholder.com/64/1e5494/ffffff?text=KS'"
-                            >
-                            <div>
-                                <p class="font-bold text-gray-900">Hariyadi, S.Pd., M.Pd.</p>
-                                <p class="text-sm text-gray-500">Kepala Sekolah</p>
-                            </div>
-                        </div>
-                    </div>
+{{-- Sambutan Kepala Sekolah Section --}}
+<section class="relative py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            
+            {{-- Left: Image (4 columns) --}}
+            <div class="md:col-span-4 flex justify-center md:justify-start">
+                <div class="w-48 h-60 overflow-hidden rounded-xl shadow-lg">
+                    <img 
+                        src="{{ asset('images/kepala-sekolah.webp') }}" 
+                        alt="Kepala Sekolah SMKN 5 Samarinda"
+                        class="w-full h-full object-cover"
+                    >
                 </div>
-
-                {{-- Right: Statistics Cards --}}
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="bg-gradient-to-br from-[#1e5494] to-[#0f2c4a] rounded-2xl p-8 text-white shadow-xl hover:scale-105 transition-transform">
-                        <div class="text-5xl font-bold mb-2">39+</div>
-                        <p class="text-blue-200">Tahun Pengalaman</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-8 text-white shadow-xl hover:scale-105 transition-transform">
-                        <div class="text-5xl font-bold mb-2">1500+</div>
-                        <p class="text-green-200">Siswa Aktif</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-white shadow-xl hover:scale-105 transition-transform">
-                        <div class="text-5xl font-bold mb-2">5</div>
-                        <p class="text-orange-200">Kompetensi Keahlian</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl p-8 text-white shadow-xl hover:scale-105 transition-transform">
-                        <div class="text-5xl font-bold mb-2">90%+</div>
-                        <p class="text-purple-200">Tingkat Kelulusan</p>
-                    </div>
-                </div>
-
             </div>
+
+            {{-- Right: Content (8 columns) --}}
+            <div class="md:col-span-8 text-center md:text-left">
+                {{-- Quote Mark --}}
+                <div class="text-gray-200 text-6xl leading-none font-serif mb-3">"</div>
+                
+                {{-- Headline --}}
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
+                    Mewujudkan Generasi Unggul & Kompeten
+                </h2>
+                
+                {{-- Body Text --}}
+                <div class="space-y-3 text-gray-600 leading-relaxed text-sm mb-6 text-justify">
+                    <p>
+                        Selamat datang di <strong class="text-gray-900">SMK Negeri 5 Samarinda</strong>. 
+                        Kami berkomitmen memberikan pendidikan kejuruan berkualitas yang mengintegrasikan kompetensi teknis dengan pembentukan karakter kuat.
+                    </p>
+                    <p>
+                        Dengan didukung tenaga pendidik profesional, fasilitas modern, dan kemitraan strategis dengan dunia industri, kami terus berinovasi untuk menghasilkan lulusan yang kompeten dan siap bersaing global.
+                    </p>
+                </div>
+                
+                {{-- Signature Info --}}
+                <div class="mt-6 pt-4 border-t border-gray-200">
+                    <p class="font-bold text-gray-900 text-sm">Maryono S.Pd</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wide">Kepala Sekolah</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
 {{-- Sejarah Timeline --}}
-<section id="sejarah" class="py-20 md:py-28 bg-gray-50">
-    <div class="container mx-auto px-4">
+<section id="sejarah" class="relative py-24 bg-gradient-to-b from-slate-900 via-gray-900 to-black overflow-hidden">
+    {{-- Optional Grid Pattern Overlay --}}
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px] opacity-20"></div>
+    
+    <div class="relative container mx-auto px-4">
         <div class="max-w-5xl mx-auto">
             
             {{-- Section Header --}}
-            <div class="text-center mb-16">
-                <span class="inline-block px-4 py-2 bg-[#1e5494]/10 text-[#1e5494] text-sm font-semibold rounded-full mb-4">
-                    Perjalanan Kami
-                </span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Sejarah Singkat</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Jejak perjalanan panjang SMK Negeri 5 Samarinda dalam membangun pendidikan kejuruan berkualitas
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">Transformasi SMKN 5 Samarinda</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Evolusi sekolah dari masa ke masa dalam memberikan pendidikan kejuruan terbaik
                 </p>
             </div>
 
-            {{-- Timeline (Zig-zag Desktop, Left Mobile) --}}
-            <div class="relative">
-                {{-- Vertical Line (Hidden on Mobile) --}}
-                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#1e5494]/30 transform -translate-x-1/2"></div>
+            {{-- Timeline Container --}}
+            <div class="relative mt-16">
+                {{-- Center Vertical Line --}}
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/30 via-blue-500/50 to-blue-500/30 transform -translate-x-1/2"></div>
 
-                <div class="space-y-12">
+                <div class="space-y-16">
                     
-                    {{-- Timeline Item 1 (Right on Desktop) --}}
+                    {{-- Timeline Item 1 (Left) --}}
                     <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                        <div class="md:text-right"></div>
-                        <div class="relative">
-                            {{-- Dot --}}
-                            <div class="hidden md:block absolute -left-12 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-[#1e5494] rounded-full border-4 border-white shadow-lg"></div>
-                            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-                                <div class="inline-block px-3 py-1 bg-[#1e5494] text-white text-sm font-bold rounded-lg mb-3">1987</div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">Berdirinya SMK Negeri 5</h3>
-                                <p class="text-gray-600">
+                        {{-- Left Content --}}
+                        <div class="md:text-right">
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
+                                <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                                    1987
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Berdirinya SMK Negeri 5</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
                                     SMK Negeri 5 Samarinda didirikan sebagai lembaga pendidikan kejuruan untuk memenuhi kebutuhan tenaga terampil di Kalimantan Timur.
                                 </p>
                             </div>
                         </div>
+                        {{-- Center Marker --}}
+                        <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
+                        </div>
+                        {{-- Right Empty --}}
+                        <div></div>
                     </div>
 
-                    {{-- Timeline Item 2 (Left on Desktop) --}}
+                    {{-- Timeline Item 2 (Right) --}}
                     <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                        <div class="md:order-1 relative">
-                            {{-- Dot --}}
-                            <div class="hidden md:block absolute -right-12 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-green-600 rounded-full border-4 border-white shadow-lg"></div>
-                            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-                                <div class="inline-block px-3 py-1 bg-green-600 text-white text-sm font-bold rounded-lg mb-3">2005</div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">Akreditasi A Pertama Kali</h3>
-                                <p class="text-gray-600">
+                        {{-- Left Empty --}}
+                        <div></div>
+                        {{-- Center Marker --}}
+                        <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
+                        </div>
+                        {{-- Right Content --}}
+                        <div>
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
+                                <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                                    2005
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Akreditasi A Pertama Kali</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
                                     Meraih akreditasi A untuk pertama kalinya sebagai pengakuan atas kualitas pendidikan yang diberikan.
                                 </p>
                             </div>
                         </div>
-                        <div class="md:order-2"></div>
                     </div>
 
-                    {{-- Timeline Item 3 (Right on Desktop) --}}
+                    {{-- Timeline Item 3 (Left) --}}
                     <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                        <div class="md:text-right"></div>
-                        <div class="relative">
-                            {{-- Dot --}}
-                            <div class="hidden md:block absolute -left-12 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-orange-500 rounded-full border-4 border-white shadow-lg"></div>
-                            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-                                <div class="inline-block px-3 py-1 bg-orange-500 text-white text-sm font-bold rounded-lg mb-3">2015</div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">Kerjasama Industri</h3>
-                                <p class="text-gray-600">
+                        {{-- Left Content --}}
+                        <div class="md:text-right">
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
+                                <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                                    2015
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Kerjasama Industri</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
                                     Membangun kemitraan strategis dengan berbagai perusahaan nasional dan internasional untuk program magang siswa.
                                 </p>
                             </div>
                         </div>
+                        {{-- Center Marker --}}
+                        <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
+                        </div>
+                        {{-- Right Empty --}}
+                        <div></div>
                     </div>
 
-                    {{-- Timeline Item 4 (Left on Desktop) --}}
+                    {{-- Timeline Item 4 (Right) --}}
                     <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                        <div class="md:order-1 relative">
-                            {{-- Dot --}}
-                            <div class="hidden md:block absolute -right-12 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
-                            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-                                <div class="inline-block px-3 py-1 bg-purple-600 text-white text-sm font-bold rounded-lg mb-3">2026</div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">Era Digital & Smart School</h3>
-                                <p class="text-gray-600">
+                        {{-- Left Empty --}}
+                        <div></div>
+                        {{-- Center Marker --}}
+                        <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
+                        </div>
+                        {{-- Right Content --}}
+                        <div>
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
+                                <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                                    2026
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Era Digital & Smart School</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
                                     Implementasi sistem digital learning, smart classroom, dan modernisasi fasilitas untuk menghadapi Industri 4.0.
                                 </p>
                             </div>
                         </div>
-                        <div class="md:order-2"></div>
                     </div>
 
                 </div>
@@ -206,191 +212,189 @@
     </div>
 </section>
 
-{{-- Visi Misi (3 Column Grid) --}}
-<section class="py-20 md:py-28 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="max-w-7xl mx-auto">
-            
-            {{-- Section Header --}}
-            <div class="text-center mb-16">
-                <span class="inline-block px-4 py-2 bg-[#1e5494]/10 text-[#1e5494] text-sm font-semibold rounded-full mb-4">
-                    Arah & Tujuan
-                </span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Visi & Misi</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
-                {{-- Visi Card (Span 1 Column) --}}
-                <div class="lg:col-span-1 bg-gradient-to-br from-[#1e5494] to-[#0f2c4a] rounded-2xl p-8 text-white shadow-xl hover:scale-105 transition-transform">
-                    <div class="mb-6">
-                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm mb-4">
-                            <i class="fa-solid fa-eye text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold">Visi</h3>
-                    </div>
-                    <p class="text-blue-100 leading-relaxed">
-                        Mewujudkan SMK Negeri 5 Samarinda sebagai lembaga pendidikan kejuruan yang unggul, berwawasan lingkungan, dan berkarakter dalam menghasilkan lulusan yang kompeten dan berdaya saing global.
-                    </p>
-                </div>
-
-                {{-- Misi Cards (Span 2 Columns) --}}
-                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
-                    {{-- Misi Card 1 --}}
-                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:shadow-xl hover:scale-105 transition-all">
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
-                                <i class="fa-solid fa-graduation-cap text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Pendidikan Berkualitas</h4>
-                                <p class="text-gray-600 text-sm">
-                                    Menyelenggarakan pendidikan berbasis kompetensi dan pembentukan karakter yang kuat
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Misi Card 2 --}}
-                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:shadow-xl hover:scale-105 transition-all">
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
-                                <i class="fa-solid fa-handshake text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Kemitraan DUDI</h4>
-                                <p class="text-gray-600 text-sm">
-                                    Mengembangkan kemitraan strategis dengan dunia usaha dan industri
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Misi Card 3 --}}
-                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:shadow-xl hover:scale-105 transition-all">
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                                <i class="fa-solid fa-leaf text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Lingkungan Hijau</h4>
-                                <p class="text-gray-600 text-sm">
-                                    Membangun budaya lingkungan hijau dan berkelanjutan
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Misi Card 4 --}}
-                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:shadow-xl hover:scale-105 transition-all">
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                                <i class="fa-solid fa-chalkboard-user text-white text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">SDM Profesional</h4>
-                                <p class="text-gray-600 text-sm">
-                                    Meningkatkan profesionalisme tenaga pendidik dan kependidikan
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</section>
-
-{{-- Leadership Team (4 Column Grid) --}}
-<section class="py-20 md:py-28 bg-gray-50">
+{{-- Visi Misi (Clean White Background) --}}
+<section class="bg-white py-20">
     <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
             
             {{-- Section Header --}}
             <div class="text-center mb-16">
-                <span class="inline-block px-4 py-2 bg-[#1e5494]/10 text-[#1e5494] text-sm font-semibold rounded-full mb-4">
-                    Tim Pimpinan
-                </span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kepemimpinan Sekolah</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Visi & Misi</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Landasan dan arah pengembangan SMK Negeri 5 Samarinda
+                </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {{-- Grid Container --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
-                {{-- Kepala Sekolah --}}
-                <div class="text-center group">
-                    <div class="mb-4 relative inline-block">
-                        <img 
-                            src="{{ asset('images/kepsek.webp') }}" 
-                            alt="Kepala Sekolah" 
-                            class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#1e5494] shadow-lg group-hover:scale-110 transition-transform"
-                            onerror="this.src='https://via.placeholder.com/128/1e5494/ffffff?text=KS'"
-                        >
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                            <div class="px-3 py-1 bg-[#1e5494] text-white text-xs font-bold rounded-full shadow-lg">
-                                Kepala Sekolah
-                            </div>
-                        </div>
-                    </div>
-                    <h4 class="font-bold text-gray-900 mt-6">Hariyadi, S.Pd., M.Pd.</h4>
-                    <p class="text-sm text-[#1e5494]">Kepala Sekolah</p>
+                {{-- VISI Card --}}
+                <div class="bg-[#0a61aa] p-10 rounded-2xl shadow-lg">
+                    <div class="text-blue-200 text-sm font-bold tracking-widest mb-4">VISI</div>
+                    <p class="text-white text-base leading-relaxed">
+                        Mewujudkan SMK Negeri 5 Samarinda sebagai lembaga pendidikan kejuruan yang unggul, berwawasan lingkungan, dan berkarakter dalam menghasilkan lulusan yang kompeten dan berdaya saing global.
+                    </p>
                 </div>
 
-                {{-- Wakasek 1 --}}
-                <div class="text-center group">
-                    <div class="mb-4 relative inline-block">
-                        <img 
-                            src="https://i.pravatar.cc/128?img=12" 
-                            alt="Wakil Kepala Sekolah" 
-                            class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#1e5494] shadow-lg group-hover:scale-110 transition-transform"
-                        >
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                            <div class="px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full shadow-lg">
-                                Wakasek
-                            </div>
-                        </div>
-                    </div>
-                    <h4 class="font-bold text-gray-900 mt-6">Nama Wakasek 1</h4>
-                    <p class="text-sm text-[#1e5494]">Wakil Kurikulum</p>
+                {{-- MISI Card --}}
+                <div class="bg-[#0a61aa] p-10 rounded-2xl shadow-lg">
+                    <div class="text-blue-200 text-sm font-bold tracking-widest mb-6">MISI</div>
+                    
+                    <ul class="space-y-4">
+                        <li>
+                            <span class="text-white text-base leading-relaxed">
+                                Menyelenggarakan pendidikan berbasis kompetensi dan pembentukan karakter yang kuat
+                            </span>
+                        </li>
+                        <li>
+                            <span class="text-white text-base leading-relaxed">
+                                Mengembangkan kemitraan strategis dengan dunia usaha dan industri
+                            </span>
+                        </li>
+                        <li>
+                            <span class="text-white text-base leading-relaxed">
+                                Membangun budaya lingkungan hijau dan berkelanjutan
+                            </span>
+                        </li>
+                        <li>
+                            <span class="text-white text-base leading-relaxed">
+                                Meningkatkan profesionalisme tenaga pendidik dan kependidikan
+                            </span>
+                        </li>
+                    </ul>
                 </div>
 
-                {{-- Wakasek 2 --}}
-                <div class="text-center group">
-                    <div class="mb-4 relative inline-block">
-                        <img 
-                            src="https://i.pravatar.cc/128?img=47" 
-                            alt="Wakil Kepala Sekolah" 
-                            class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#1e5494] shadow-lg group-hover:scale-110 transition-transform"
-                        >
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                            <div class="px-3 py-1 bg-orange-500 text-white text-xs font-bold rounded-full shadow-lg">
-                                Wakasek
-                            </div>
-                        </div>
-                    </div>
-                    <h4 class="font-bold text-gray-900 mt-6">Nama Wakasek 2</h4>
-                    <p class="text-sm text-[#1e5494]">Wakil Kesiswaan</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{{-- Leadership Team (Hierarchical Layout) --}}
+<section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+        
+        {{-- Section Header --}}
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Pimpinan Sekolah</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Struktur kepemimpinan SMK Negeri 5 Samarinda
+            </p>
+        </div>
+
+        {{-- Tier 1: Kepala Sekolah --}}
+        <div class="flex justify-center mb-16">
+            <div class="bg-white p-6 rounded-xl shadow-lg text-center w-[280px] flex flex-col items-center">
+                <img 
+                    class="w-full h-72 object-cover rounded-lg mb-4" 
+                    src="{{ asset('images/kepsek.webp') }}" 
+                    alt="Kepala Sekolah"
+                    onerror="this.src='https://placehold.co/400x500/1e5494/FFFFFF?text=KEPSEK'"
+                >
+                <h3 class="font-bold text-slate-800 text-lg mb-1">Maryono S.Pd</h3>
+                <p class="text-sm text-[#1e5494] font-semibold uppercase tracking-wide">Kepala Sekolah</p>
+            </div>
+        </div>
+
+        {{-- Tier 2: 5 Wakil Kepala Sekolah --}}
+        <div class="flex flex-wrap justify-center gap-6 md:gap-8 max-w-7xl mx-auto">
+            
+            {{-- Wakasek 1 --}}
+            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
+                <img 
+                    class="w-full h-56 object-cover rounded-lg mb-4" 
+                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+1" 
+                    alt="Wakil Kepala Sekolah"
+                >
+                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 1</h3>
+                <p class="text-xs text-[#1e5494] font-medium">Waka. Kurikulum</p>
+            </div>
+
+            {{-- Wakasek 2 --}}
+            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
+                <img 
+                    class="w-full h-56 object-cover rounded-lg mb-4" 
+                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+2" 
+                    alt="Wakil Kepala Sekolah"
+                >
+                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 2</h3>
+                <p class="text-xs text-[#1e5494] font-medium">Waka. Kesiswaan</p>
+            </div>
+
+            {{-- Wakasek 3 --}}
+            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
+                <img 
+                    class="w-full h-56 object-cover rounded-lg mb-4" 
+                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+3" 
+                    alt="Wakil Kepala Sekolah"
+                >
+                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 3</h3>
+                <p class="text-xs text-[#1e5494] font-medium">Waka. Sarpras</p>
+            </div>
+
+            {{-- Wakasek 4 --}}
+            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
+                <img 
+                    class="w-full h-56 object-cover rounded-lg mb-4" 
+                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+4" 
+                    alt="Wakil Kepala Sekolah"
+                >
+                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 4</h3>
+                <p class="text-xs text-[#1e5494] font-medium">Waka. Humas</p>
+            </div>
+
+            {{-- Wakasek 5 --}}
+            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
+                <img 
+                    class="w-full h-56 object-cover rounded-lg mb-4" 
+                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+5" 
+                    alt="Wakil Kepala Sekolah"
+                >
+                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 5</h3>
+                <p class="text-xs text-[#1e5494] font-medium">Waka. Mutu</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{{-- Tugas dan Fungsi Section --}}
+<section class="bg-gray-50 py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-7xl mx-auto">
+            
+            {{-- Two-Tone Split Card --}}
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
+                
+                {{-- Left Panel: Tugas (White Background) --}}
+                <div class="w-full lg:w-1/2 p-10 md:p-16 bg-white">
+                    <h2 class="text-3xl font-bold text-[#1e5494] mb-6">Tugas</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        Melaksanakan pendidikan kejuruan tingkat menengah untuk menghasilkan tamatan yang kompeten, berkarakter, dan siap kerja sesuai dengan kebutuhan dunia usaha dan dunia industri.
+                    </p>
                 </div>
 
-                {{-- Wakasek 3 --}}
-                <div class="text-center group">
-                    <div class="mb-4 relative inline-block">
-                        <img 
-                            src="https://i.pravatar.cc/128?img=33" 
-                            alt="Wakil Kepala Sekolah" 
-                            class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#1e5494] shadow-lg group-hover:scale-110 transition-transform"
-                        >
-                        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                            <div class="px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full shadow-lg">
-                                Wakasek
-                            </div>
-                        </div>
-                    </div>
-                    <h4 class="font-bold text-gray-900 mt-6">Nama Wakasek 3</h4>
-                    <p class="text-sm text-[#1e5494]">Wakil Sarpras</p>
+                {{-- Right Panel: Fungsi (Blue Background) --}}
+                <div class="w-full lg:w-1/2 p-10 md:p-16 bg-[#1e5494] text-white">
+                    <h2 class="text-3xl font-bold mb-6">Fungsi</h2>
+                    <ol class="space-y-3 list-decimal list-inside">
+                        <li class="text-white/90 text-lg leading-relaxed">
+                            Pelaksanaan pendidikan dan pelatihan berbasis kompetensi
+                        </li>
+                        <li class="text-white/90 text-lg leading-relaxed">
+                            Pelaksanaan kemitraan dengan dunia kerja dan industri
+                        </li>
+                        <li class="text-white/90 text-lg leading-relaxed">
+                            Pengelolaan layanan administrasi pendidikan
+                        </li>
+                        <li class="text-white/90 text-lg leading-relaxed">
+                            Pengembangan minat dan bakat peserta didik
+                        </li>
+                        <li class="text-white/90 text-lg leading-relaxed">
+                            Penyelenggaraan sertifikasi kompetensi profesi
+                        </li>
+                    </ol>
                 </div>
 
             </div>
