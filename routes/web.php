@@ -26,9 +26,9 @@ Route::prefix('profil')->group(function () {
     Route::get('/struktur', [ProfileController::class, 'struktur'])->name('profil.struktur');
 });
 
-// Temporary Facilities Route (Placeholder)
+// Facilities Page
 Route::get('/fasilitas', function () {
-    return redirect()->route('home');
+    return view('fasilitas');
 })->name('facilities.index');
 
 // Temporary Agenda Route (Placeholder)

@@ -15,7 +15,12 @@ class JurusanController extends Controller
 
     public function show($slug)
     {
-        // Cari berdasarkan kode (slug) atau ID
+        // Ambil semua jurusan aktif untuk toggle menu
+        $allJurusan = Jurusan::where('is_active', true)
+            ->orderBy('kode')
+            ->get();
+        
+        // Cari jurusan yang dipilih berdasarkan kode (slug) atau ID
         $jurusan = Jurusan::where('is_active', true)
             ->where(function($query) use ($slug) {
                 $query->where('kode', $slug)
@@ -23,6 +28,6 @@ class JurusanController extends Controller
             })
             ->firstOrFail();
             
-        return view('jurusan.show', compact('jurusan'));
+        return view('jurusan.show', compact('jurusan', 'allJurusan'));
     }
 }

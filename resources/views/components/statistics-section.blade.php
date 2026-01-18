@@ -11,14 +11,14 @@
                     <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 relative overflow-hidden lg:row-span-2 flex flex-col justify-center">
                         {{-- Content --}}
                         <div class="relative z-10">
-                            <p class="text-sm font-bold tracking-widest text-gray-400 uppercase mb-2">
+                            <p class="text-sm font-bold tracking-widest text-gray-800 uppercase mb-2">
                                 {{ $stat->label }}
                             </p>
-                            <h3 class="text-7xl lg:text-8xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-teal-600">
+                            <h3 class="text-7xl lg:text-8xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500">
                                 {{ $stat->value }}
                             </h3>
                             @if($stat->description)
-                            <p class="text-gray-600 text-sm leading-relaxed">
+                            <p class="text-gray-800 text-sm font-semibold leading-relaxed">
                                 {{ $stat->description }}
                             </p>
                             @endif
@@ -32,14 +32,14 @@
                     <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 relative overflow-hidden">
                         {{-- Content --}}
                         <div class="relative z-10">
-                            <p class="text-sm font-bold tracking-widest text-gray-400 uppercase mb-2">
+                            <p class="text-sm font-bold tracking-widest text-gray-800 uppercase mb-2">
                                 {{ $stat->label }}
                             </p>
-                            <h3 class="text-6xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-teal-600">
+                            <h3 class="text-6xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500">
                                 {{ $stat->value }}
                             </h3>
                             @if($stat->description)
-                            <p class="text-gray-600 text-sm">
+                            <p class="text-gray-800 text-sm font-semibold">
                                 {{ $stat->description }}
                             </p>
                             @endif

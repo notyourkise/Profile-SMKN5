@@ -89,7 +89,7 @@
                     </div>
                     
                     <!-- Welcome Text -->
-                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <div class="space-y-4 text-gray-700 leading-relaxed text-justify">
                         <p>
                             Selamat datang di website resmi <strong>SMK Negeri 5 Samarinda</strong>. 
                             Kami berkomitmen mencetak lulusan yang kompeten, berkarakter, dan siap bersaing di dunia industri global.

@@ -27,13 +27,6 @@
                 <p class="text-lg text-blue-100 mb-8 leading-relaxed">
                     Jadwal kegiatan akademik & non-akademik terbaru untuk mendukung perkembangan siswa dan ekosistem sekolah.
                 </p>
-                
-                {{-- Transparent Button --}}
-                <a href="{{ route('agenda.index') }}" 
-                   class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-xl">
-                    <span>Lihat Semua Agenda</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
             </div>
             
             {{-- Right: Scrollable Agenda List (2 Columns) --}}
@@ -52,7 +45,7 @@
                     <div class="flex items-start gap-4 p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors">
                         
                         {{-- Date Box (Left) --}}
-                        <div class="flex-shrink-0 text-center {{ $isPast ? 'bg-gray-100 text-gray-500' : 'bg-blue-50 text-[#1e5494]' }} rounded-lg px-4 py-3 min-w-[80px]">
+                        <div class="flex-shrink-0 text-center {{ $isPast ? 'bg-green-100 text-green-700' : 'bg-blue-50 text-[#1e5494]' }} rounded-lg px-4 py-3 min-w-[80px]">
                             <div class="text-3xl font-bold leading-none mb-1">
                                 {{ $agendaDate->format('d') }}
                             </div>
@@ -90,7 +83,7 @@
                             
                             {{-- Status Badge --}}
                             @if($isPast)
-                                <span class="inline-block px-3 py-1 bg-gray-200 text-gray-700 text-xs font-semibold rounded-full">
+                                <span class="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
                                     <i class="fa-solid fa-check-circle mr-1"></i>
                                     Telah Terlaksana
                                 </span>

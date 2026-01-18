@@ -9,14 +9,41 @@
         ['label' => 'Struktur Organisasi', 'route' => 'profil.struktur', 'icon' => 'fa-solid fa-sitemap', 'desc' => 'Bagan struktur organisasi sekolah'],
     ];
 
-    // Jurusan Dropdown Items
-    $jurusanItems = [
-        ['label' => 'TJKT (Jaringan)', 'url' => '/jurusan/tjkt', 'icon' => 'fa-solid fa-network-wired', 'desc' => 'Teknik Jaringan Komputer Dan telekomunikasi'],
-        ['label' => 'DKV (Multimedia)', 'url' => '/jurusan/dkv', 'icon' => 'fa-solid fa-palette', 'desc' => 'Desain Komunikasi Visual'],
-        ['label' => 'PM (Pemasaran)', 'url' => '/jurusan/pm', 'icon' => 'fa-solid fa-shop', 'desc' => 'Strategi penjualan & marketing'],
-        ['label' => 'PS (Pekerjaan Sosial)', 'url' => '/jurusan/ps', 'icon' => 'fa-solid fa-hand-holding-heart', 'desc' => 'Pelayanan masyarakat & konseling'],
-        ['label' => 'MPLB (Perkantoran)', 'url' => '/jurusan/mplb', 'icon' => 'fa-solid fa-briefcase', 'desc' => 'Manajemen Perkantoran dan Layanan Bisnis'],
+    // Get Jurusan from Database (Active Only)
+    $jurusanList = \App\Models\Jurusan::where('is_active', true)
+        ->orderBy('kode')
+        ->get();
+    
+    // Icon mapping based on kode
+    $iconMapping = [
+        'TJKT' => 'fa-solid fa-network-wired',
+        'DKV' => 'fa-solid fa-palette',
+        'PM' => 'fa-solid fa-shop',
+        'PS' => 'fa-solid fa-hand-holding-heart',
+        'MPLB' => 'fa-solid fa-briefcase',
+        'default' => 'fa-solid fa-graduation-cap'
     ];
+    
+    // Short description mapping
+    $descMapping = [
+        'TJKT' => 'Jaringan & Telekomunikasi',
+        'DKV' => 'Desain Grafis & Multimedia',
+        'PM' => 'Strategi Penjualan',
+        'PS' => 'Pelayanan Masyarakat',
+        'MPLB' => 'Administrasi Perkantoran',
+    ];
+
+    $jurusanItems = $jurusanList->map(function($j) use ($iconMapping, $descMapping) {
+        $icon = $iconMapping[strtoupper($j->kode)] ?? $iconMapping['default'];
+        $desc = $descMapping[strtoupper($j->kode)] ?? 'Program Keahlian';
+        
+        return [
+            'label' => $j->kode . ' - ' . $j->nama,
+            'url' => route('jurusan.show', $j->kode),
+            'icon' => $icon,
+            'desc' => $desc
+        ];
+    })->toArray();
 
     // Kesiswaan Dropdown Items - Simplified: Only Ekstrakurikuler
     $kesiswaanItems = [

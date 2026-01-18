@@ -8,52 +8,43 @@
                 {{-- Slide 1: Lab TJKT --}}
                 <div class="swiper-slide">
                     <img 
-                        src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1920&h=700&fit=crop" 
+                        src="{{ asset('assets/images/facilities/lab-tjkt.webp') }}" 
                         alt="Laboratorium TJKT" 
                         class="w-full h-full object-cover"
                     >
                 </div>
                 
-                {{-- Slide 2: Lab PM --}}
+                {{-- Slide 2: Lab PS --}}
                 <div class="swiper-slide">
                     <img 
-                        src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&h=700&fit=crop" 
-                        alt="Laboratorium Pemasaran" 
+                        src="{{ asset('assets/images/facilities/lab-ps.webp') }}" 
+                        alt="Laboratorium Pekerjaan Sosial" 
                         class="w-full h-full object-cover"
                     >
                 </div>
                 
-                {{-- Slide 3: Lab PS --}}
+                {{-- Slide 3: Musholla --}}
                 <div class="swiper-slide">
                     <img 
-                        src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1920&h=700&fit=crop" 
-                        alt="Laboratorium Perkantoran" 
-                        class="w-full h-full object-cover"
-                    >
-                </div>
-                
-                {{-- Slide 4: Lab MPLB --}}
-                <div class="swiper-slide">
-                    <img 
-                        src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?w=1920&h=700&fit=crop" 
-                        alt="Laboratorium MPLB" 
-                        class="w-full h-full object-cover"
-                    >
-                </div>
-                
-                {{-- Slide 5: Musholla --}}
-                <div class="swiper-slide">
-                    <img 
-                        src="https://images.unsplash.com/photo-1564769625392-651b89d8f6af?w=1920&h=700&fit=crop" 
+                        src="{{ asset('assets/images/facilities/musholla.webp') }}" 
                         alt="Musholla" 
                         class="w-full h-full object-cover"
                     >
                 </div>
                 
-                {{-- Slide 6: Ruang Kelas --}}
+                {{-- Slide 4: Gedung Sekolah --}}
                 <div class="swiper-slide">
                     <img 
-                        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&h=700&fit=crop" 
+                        src="{{ asset('assets/images/facilities/gedung-sekolah.webp') }}" 
+                        alt="Gedung Sekolah" 
+                        class="w-full h-full object-cover"
+                    >
+                </div>
+                
+                {{-- Slide 5: Ruang Kelas --}}
+                <div class="swiper-slide">
+                    <img 
+                        src="{{ asset('assets/images/facilities/ruang-kelas.webp') }}" 
                         alt="Ruang Kelas" 
                         class="w-full h-full object-cover"
                     >

@@ -270,93 +270,103 @@
     </div>
 </section>
 
-{{-- Leadership Team (Hierarchical Layout) --}}
-<section class="py-20 bg-slate-50">
-    <div class="container mx-auto px-4">
+{{-- Leadership Team (Square Cards, Equal Sizes) --}}
+<section class="w-full bg-slate-50 pt-16 pb-0">
+    
+    {{-- Section Header --}}
+    <div class="text-center mb-16 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Pimpinan Sekolah</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+            Struktur kepemimpinan SMK Negeri 5 Samarinda
+        </p>
+    </div>
+
+    {{-- Top Tier: Kepala Sekolah (Centered, Same Size as Bottom Cards) --}}
+    <div class="flex justify-center w-full mb-0">
+        <div class="relative w-full md:w-1/3 lg:w-[20%] aspect-square bg-amber-500 group overflow-hidden shadow-xl z-10">
+            <img 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                src="{{ asset('images/kepsek.webp') }}" 
+                alt="Kepala Sekolah"
+                onerror="this.src='https://placehold.co/400x400/f59e0b/FFFFFF?text=KEPALA+SEKOLAH'"
+            >
+            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent text-center">
+                <h3 class="text-white font-bold text-lg md:text-xl">Maryono S.Pd</h3>
+                <p class="text-amber-300 text-xs md:text-sm uppercase font-bold tracking-wider">Kepala Sekolah</p>
+            </div>
+        </div>
+    </div>
+
+    {{-- Bottom Tier: 5 Wakil Kepala Sekolah (Full Width, Edge-to-Edge) --}}
+    <div class="grid grid-cols-2 md:grid-cols-5 w-full gap-0">
         
-        {{-- Section Header --}}
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Pimpinan Sekolah</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                Struktur kepemimpinan SMK Negeri 5 Samarinda
-            </p>
-        </div>
-
-        {{-- Tier 1: Kepala Sekolah --}}
-        <div class="flex justify-center mb-16">
-            <div class="bg-white p-6 rounded-xl shadow-lg text-center w-[280px] flex flex-col items-center">
-                <img 
-                    class="w-full h-72 object-cover rounded-lg mb-4" 
-                    src="{{ asset('images/kepsek.webp') }}" 
-                    alt="Kepala Sekolah"
-                    onerror="this.src='https://placehold.co/400x500/1e5494/FFFFFF?text=KEPSEK'"
-                >
-                <h3 class="font-bold text-slate-800 text-lg mb-1">Maryono S.Pd</h3>
-                <p class="text-sm text-[#1e5494] font-semibold uppercase tracking-wide">Kepala Sekolah</p>
+        {{-- Wakasek 1: Kurikulum --}}
+        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden border-r border-white/10">
+            <img 
+                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500" 
+                src="https://placehold.co/400x400/1e5494/FFFFFF?text=KURIKULUM" 
+                alt="Wakil Kepala Sekolah Kurikulum"
+            >
+            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
+                <h3 class="text-white font-bold text-base md:text-lg">Nama Wakil 1</h3>
+                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Kurikulum</p>
             </div>
         </div>
 
-        {{-- Tier 2: 5 Wakil Kepala Sekolah --}}
-        <div class="flex flex-wrap justify-center gap-6 md:gap-8 max-w-7xl mx-auto">
-            
-            {{-- Wakasek 1 --}}
-            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
-                <img 
-                    class="w-full h-56 object-cover rounded-lg mb-4" 
-                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+1" 
-                    alt="Wakil Kepala Sekolah"
-                >
-                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 1</h3>
-                <p class="text-xs text-[#1e5494] font-medium">Waka. Kurikulum</p>
+        {{-- Wakasek 2: Kesiswaan --}}
+        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden border-r border-white/10">
+            <img 
+                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500" 
+                src="https://placehold.co/400x400/1e5494/FFFFFF?text=KESISWAAN" 
+                alt="Wakil Kepala Sekolah Kesiswaan"
+            >
+            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
+                <h3 class="text-white font-bold text-base md:text-lg">Nama Wakil 2</h3>
+                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Kesiswaan</p>
             </div>
+        </div>
 
-            {{-- Wakasek 2 --}}
-            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
-                <img 
-                    class="w-full h-56 object-cover rounded-lg mb-4" 
-                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+2" 
-                    alt="Wakil Kepala Sekolah"
-                >
-                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 2</h3>
-                <p class="text-xs text-[#1e5494] font-medium">Waka. Kesiswaan</p>
+        {{-- Wakasek 3: Sarpras --}}
+        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden border-r border-white/10">
+            <img 
+                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500" 
+                src="https://placehold.co/400x400/1e5494/FFFFFF?text=SARPRAS" 
+                alt="Wakil Kepala Sekolah Sarpras"
+            >
+            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
+                <h3 class="text-white font-bold text-base md:text-lg">Nama Wakil 3</h3>
+                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Sarpras</p>
             </div>
+        </div>
 
-            {{-- Wakasek 3 --}}
-            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
-                <img 
-                    class="w-full h-56 object-cover rounded-lg mb-4" 
-                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+3" 
-                    alt="Wakil Kepala Sekolah"
-                >
-                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 3</h3>
-                <p class="text-xs text-[#1e5494] font-medium">Waka. Sarpras</p>
+        {{-- Wakasek 4: Humas --}}
+        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden border-r border-white/10">
+            <img 
+                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500" 
+                src="https://placehold.co/400x400/1e5494/FFFFFF?text=HUMAS" 
+                alt="Wakil Kepala Sekolah Humas"
+            >
+            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
+                <h3 class="text-white font-bold text-base md:text-lg">Nama Wakil 4</h3>
+                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Humas</p>
             </div>
+        </div>
 
-            {{-- Wakasek 4 --}}
-            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
-                <img 
-                    class="w-full h-56 object-cover rounded-lg mb-4" 
-                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+4" 
-                    alt="Wakil Kepala Sekolah"
-                >
-                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 4</h3>
-                <p class="text-xs text-[#1e5494] font-medium">Waka. Humas</p>
+        {{-- Wakasek 5: Mutu --}}
+        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden">
+            <img 
+                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500" 
+                src="https://placehold.co/400x400/1e5494/FFFFFF?text=MUTU" 
+                alt="Wakil Kepala Sekolah Mutu"
+            >
+            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
+                <h3 class="text-white font-bold text-base md:text-lg">Nama Wakil 5</h3>
+                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Mutu</p>
             </div>
-
-            {{-- Wakasek 5 --}}
-            <div class="bg-white p-4 rounded-xl shadow-md text-center w-[220px] flex flex-col items-center">
-                <img 
-                    class="w-full h-56 object-cover rounded-lg mb-4" 
-                    src="https://placehold.co/300x400/cbd5e1/334155?text=WAKASEK+5" 
-                    alt="Wakil Kepala Sekolah"
-                >
-                <h3 class="font-bold text-slate-800 mb-1">Nama Wakil 5</h3>
-                <p class="text-xs text-[#1e5494] font-medium">Waka. Mutu</p>
-            </div>
-
         </div>
 
     </div>
+
 </section>
 
 {{-- Tugas dan Fungsi Section --}}
@@ -403,57 +413,72 @@
     </div>
 </section>
 
-{{-- Location Maps --}}
-<section class="py-20 md:py-28 bg-white">
+{{-- Temukan Kami: Location & Maps --}}
+<section class="relative w-full py-24 mb-32">
+    
+    {{-- Blue Background Block (Top 60% Only) --}}
+    <div class="absolute top-0 left-0 w-full h-[60%] bg-[#1e5494] -z-10 rounded-b-[50px]"></div>
+    
     <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
             
             {{-- Section Header --}}
-            <div class="text-center mb-12">
-                <span class="inline-block px-4 py-2 bg-[#1e5494]/10 text-[#1e5494] text-sm font-semibold rounded-full mb-4">
-                    Kunjungi Kami
-                </span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Lokasi Sekolah</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Jl. Wahid Hasyim I No.75, RT.08, Sempaja Sel., Kec. Samarinda Utara, Kota Samarinda, Kalimantan Timur 75119
+            <div class="text-left mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Temukan Kami!</h2>
+                <p class="text-white/90 text-lg max-w-2xl">
+                    Kunjungi kampus kami dan lihat fasilitas unggulan.
                 </p>
             </div>
 
-            {{-- Map Container --}}
-            <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.656978!2d117.1569!3d-0.4769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f1e!2sSMK+Negeri+5+Samarinda!5e0!3m2!1sen!2sid!4v1234567890" 
-                    width="100%" 
-                    height="500" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"
-                    class="w-full"
-                ></iframe>
+            {{-- Content Grid: Separated Image and Map --}}
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
                 
-                {{-- Custom Info Window Overlay --}}
-                <div class="absolute top-6 left-6 bg-white rounded-xl shadow-xl p-6 max-w-sm">
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-[#1e5494] rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-location-dot text-white text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 mb-2">SMK Negeri 5 Samarinda</h3>
-                            <p class="text-sm text-gray-600 mb-3">
-                                Jl. Wahid Hasyim I No.75, Sempaja Selatan
-                            </p>
-                            <a 
-                                href="https://maps.app.goo.gl/your-google-maps-link" 
-                                target="_blank"
-                                class="inline-flex items-center gap-2 text-[#1e5494] hover:text-[#0f2c4a] text-sm font-semibold"
-                            >
-                                <span>Buka di Google Maps</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                {{-- Left Column: Image (75% - 3 cols) --}}
+                <div class="lg:col-span-3 relative h-[400px] rounded-2xl overflow-visible">
+                    
+                    {{-- Image Container --}}
+                    <div class="w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+                        <img 
+                            src="{{ asset('images/drone-smk-1.webp') }}" 
+                            alt="SMKN 5 Samarinda Aerial View" 
+                            class="w-full h-full object-cover"
+                        >
                     </div>
+                    
+                    {{-- Floating Yellow Card (Hanging Below) --}}
+                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2 z-20 w-[90%] md:w-[450px] bg-amber-400 p-6 rounded-xl shadow-xl text-slate-900 text-center">
+                        <h3 class="font-bold text-xl mb-2">SMK Negeri 5 Samarinda</h3>
+                        <p class="text-sm font-medium mb-1 leading-relaxed opacity-90">
+                            Jl. Wahid Hasyim I No.75, Sempaja Selatan, Samarinda Utara, Kalimantan Timur 75119
+                        </p>
+                        <p class="text-sm font-semibold mb-4 opacity-90">
+                            Senin - Jumat: 07.15 – 16.00 WITA
+                        </p>
+                        <a 
+                            href="https://www.google.com/maps/dir/?api=1&destination=SMK+Negeri+5+Samarinda,+Jl.+Wahid+Hasyim+I+No.75" 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-block bg-white text-slate-900 px-6 py-2 rounded-full font-bold text-sm hover:bg-slate-100 transition shadow-md"
+                        >
+                            Buka di Maps
+                        </a>
+                    </div>
+                    
                 </div>
+
+                {{-- Right Column: Map (25% - 1 col) --}}
+                <div class="lg:col-span-1 h-[300px] lg:h-[400px] bg-white rounded-2xl shadow-2xl overflow-hidden">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=SMK+Negeri+5+Samarinda&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
+
             </div>
 
         </div>
