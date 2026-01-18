@@ -25,7 +25,7 @@
                 <!-- CTA Buttons -->
                 <div class="mt-8 flex flex-col sm:flex-row gap-4">
                     <!-- Primary Button (Green) -->
-                    <a href="https://smkn5samarinda.sch.id" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-bold transition shadow-lg flex items-center justify-center gap-2">
+                    <a href="https://smkn5smr.sch.id/" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-bold transition shadow-lg flex items-center justify-center gap-2">
                         <span>Portal SMKN 5</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
