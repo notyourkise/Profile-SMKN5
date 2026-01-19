@@ -54,7 +54,7 @@
                     <div class="w-64 md:w-80 lg:w-96">
                         <!-- Main Image - No Border, No Background -->
                         <img 
-                            src="{{ asset('images/kepala-sekolah.webp') }}" 
+                            src="{{ asset('/assets/images/pimpinan/kepala-sekolah-sambutan.webp') }}" 
                             alt="Kepala Sekolah SMKN 5 Samarinda" 
                             class="w-full h-auto object-contain"
                             onerror="this.src='https://via.placeholder.com/400x450/10b981/ffffff?text=Kepala+Sekolah'"

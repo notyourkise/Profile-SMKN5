@@ -89,6 +89,39 @@
                 Musholla Sekolah
             </h3>
         </div>
+        <div class="group relative h-64 rounded-2xl overflow-hidden shadow-xl cursor-pointer border-4 border-white bg-gray-100">
+            <img 
+                src="{{ asset('assets/images/facilities/lab-mplb.webp') }}" 
+                alt="Laboratorium MPLB"
+                class="w-full h-full object-cover"
+            >
+            <div class="absolute inset-0 bg-black/60 group-hover:bg-black/0 transition-colors duration-0"></div>
+            <h3 class="absolute bottom-4 left-4 text-white font-bold text-xl group-hover:text-amber-400 transition-colors duration-0">
+                Laboratorium MPLB
+            </h3>
+        </div>
+        <div class="group relative h-64 rounded-2xl overflow-hidden shadow-xl cursor-pointer border-4 border-white bg-gray-100">
+            <img 
+                src="{{ asset('assets/images/facilities/lab-dkv.webp') }}" 
+                alt="Laboratorium DKV"
+                class="w-full h-full object-cover"
+            >
+            <div class="absolute inset-0 bg-black/60 group-hover:bg-black/0 transition-colors duration-0"></div>
+            <h3 class="absolute bottom-4 left-4 text-white font-bold text-xl group-hover:text-amber-400 transition-colors duration-0">
+                Laboratorium DKV
+            </h3>
+        </div>
+        <div class="group relative h-64 rounded-2xl overflow-hidden shadow-xl cursor-pointer border-4 border-white bg-gray-100">
+            <img 
+                src="{{ asset('assets/images/facilities/koperasi.webp') }}" 
+                alt="Koperasi Sekolah"
+                class="w-full h-full object-cover"
+            >
+            <div class="absolute inset-0 bg-black/60 group-hover:bg-black/0 transition-colors duration-0"></div>
+            <h3 class="absolute bottom-4 left-4 text-white font-bold text-xl group-hover:text-amber-400 transition-colors duration-0">
+                Koperasi Sekolah
+            </h3>
+        </div>
 
     </div>
 </section>

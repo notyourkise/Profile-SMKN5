@@ -53,9 +53,9 @@
             
             {{-- Left: Image (4 columns) --}}
             <div class="md:col-span-4 flex justify-center md:justify-start">
-                <div class="w-48 h-60 overflow-hidden rounded-xl shadow-lg">
+                <div class="w-64 h-80 md:w-72 md:h-96">
                     <img 
-                        src="{{ asset('images/kepala-sekolah.webp') }}" 
+                        src="{{ asset('assets/images/pimpinan/kepala-sekolah-sambutan.webp') }}" 
                         alt="Kepala Sekolah SMKN 5 Samarinda"
                         class="w-full h-full object-cover"
                     >
@@ -65,7 +65,7 @@
             {{-- Right: Content (8 columns) --}}
             <div class="md:col-span-8 text-center md:text-left">
                 {{-- Quote Mark --}}
-                <div class="text-gray-200 text-6xl leading-none font-serif mb-3">"</div>
+                <div class="text-blue-400 text-6xl leading-none font-serif mb-3">"</div>
                 
                 {{-- Headline --}}
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
@@ -285,11 +285,12 @@
     <div class="flex justify-center w-full mb-0">
         <div class="relative w-full md:w-1/3 lg:w-[20%] aspect-square bg-amber-500 group overflow-hidden shadow-xl z-10">
             <img 
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                src="{{ asset('images/kepsek.webp') }}" 
+                class="w-full h-full object-cover"  
+                src="{{ asset('assets/images/pimpinan/adada.webp') }}" 
                 alt="Kepala Sekolah"
                 onerror="this.src='https://placehold.co/400x400/f59e0b/FFFFFF?text=KEPALA+SEKOLAH'"
             >
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
             <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent text-center">
                 <h3 class="text-white font-bold text-lg md:text-xl">Maryono S.Pd</h3>
                 <p class="text-amber-300 text-xs md:text-sm uppercase font-bold tracking-wider">Kepala Sekolah</p>
@@ -301,72 +302,72 @@
     <div class="grid grid-cols-2 md:grid-cols-5 w-full gap-0">
         
         {{-- Wakasek 1: Kurikulum --}}
-        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden border-r border-white/10">
+        <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden border-r border-white/10">
             <img 
                 class="w-full h-full object-cover" 
                 src="{{ asset('assets/images/pimpinan/waka-kurikulum.webp') }}" 
                 alt="Wakil Kepala Sekolah Kurikulum"
             >
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
-            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
+            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent text-center">
                 <h3 class="text-white font-bold text-base md:text-lg">Dwi Susilowati, S.Kom</h3>
                 <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Kurikulum</p>
             </div>
         </div>
 
-        {{-- Wakasek 2: Kesiswaan --}}
-        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden border-r border-white/10">
+        {{-- Wakasek 2: Sarpras --}}
+        <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden border-r border-white/10">
             <img 
                 class="w-full h-full object-cover" 
-                src="https://placehold.co/400x400/1e5494/FFFFFF?text=KESISWAAN" 
-                alt="Wakil Kepala Sekolah Kesiswaan"
-            >
-            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
-            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
-                <h3 class="text-white font-bold text-base md:text-lg">Nama Wakil 2</h3>
-                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Kesiswaan</p>
-            </div>
-        </div>
-
-        {{-- Wakasek 3: Sarpras --}}
-        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden border-r border-white/10">
-            <img 
-                class="w-full h-full object-cover" 
-                src="https://placehold.co/400x400/1e5494/FFFFFF?text=SARPRAS" 
+                src="{{ asset('assets/images/pimpinan/waka-sarpras.webp') }}" 
                 alt="Wakil Kepala Sekolah Sarpras"
             >
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
             <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
-                <h3 class="text-white font-bold text-base md:text-lg">Nama Wakil 3</h3>
+                <h3 class="text-white font-bold text-base md:text-lg">Hari Siswanto, S.Si, M.M</h3>
                 <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Sarpras</p>
             </div>
         </div>
 
-        {{-- Wakasek 4: Humas --}}
-        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden border-r border-white/10">
+        {{-- Wakasek 3: Kesiswaan --}}
+        <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden border-r border-white/10">
             <img 
                 class="w-full h-full object-cover" 
-                src="https://placehold.co/400x400/1e5494/FFFFFF?text=HUMAS" 
+                src="{{ asset('assets/images/pimpinan/waka-kesiswaan.webp') }}" 
+                alt="Wakil Kepala Sekolah Kesiswaan"
+            >
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
+            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
+                <h3 class="text-white font-bold text-base md:text-lg">Rismiyono, S.Pd</h3>
+                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Kesiswaan</p>
+            </div>
+        </div>
+
+        {{-- Wakasek 4: Humas --}}
+        <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden border-r border-white/10">
+            <img 
+                class="w-full h-full object-cover" 
+                src="{{ asset('assets/images/pimpinan/waka-humas.webp') }}" 
                 alt="Wakil Kepala Sekolah Humas"
             >
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
             <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
-                <h3 class="text-white font-bold text-base md:text-lg">Nama Wakil 4</h3>
+                <h3 class="text-white font-bold text-base md:text-lg">Husaini, S.Kom</h3>
                 <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Humas</p>
             </div>
         </div>
 
-        {{-- Wakasek 5: Mutu --}}
-        <div class="relative w-full aspect-square bg-[#1e5494] group overflow-hidden">
+        {{-- Wakasek 5: SDM --}}
+        <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden">
             <img 
                 class="w-full h-full object-cover" 
-                src="https://placehold.co/400x400/1e5494/FFFFFF?text=MUTU" 
-                alt="Wakil Kepala Sekolah Mutu"
+                src="{{ asset('assets/images/pimpinan/waka-sdm.webp') }}" 
+                alt="Wakil Kepala Sekolah SDM"
             >
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
             <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#0f2d52] to-transparent text-center">
-                <h3 class="text-white font-bold text-base md:text-lg">Nama Wakil 5</h3>
-                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. Mutu</p>
+                <h3 class="text-white font-bold text-base md:text-lg">Dhona Puji Utami, M.Pd</h3>
+                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium mt-1">Waka. SDM</p>
             </div>
         </div>
 

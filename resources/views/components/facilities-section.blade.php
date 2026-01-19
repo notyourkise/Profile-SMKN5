@@ -41,11 +41,27 @@
                     >
                 </div>
                 
-                {{-- Slide 5: Ruang Kelas --}}
+                {{-- Slide 6: Koperasi --}}
                 <div class="swiper-slide">
                     <img 
-                        src="{{ asset('assets/images/facilities/ruang-kelas.webp') }}" 
-                        alt="Ruang Kelas" 
+                        src="{{ asset('assets/images/facilities/koperasi.webp') }}" 
+                        alt="Koperasi Sekolah" 
+                        class="w-full h-full object-cover"
+                    >
+                </div>
+                {{-- Slide 7: Lab-DKV --}}
+                <div class="swiper-slide">
+                    <img 
+                        src="{{ asset('assets/images/facilities/lab-dkv.webp') }}" 
+                        alt="Laboratorium DKV" 
+                        class="w-full h-full object-cover"
+                    >
+                </div>
+                {{-- Slide 8: Lab-MPLB --}}
+                <div class="swiper-slide">
+                    <img 
+                        src="{{ asset('assets/images/facilities/lab-mplb.webp') }}" 
+                        alt="Laboratorium MPLB" 
                         class="w-full h-full object-cover"
                     >
                 </div>

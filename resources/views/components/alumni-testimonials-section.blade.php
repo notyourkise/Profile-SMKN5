@@ -20,13 +20,13 @@
                     
                     {{-- Slide 1: Alumni TJKT --}}
                     <div class="swiper-slide">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                        <div class="grid grid-cols-0 lg:grid-cols-2 gap-10 items-center">
                             {{-- Left: Photo --}}
                             <div class="flex justify-center lg:justify-end">
                                 <img 
-                                    src="https://i.pravatar.cc/400?img=12" 
-                                    alt="Budi Santoso - Alumni TJKT" 
-                                    class="w-full max-w-md h-auto rounded-xl shadow-lg"
+                                    src="{{ asset('assets/images/alumni/ando.jpg') }}" 
+                                    alt="Muhammad Ariando F - Alumni TJKT 2023" 
+                                    class="w-full max-w-md h-[414px] object-cover rounded-xl shadow-lg"
                                 >
                             </div>
                             
@@ -41,30 +41,28 @@
                                 </h3>
                                 
                                 {{-- Body Testimonial --}}
-                                <p class="text-gray-600 leading-relaxed mb-8">
-                                    Saat ini bekerja sebagai Network Engineer di Telkom Indonesia. Pekerjaan ini sangat linier dengan 
-                                    jurusan yang saya ambil di SMKN 5, khususnya di bidang jaringan komputer dan troubleshooting. 
-                                    Ilmu yang saya peroleh selama kuliah menunjang pekerjaan saat ini.
+                                <p class="text-gray-600 leading-relaxed mb-8 text-justify">
+                                    Saat ini saya masih menempuh pendidikan perkuliahan dan bekerja secara freelance sebagai Information Technology Engineer (IT Engineer). Pengetahuan dan keterampilan yang saya peroleh selama masa pendidikan mendukung pelaksanaan pekerjaan yang saya jalani.
                                 </p>
                                 
                                 {{-- Profile Info --}}
                                 <div class="border-t-2 border-yellow-400 pt-4 inline-block">
-                                    <p class="text-lg font-bold text-[#1e5494]">Budi Santoso (TJKT 2024)</p>
-                                    <p class="text-sm text-gray-500">Network Engineer di Telkom Indonesia</p>
+                                    <p class="text-lg font-bold text-[#1e5494]">Muhammad Ariando F (TJKT 2023)</p>
+                                    <p class="text-sm text-gray-500">IT Engineer</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {{-- Slide 2: Alumni PM --}}
+                    {{-- Slide 2: Alumni TJKT --}}
                     <div class="swiper-slide">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                             {{-- Left: Photo --}}
                             <div class="flex justify-center lg:justify-end">
                                 <img 
-                                    src="https://i.pravatar.cc/400?img=47" 
-                                    alt="Siti Aminah - Alumni PM" 
-                                    class="w-full max-w-md h-auto rounded-xl shadow-lg"
+                                    src="{{ asset('assets/images/alumni/haikall.jpg') }}" 
+                                    alt="Fikri Haikal - Alumni TJKT" 
+                                    class="w-full max-w-md h-[414px] object-cover rounded-xl shadow-lg"
                                 >
                             </div>
                             
@@ -75,20 +73,18 @@
                                 
                                 {{-- Headline --}}
                                 <h3 class="text-2xl font-bold text-[#1e5494] mb-4 leading-tight">
-                                    Belajar Marketing Langsung dari Praktisi Industri
+                                    Belajar Teknologi Informasi dan Jaringan Langsung dari Praktisi Industri
                                 </h3>
                                 
                                 {{-- Body Testimonial --}}
-                                <p class="text-gray-600 leading-relaxed mb-8">
-                                    Sekarang saya menjadi Digital Marketing Specialist di salah satu startup e-commerce Samarinda. 
-                                    Pengalaman praktik di sekolah seperti membuat campaign, analisis market, dan strategi promosi 
-                                    sangat membantu saya beradaptasi dengan cepat di dunia kerja.
+                                <p class="text-gray-600 leading-relaxed mb-8 text-justify">
+                                    Saat ini saya masih menempuh pendidikan dan bekerja freelance sebagai Fullstack Web Developer dan Cybersecurity Enthusiast. Pengalaman praktik selama sekolah, seperti membangun aplikasi, mengelola database, dan memahami keamanan sistem, sangat membantu saya beradaptasi dan meningkatkan kemampuan di dunia kerja.
                                 </p>
                                 
                                 {{-- Profile Info --}}
                                 <div class="border-t-2 border-yellow-400 pt-4 inline-block">
-                                    <p class="text-lg font-bold text-[#1e5494]">Siti Aminah (PM 2023)</p>
-                                    <p class="text-sm text-gray-500">Digital Marketing Specialist di Startup E-Commerce</p>
+                                    <p class="text-lg font-bold text-[#1e5494]">Fikri Haikal TJKT 2023</p>
+                                    <p class="text-sm text-gray-500">Fullstack Developer & Cybersecurity Enthusiast</p>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +113,7 @@
                                 </h3>
                                 
                                 {{-- Body Testimonial --}}
-                                <p class="text-gray-600 leading-relaxed mb-8">
+                                <p class="text-gray-600 leading-relaxed mb-8 text-justify">
                                     Saat ini saya bekerja di PT Pupuk Kaltim sebagai Logistic Coordinator. 
                                     Pembelajaran tentang manajemen pergudangan, distribusi, dan sistem inventory di sekolah 
                                     memberikan fondasi kuat untuk berkembang di industri manufaktur.
@@ -156,13 +152,41 @@
     /* Custom Navigation Button Styles */
     .alumni-button-prev,
     .alumni-button-next {
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
         background-color: white;
         border-radius: 50%;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         color: #1e5494;
         transition: all 0.3s ease;
+    }
+    
+    /* Posisi button jauh di luar container */
+    .alumni-button-prev {
+        left: -70px;
+    }
+    
+    .alumni-button-next {
+        right: -70px;
+    }
+    
+    /* Untuk layar sedang */
+    @media (max-width: 1536px) {
+        .alumni-button-prev {
+            left: -50px;
+        }
+        
+        .alumni-button-next {
+            right: -50px;
+        }
+    }
+    
+    /* Untuk layar kecil, sembunyikan button */
+    @media (max-width: 1024px) {
+        .alumni-button-prev,
+        .alumni-button-next {
+            display: none;
+        }
     }
     
     .alumni-button-prev:hover,
@@ -174,7 +198,7 @@
     
     .alumni-button-prev::after,
     .alumni-button-next::after {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: bold;
     }
     
