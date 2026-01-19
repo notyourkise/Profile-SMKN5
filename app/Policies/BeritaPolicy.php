@@ -14,7 +14,7 @@ class BeritaPolicy
     public function viewAny(User $user): bool
     {
         // Semua role bisa lihat list berita
-        return $user->hasRole(['Admin', 'Redaktur', 'Jurnalis']);
+        return in_array($user->role, ['admin', 'redaktur', 'jurnalis']);
     }
 
     /**
@@ -23,12 +23,12 @@ class BeritaPolicy
     public function view(User $user, Berita $berita): bool
     {
         // Admin dan Redaktur bisa lihat semua berita
-        if ($user->hasRole(['Admin', 'Redaktur'])) {
+        if (in_array($user->role, ['admin', 'redaktur'])) {
             return true;
         }
         
         // Jurnalis hanya bisa lihat berita mereka sendiri
-        if ($user->hasRole('Jurnalis')) {
+        if ($user->role === 'jurnalis') {
             return $berita->user_id === $user->id;
         }
         
@@ -41,7 +41,7 @@ class BeritaPolicy
     public function create(User $user): bool
     {
         // Semua role bisa create berita
-        return $user->hasRole(['Admin', 'Redaktur', 'Jurnalis']);
+        return in_array($user->role, ['admin', 'redaktur', 'jurnalis']);
     }
 
     /**
@@ -50,13 +50,13 @@ class BeritaPolicy
     public function update(User $user, Berita $berita): bool
     {
         // Admin dan Redaktur bisa edit semua berita
-        if ($user->hasRole(['Admin', 'Redaktur'])) {
+        if (in_array($user->role, ['admin', 'redaktur'])) {
             return true;
         }
         
         // Jurnalis hanya bisa edit berita mereka sendiri
         // DAN hanya jika statusnya masih draft atau review (belum published)
-        if ($user->hasRole('Jurnalis')) {
+        if ($user->role === 'jurnalis') {
             return $berita->user_id === $user->id 
                    && in_array($berita->status, ['draft', 'review']);
         }
@@ -70,17 +70,17 @@ class BeritaPolicy
     public function delete(User $user, Berita $berita): bool
     {
         // Admin bisa delete semua berita
-        if ($user->hasRole('Admin')) {
+        if ($user->role === 'admin') {
             return true;
         }
         
         // Redaktur bisa delete berita yang belum published
-        if ($user->hasRole('Redaktur')) {
+        if ($user->role === 'redaktur') {
             return in_array($berita->status, ['draft', 'review']);
         }
         
         // Jurnalis hanya bisa delete berita mereka yang masih draft
-        if ($user->hasRole('Jurnalis')) {
+        if ($user->role === 'jurnalis') {
             return $berita->user_id === $user->id 
                    && $berita->status === 'draft';
         }
@@ -93,7 +93,7 @@ class BeritaPolicy
      */
     public function restore(User $user, Berita $berita): bool
     {
-        return $user->hasRole('Admin');
+        return $user->role === 'admin';
     }
 
     /**
@@ -101,7 +101,7 @@ class BeritaPolicy
      */
     public function forceDelete(User $user, Berita $berita): bool
     {
-        return $user->hasRole('Admin');
+        return $user->role === 'admin';
     }
 
     /**
@@ -111,6 +111,6 @@ class BeritaPolicy
     public function publish(User $user, Berita $berita): bool
     {
         // Hanya Admin dan Redaktur yang bisa publish
-        return $user->hasRole(['Admin', 'Redaktur']);
+        return in_array($user->role, ['admin', 'redaktur']);
     }
 }
