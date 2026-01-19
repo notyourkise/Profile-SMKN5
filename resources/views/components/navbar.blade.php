@@ -66,7 +66,7 @@
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     @class([
-        'fixed top-0 left-0 w-full z-[100] transition-all duration-300 ease-in-out',
+        'fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out',
         'bg-white shadow-md' => !$isHomepage
     ])
     :class="isHomepage ? { 
@@ -140,7 +140,7 @@
                         x-transition:leave="transition ease-in duration-150"
                         x-transition:leave-start="opacity-100 scale-100"
                         x-transition:leave-end="opacity-0 scale-95"
-                        class="absolute left-0 mt-2 w-64 rounded-lg shadow-xl bg-white overflow-hidden z-50"
+                        class="absolute left-0 mt-2 w-64 rounded-lg shadow-xl bg-white overflow-hidden"
                         style="display: none;"
                     >
                         <div class="py-2">
@@ -188,7 +188,7 @@
                         x-transition:leave="transition ease-in duration-150"
                         x-transition:leave-start="opacity-100 scale-100"
                         x-transition:leave-end="opacity-0 scale-95"
-                        class="absolute left-0 mt-2 w-80 rounded-lg shadow-xl bg-white overflow-hidden z-50"
+                        class="absolute left-0 mt-2 w-80 rounded-lg shadow-xl bg-white overflow-hidden"
                         style="display: none;"
                     >
                         <div class="py-2">
@@ -236,7 +236,7 @@
                         x-transition:leave="transition ease-in duration-150"
                         x-transition:leave-start="opacity-100 scale-100"
                         x-transition:leave-end="opacity-0 scale-95"
-                        class="absolute left-0 mt-2 w-64 rounded-lg shadow-xl bg-white overflow-hidden z-50"
+                        class="absolute left-0 mt-2 w-64 rounded-lg shadow-xl bg-white overflow-hidden"
                         style="display: none;"
                     >
                         <div class="py-2">
