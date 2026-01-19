@@ -52,7 +52,7 @@ class BeritaResource extends Resource
         $user = auth()->user();
 
         // If Jurnalis, only show their own posts
-        if ($user && $user->hasRole('Jurnalis')) {
+        if ($user && $user->role === 'jurnalis') {
             return $query->where('user_id', $user->id);
         }
 
