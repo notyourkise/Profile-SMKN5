@@ -15,7 +15,7 @@ class StatsOverview extends StatsOverviewWidget
         $user = auth()->user();
         
         // Admin: Total Berita, Total User, Total Jurusan
-        if ($user->hasRole('Admin')) {
+        if ($user->role === 'admin') {
             return [
                 Stat::make('Total Berita', Berita::count())
                     ->description('Semua berita dalam sistem')
@@ -38,7 +38,7 @@ class StatsOverview extends StatsOverviewWidget
         }
         
         // Redaktur: Menunggu Review, Sudah Terbit, Draft
-        if ($user->hasRole('Redaktur')) {
+        if ($user->role === 'redaktur') {
             $menungguReview = Berita::where('status', 'review')->count();
             $sudahTerbit = Berita::where('status', 'published')->count();
             $draft = Berita::where('status', 'draft')->count();
@@ -65,7 +65,7 @@ class StatsOverview extends StatsOverviewWidget
         }
         
         // Jurnalis: Tulisan Saya, Terbit, Pending
-        if ($user->hasRole('Jurnalis')) {
+        if ($user->role === 'jurnalis') {
             $tulisanSaya = Berita::where('user_id', $user->id)->count();
             $terbit = Berita::where('user_id', $user->id)
                 ->where('status', 'published')

@@ -31,7 +31,7 @@ class PartnerResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole('Admin');
+        return auth()->user()->role === 'admin';
     }
 
     public static function form(Schema $schema): Schema

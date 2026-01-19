@@ -38,7 +38,7 @@ class StatisticResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole(['Admin', 'Redaktur']);
+        return in_array(auth()->user()->role, ['admin', 'redaktur']);
     }
 
     public static function form(Schema $schema): Schema

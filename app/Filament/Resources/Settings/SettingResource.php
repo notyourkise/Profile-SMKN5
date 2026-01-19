@@ -29,7 +29,7 @@ class SettingResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole('Admin');
+        return auth()->user()->role === 'admin';
     }
 
     protected static ?string $modelLabel = 'Pengaturan';
