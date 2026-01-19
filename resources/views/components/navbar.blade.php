@@ -113,7 +113,7 @@
                 </a>
 
                 <!-- Profil Dropdown -->
-                <div class="relative" @click.away="profilDropdownOpen = false">
+                <div class="relative z-[60]" @click.away="profilDropdownOpen = false">
                     <button 
                         @click="profilDropdownOpen = !profilDropdownOpen"
                         :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
@@ -161,7 +161,7 @@
                 </div>
 
                 <!-- Jurusan Dropdown -->
-                <div class="relative" @click.away="jurusanDropdownOpen = false">
+                <div class="relative z-[60]" @click.away="jurusanDropdownOpen = false">
                     <button 
                         @click="jurusanDropdownOpen = !jurusanDropdownOpen"
                         :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
@@ -209,7 +209,7 @@
                 </div>
 
                 <!-- Kesiswaan Dropdown -->
-                <div class="relative" @click.away="kesiswaanDropdownOpen = false">
+                <div class="relative z-[60]" @click.away="kesiswaanDropdownOpen = false">
                     <button 
                         @click="kesiswaanDropdownOpen = !kesiswaanDropdownOpen"
                         :class="isHomepage ? ((scrolled || hover) ? 'text-gray-900 hover:text-green-600' : 'text-white hover:text-green-400 drop-shadow-md') : 'text-gray-900 hover:text-green-600'"
