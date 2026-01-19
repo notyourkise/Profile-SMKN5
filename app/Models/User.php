@@ -3,12 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasRoles;
@@ -78,5 +80,21 @@ class User extends Authenticatable
     public function isJurnalis(): bool
     {
         return $this->role === 'jurnalis';
+    }
+
+    /**
+     * Determine if the user can access the Filament panel.
+     */
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Semua user yang sudah login bisa akses admin panel
+        // Bisa dimodifikasi untuk restrict berdasarkan role
+        return true;
+        
+        // Atau jika ingin hanya role tertentu:
+        // return in_array($this->role, ['admin', 'redaktur', 'jurnalis']);
+        
+        // Atau jika menggunakan Spatie Permission:
+        // return $this->hasAnyRole(['Admin', 'Redaktur', 'Jurnalis']);
     }
 }
