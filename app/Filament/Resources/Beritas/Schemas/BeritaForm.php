@@ -55,7 +55,7 @@ class BeritaForm
                     ->label('Status Berita')
                     ->options(function () use ($user) {
                         // Jurnalis hanya bisa pilih Draft dan Review (tidak bisa publish)
-                        if ($user && $user->hasRole('Jurnalis')) {
+                        if ($user && $user->role === 'jurnalis') {
                             return [
                                 'draft' => 'Draft',
                                 'review' => 'Review (Kirim ke Redaktur)',
@@ -63,7 +63,7 @@ class BeritaForm
                         }
                         
                         // Redaktur dan Admin bisa akses semua status
-                        if ($user && ($user->hasRole('Admin') || $user->hasRole('Redaktur'))) {
+                        if ($user && in_array($user->role, ['admin', 'redaktur'])) {
                             return [
                                 'draft' => 'Draft',
                                 'review' => 'Review',
@@ -79,20 +79,20 @@ class BeritaForm
                     })
                     ->default(function () use ($user) {
                         // Jurnalis defaults to 'draft'
-                        if ($user && $user->hasRole('Jurnalis')) {
+                        if ($user && $user->role === 'jurnalis') {
                             return 'draft';
                         }
                         return 'draft';
                     })
                     ->required()
                     ->helperText(function () use ($user) {
-                        if ($user && $user->hasRole('Jurnalis')) {
+                        if ($user && $user->role === 'jurnalis') {
                             return '📝 Pilih "Review" untuk mengirim berita ke Redaktur untuk disetujui';
                         }
-                        if ($user && $user->hasRole('Redaktur')) {
+                        if ($user && $user->role === 'redaktur') {
                             return '✅ Ubah ke "Published" untuk menerbitkan berita ke website';
                         }
-                        if ($user && $user->hasRole('Admin')) {
+                        if ($user && $user->role === 'admin') {
                             return '⚙️ Full control: Draft, Review, atau Published';
                         }
                         return null;
@@ -101,13 +101,13 @@ class BeritaForm
                 DateTimePicker::make('published_at')
                     ->label('Tanggal Publish')
                     ->nullable()
-                    ->visible(fn () => $user && ($user->hasRole('Admin') || $user->hasRole('Redaktur'))),
+                    ->visible(fn () => $user && in_array($user->role, ['admin', 'redaktur'])),
                     
                 Toggle::make('is_featured')
                     ->label('Tampilkan sebagai Berita Utama (Featured)')
                     ->helperText('Hanya 1 berita yang dapat menjadi featured. Berita lain akan otomatis non-featured.')
                     ->default(false)
-                    ->visible(fn () => $user && ($user->hasRole('Admin') || $user->hasRole('Redaktur')))
+                    ->visible(fn () => $user && in_array($user->role, ['admin', 'redaktur']))
                     ->columnSpanFull(),
             ]);
     }
