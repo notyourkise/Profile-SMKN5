@@ -14,3 +14,17 @@
     --color-primary: #9ac236;
     --color-secondary: #b6c236;
 }
+
+/* --- JURUS PAKSA: Override Warna Body --- */
+/* Ini akan memaksa background jadi PUTIH walaupun HP Boss mode gelap */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #ffffff !important; /* Paksa Putih */
+    color: #111827 !important; /* Paksa Hitam (Gray-900) */
+  }
+  
+  /* Opsional: Matikan background gelap umum */
+  .dark\:bg-gray-900 {
+    background-color: #ffffff !important;
+  }
+}
