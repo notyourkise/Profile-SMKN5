@@ -81,7 +81,7 @@
             <!-- LOGO & BRANDING -->
             <a href="{{ route('home') }}" class="flex items-center gap-2 md:gap-3 group">
                 <img 
-                    src="{{ asset('images/logo-smk-utama.webp') }}" 
+                    src="{{ asset('images/logo-smk-utama.png') }}" 
                     alt="Logo SMK Negeri 5 Samarinda" 
                     class="h-10 md:h-14 w-auto transition-all duration-300"
                 >
@@ -356,7 +356,7 @@
             <div class="flex items-center justify-between p-6 border-b border-gray-200">
                 <div class="flex items-center gap-3">
                     <img 
-                        src="{{ asset('images/logo-smk-utama.webp') }}" 
+                        src="{{ asset('images/logo-smk-utama.png') }}" 
                         alt="Logo SMKN 5" 
                         class="h-10 w-auto"
                     >

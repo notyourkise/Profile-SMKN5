@@ -54,7 +54,7 @@
                     <div class="w-64 md:w-80 lg:w-96">
                         <!-- Main Image - No Border, No Background -->
                         <img 
-                            src="{{ asset('/assets/images/pimpinan/kepala-sekolah-sambutan.webp') }}" 
+                            src="{{ asset('/assets/images/pimpinan/yeni-ronalisa.png') }}" 
                             alt="Kepala Sekolah SMKN 5 Samarinda" 
                             class="w-full h-auto object-contain"
                             onerror="this.src='https://via.placeholder.com/400x450/10b981/ffffff?text=Kepala+Sekolah'"
@@ -77,8 +77,8 @@
                     
                     <!-- Headmaster Info -->
                     <div class="mb-6">
-                        <h3 class="text-xl font-bold text-gray-800">Maryono S.Pd</h3>
-                        <p class="text-gray-600">Kepala SMK Negeri 5 Samarinda</p>
+                        <h3 class="text-xl font-bold text-gray-800">Yeni Ronalisa., S.Si., M.Pd</h3>
+                        <p class="text-gray-600">Kepala Sekolah SMK Negeri 5 Samarinda</p>
                     </div>
                     
                     <!-- Quote -->
@@ -105,7 +105,7 @@
                     
                     <!-- Signature (Optional) -->
                     <div class="mt-8 pt-6 border-t border-gray-200">
-                        <p class="font-semibold text-gray-800">Maryono S.Pd</p>
+                        <p class="font-semibold text-gray-800">Yeni Ronalisa., S.Si., M.Pd</p>
                         <p class="text-sm text-gray-600">Kepala Sekolah</p>
                     </div>
                 </div>

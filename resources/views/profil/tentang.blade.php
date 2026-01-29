@@ -55,7 +55,7 @@
             <div class="md:col-span-4 flex justify-center md:justify-start">
                 <div class="w-64 h-80 md:w-72 md:h-96">
                     <img 
-                        src="{{ asset('assets/images/pimpinan/kepala-sekolah-sambutan.webp') }}" 
+                        src="{{ asset('assets/images/pimpinan/yeni-ronalisa.png') }}" 
                         alt="Kepala Sekolah SMKN 5 Samarinda"
                         class="w-full h-full object-cover"
                     >
@@ -85,7 +85,7 @@
                 
                 {{-- Signature Info --}}
                 <div class="mt-6 pt-4 border-t border-gray-200">
-                    <p class="font-bold text-gray-900 text-sm">Maryono S.Pd</p>
+                    <p class="font-bold text-gray-900 text-sm">Yeni Ronalisa., S.Si., M.Pd</p>
                     <p class="text-xs text-gray-500 uppercase tracking-wide">Kepala Sekolah</p>
                 </div>
             </div>
@@ -286,13 +286,13 @@
         <div class="relative w-full md:w-1/3 lg:w-[20%] aspect-square bg-amber-500 group overflow-hidden shadow-xl z-10">
             <img 
                 class="w-full h-full object-cover"  
-                src="{{ asset('assets/images/pimpinan/adada.webp') }}" 
+                src="{{ asset('assets/images/pimpinan/yeni-ronalisa.png') }}" 
                 alt="Kepala Sekolah"
                 onerror="this.src='https://placehold.co/400x400/f59e0b/FFFFFF?text=KEPALA+SEKOLAH'"
             >
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
             <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent text-center">
-                <h3 class="text-white font-bold text-lg md:text-xl">Maryono S.Pd</h3>
+                <h3 class="text-white font-bold text-lg md:text-xl">Yeni Ronalisa., S.Si., M.Pd</h3>
                 <p class="text-amber-300 text-xs md:text-sm uppercase font-bold tracking-wider">Kepala Sekolah</p>
             </div>
         </div>
