@@ -26,7 +26,6 @@
                 id="btn-{{ $item->kode }}"
                 class="px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg {{ $item->id === $jurusan->id ? 'bg-[#1e5494] text-white' : 'bg-gray-100 text-slate-700 hover:bg-gray-200' }}"
             >
-                {{-- LOGIKA MENU: Tetap tampilkan kode asli (PS tetap PS) --}}
                 {{ $item->kode }}
             </button>
             @endforeach
@@ -56,7 +55,6 @@
             $listGuru = [];
             
             if($item->kode == 'TJKT') {
-                // TJKT: 4 Orang
                 $listGuru = [
                     ['nama' => 'Andre Puji Purwadi, S.Kom', 'mapel' => 'Kejuruan TJKT', 'foto' => 'Andre.webp'],
                     ['nama' => 'Husaini, S.Kom', 'mapel' => 'Kejuruan TJKT', 'foto' => 'Husaini.webp'],
@@ -64,23 +62,20 @@
                     ['nama' => 'Jiono, S.Pd', 'mapel' => 'Kejuruan TJKT', 'foto' => 'Jiono.webp'],
                 ];
             } elseif($item->kode == 'DKV') {
-                // DKV: 3 Orang
                 $listGuru = [
+                    ['nama' => 'Muhammad Akbar Herianto, S.Kom', 'mapel' => 'Kejuruan DKV', 'foto' => 'akbar.webp'],
                     ['nama' => 'Hari Siswanto, MM', 'mapel' => 'Kejuruan DKV', 'foto' => 'hari.webp'],
                     ['nama' => 'Kartini, S.Kom', 'mapel' => 'Kejuruan DKV', 'foto' => 'kartini.webp'],
-                    ['nama' => 'Muhammad Akbar Herianto, S.Kom', 'mapel' => 'Kejuruan DKV', 'foto' => 'akbar.webp'],
                 ];
             } elseif($item->kode == 'MPLB') {
-                // MPLB: 4 Orang
                  $listGuru = [
-                    ['nama' => 'Holida Rahmi, S.Pd', 'mapel' => 'Kejuruan MPLB', 'foto' => 'holida.webp'],
-                    ['nama' => 'Ibnu Luthfi Syaari, S.Pd', 'mapel' => 'Kejuruan MPLB', 'foto' => 'ibnu.webp'],
-                    ['nama' => 'Indria Isriani, S.Pd', 'mapel' => 'Kejuruan MPLB', 'foto' => 'indria.webp'],
-                    ['nama' => 'Rinda Cahyo Ningtyas, S.Pd', 'mapel' => 'Kejuruan MPLB', 'foto' => 'rinda.webp'],
-                    ['nama' => 'Neni Riska Utami, S.Kom, S.Pd', 'mapel' => 'Kejuruan MPLB', 'foto' => 'riska.webp'],
+                    ['nama' => 'Holida Rahmi, S.Pd', 'mapel' => 'Kearsipan', 'foto' => 'holida.webp'],
+                    ['nama' => 'Ibnu Luthfi Syaari, S.Pd', 'mapel' => 'Teknologi Perkantoran', 'foto' => 'ibnu.webp'],
+                    ['nama' => 'Indria Isriani, S.Pd', 'mapel' => 'Public Relations', 'foto' => 'indria.webp'],
+                    ['nama' => 'Rinda Cahyo Ningtyas, S.Pd', 'mapel' => 'Pelayanan Prima', 'foto' => 'rinda.webp'],
+                    ['nama' => 'Neni Riska Utami, S.Kom, S.Pd', 'mapel' => 'Pelayanan Prima', 'foto' => 'riska.webp'],
                 ];
             } elseif($item->kode == 'PM') {
-                // PM: 4 Orang
                  $listGuru = [
                     ['nama' => 'Jamal Idris, S.Pd', 'mapel' => 'Kejuruan PM', 'foto' => 'jamal.webp'],
                     ['nama' => 'MISNIAH, S.Pd', 'mapel' => 'Kejuruan PM', 'foto' => 'misniah.webp'],
@@ -89,7 +84,6 @@
                     ['nama' => 'Tutut Handayani, S.E', 'mapel' => 'Kejuruan PM', 'foto' => 'tutut.webp'],
                 ];
             } elseif($item->kode == 'PS') {
-                // PS: 5 Orang (Kembali ke PS)
                  $listGuru = [
                     ['nama' => 'Ananda Rezki Aditya', 'mapel' => 'Kejuruan PS', 'foto' => 'ananda.webp'],
                     ['nama' => 'Mutia Rahma Eliza', 'mapel' => 'Kejuruan PS', 'foto' => 'mutia.webp'],
@@ -121,20 +115,22 @@
                 </div>
                 
                 {{-- ========================================================== --}}
-                {{--  BAGIAN 2: KONTEN DESKRIPSI & KAPRODI                     --}}
+                {{--  BAGIAN 2: KONTEN DESKRIPSI & KAPRODI (WRAP LAYOUT)       --}}
                 {{-- ========================================================== --}}
-                <div class="block relative clearfix mb-16">
+                {{-- KEMBALI KE BLOCK untuk support Float Wrapping --}}
+                <div class="block relative clearfix mb-8">
                     
-                    {{-- Kartu Kaprodi (Float Left) --}}
-                    <div class="float-none md:float-left w-full md:w-[320px] mr-0 md:mr-10 mb-8 md:mb-4">
+                    {{-- KARTU KAPRODI --}}
+                    {{-- md:float-left agar teks bisa mengalir di kanannya --}}
+                    {{-- md:w-[320px] untuk MENCEGAH gambar jadi raksasa --}}
+                    <div class="w-full md:w-[320px] md:float-left md:mr-10 mb-6">
                         <div class="w-full shadow-2xl rounded-xl overflow-hidden border border-gray-100">
-                            {{-- Kaprodi Oranye (bg-amber-500) --}}
+                            {{-- Kaprodi Oranye --}}
                             <div class="relative w-full aspect-square bg-amber-500 group overflow-hidden">
                                 @if($currentKaprodi['foto'])
                                     <img 
                                         src="{{ asset('assets/images/kaprodi/' . $currentKaprodi['foto']) }}" 
                                         alt="{{ $currentKaprodi['nama'] }}"
-                                        {{-- ANIMASI HOVER DIHAPUS DI SINI --}}
                                         class="w-full h-full object-cover object-top"
                                         onerror="this.style.display='none'; document.getElementById('ph-kaprodi-{{ $item->kode }}').classList.remove('hidden');"
                                     >
@@ -155,7 +151,8 @@
                         </div>
                     </div>
 
-                    {{-- Teks Deskripsi --}}
+                    {{-- TEKS DESKRIPSI --}}
+                    {{-- Tidak perlu flex-grow, biarkan default block agar wrapping terjadi --}}
                     <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-justify">
                         @if(strtolower($item->kode) === 'tjkt')
                             <p class="mb-4"><strong>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong> merupakan program keahlian yang fokus mencetak tenaga profesional di bidang infrastruktur teknologi. Di era digital yang serba terkoneksi ini, kebutuhan akan ahli jaringan yang mampu merancang, mengamankan, dan memelihara sistem komunikasi data menjadi sangat krusial, baik di perusahaan swasta maupun instansi pemerintahan.</p>
@@ -186,9 +183,29 @@
                 </div>
 
                 {{-- ========================================================== --}}
+                {{--  BAGIAN SISIPAN: MIKROTIK ACADEMY (KHUSUS TJKT)           --}}
+                {{--  Posisi: Di bawah teks deskripsi (Clear Float)            --}}
+                {{-- ========================================================== --}}
+                @if(strtolower($item->kode) === 'tjkt')
+                {{-- Gunakan clear-both agar dia turun ke bawah foto jika teksnya pendek --}}
+                <div class="clear-both mb-16 pt-6 text-center animate-fade-in"> 
+                    <div class="inline-flex items-center gap-3 px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg">
+                        <span class="text-xs text-slate-500">Supported by <span class="font-bold text-slate-700">MikroTik Academy</span></span>
+                        <div class="h-4 w-px bg-slate-300"></div>
+                        <a href="#" class="text-xs font-bold text-[#1e5494] hover:underline hover:text-blue-800 transition-colors">
+                            Selengkapnya
+                        </a>
+                    </div>
+                </div>
+                @else
+                {{-- Untuk jurusan lain, beri jarak clear float agar Guru tidak nabrak --}}
+                <div class="clear-both"></div>
+                @endif
+
+                {{-- ========================================================== --}}
                 {{--  BAGIAN 3: DAFTAR GURU PRODUKTIF (NEW SECTION)            --}}
                 {{-- ========================================================== --}}
-                <div class="mt-16 w-full">
+                <div class="mt-8 w-full">
                     {{-- Judul Section --}}
                     <div class="flex items-center mb-8">
                         <div class="w-1.5 h-8 bg-[#1e5494] mr-4 rounded-full"></div>
@@ -203,11 +220,9 @@
                         <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden border-r border-b border-white/10">
                             
                             {{-- Foto Guru (WEBP) --}}
-                            {{-- PATH: assets/images/guruprodi/{kodejurusan}/namafile --}}
                             <img 
                                 src="{{ asset('assets/images/guruprodi/' . strtolower($item->kode) . '/' . $guru['foto']) }}" 
                                 alt="{{ $guru['nama'] }}"
-                                {{-- ANIMASI HOVER DIHAPUS DI SINI JUGA --}}
                                 class="w-full h-full object-cover object-top"
                                 onerror="this.style.display='none'; document.getElementById('ph-guru-{{ $loop->index }}-{{ $item->kode }}').classList.remove('hidden');"
                             >
