@@ -5,19 +5,19 @@
 @section('content')
 
 {{-- HEADER SECTION --}}
-<section class="bg-[#1e5494] text-white py-16 pb-24">
+<section class="bg-[#1e5494] text-white py-12 md:py-16 pb-16 md:pb-24">
     <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold">Ekstrakurikuler</h1>
-        <p class="mt-4 text-lg text-white/90">Wadah pengembangan bakat, minat, dan karakter siswa SMK Negeri 5 Samarinda</p>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold">Ekstrakurikuler</h1>
+        <p class="mt-3 md:mt-4 text-base md:text-lg text-white/90">Wadah pengembangan bakat, minat, dan karakter siswa SMK Negeri 5 Samarinda</p>
     </div>
 </section>
 
 {{-- NAVIGATION & CONTENT SECTION --}}
-<section class="relative -mt-12 mb-20">
+<section class="relative -mt-12 mb-12 md:mb-20">
     <div class="container mx-auto px-4">
         
         {{-- MENU TABS (Scrollable di HP) --}}
-        <div class="bg-white rounded-xl shadow-lg p-2 mb-10 overflow-x-auto scrollbar-hide">
+        <div class="bg-white rounded-xl shadow-lg p-2 mb-6 md:mb-10 overflow-x-auto overflow-y-hidden scrollbar-hide" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
             <div class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 min-w-max md:min-w-0">
                 @php
                     $menus = [
@@ -39,7 +39,7 @@
 
                 @foreach($menus as $key => $label)
                 <button onclick="switchEkskul('{{ $key }}')" id="btn-{{ $key }}" 
-                    class="px-4 md:px-5 py-2 md:py-2.5 rounded-lg font-semibold text-xs md:text-sm transition-all duration-300 border border-transparent whitespace-nowrap
+                    class="px-4 md:px-5 py-2 md:py-2.5 rounded-lg font-semibold text-xs md:text-sm transition-all duration-300 border border-transparent whitespace-nowrap flex-shrink-0
                     {{ $key === 'osis' ? 'bg-[#1e5494] text-white shadow-md' : 'text-slate-600 hover:bg-gray-100' }}">
                     {{ $label }}
                 </button>
@@ -48,7 +48,7 @@
         </div>
 
         {{-- CONTENT AREA --}}
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 md:p-6 lg:p-10 min-h-[400px]">
+        <div class="bg-white rounded-xl md:rounded-2xl shadow-sm border border-gray-200 p-4 md:p-6 lg:p-10 min-h-[400px]">
             
             @php
                 // Master Data Ekskul
@@ -140,49 +140,49 @@
                     
                     {{-- KOLOM KIRI: Deskripsi --}}
                     <div class="flex-grow w-full md:w-2/3">
-                        <div class="mb-6 pb-4 border-b border-gray-100">
-                            <h2 class="text-3xl font-bold text-slate-800">{{ $data['judul'] }}</h2>
+                        <div class="mb-4 md:mb-6 pb-3 md:pb-4 border-b border-gray-100">
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800">{{ $data['judul'] }}</h2>
                         </div>
                         
-                        <div class="prose prose-lg text-slate-600 leading-relaxed text-justify mb-8">
+                        <div class="prose prose-sm md:prose-lg text-slate-600 leading-relaxed text-justify mb-6 md:mb-8">
                             <p>{{ $data['deskripsi'] }}</p>
                         </div>
 
                         {{-- Box Jadwal Latihan --}}
-                        <div class="bg-blue-50 border-l-4 border-[#1e5494] p-4 rounded-r-lg inline-flex items-center gap-3">
-                            <div class="bg-white p-2 rounded-full shadow-sm text-[#1e5494]">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <div class="bg-blue-50 border-l-4 border-[#1e5494] p-3 md:p-4 rounded-r-lg inline-flex items-center gap-2 md:gap-3">
+                            <div class="bg-white p-1.5 md:p-2 rounded-full shadow-sm text-[#1e5494]">
+                                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
                             <div>
                                 <h4 class="text-xs font-bold text-blue-800 uppercase tracking-wider">Jadwal Latihan</h4>
-                                <p class="text-sm font-medium text-blue-900">{{ $data['jadwal'] }}</p>
+                                <p class="text-xs md:text-sm font-medium text-blue-900">{{ $data['jadwal'] }}</p>
                             </div>
                         </div>
                     </div>
 
                     {{-- KOLOM KANAN: Card Pembina Simple --}}
                     <div class="w-full md:w-1/3 flex-shrink-0 order-first md:order-last">
-                        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden md:sticky md:top-8">
+                        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden lg:sticky lg:top-8">
                             {{-- Header Card --}}
-                            <div class="bg-gradient-to-r from-slate-800 to-slate-900 px-6 py-4">
-                                <h3 class="text-white font-bold text-lg flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <div class="bg-gradient-to-r from-slate-800 to-slate-900 px-4 md:px-6 py-3 md:py-4">
+                                <h3 class="text-white font-bold text-base md:text-lg flex items-center gap-2">
+                                    <svg class="w-4 h-4 md:w-5 md:h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                                     Pembina
                                 </h3>
                             </div>
                             
                             {{-- Body Card --}}
-                            <div class="p-6 text-center">
-                                <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner border border-slate-200">
+                            <div class="p-4 md:p-6 text-center">
+                                <div class="w-16 h-16 md:w-20 md:h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 text-2xl md:text-3xl shadow-inner border border-slate-200">
                                     {{-- Avatar Inisial --}}
                                     <span class="font-bold text-slate-400 select-none">
                                         {{ substr($data['pembina'], 0, 1) }}
                                     </span>
                                 </div>
                                 
-                                <h4 class="text-xl font-bold text-slate-800 mb-1">{{ $data['pembina'] }}</h4>
-                                <div class="h-1 w-12 bg-amber-400 mx-auto rounded-full mb-3"></div>
-                                <p class="text-sm text-slate-500 font-medium bg-slate-50 py-1 px-3 rounded-full inline-block border border-slate-200">
+                                <h4 class="text-lg md:text-xl font-bold text-slate-800 mb-1">{{ $data['pembina'] }}</h4>
+                                <div class="h-1 w-12 bg-amber-400 mx-auto rounded-full mb-2 md:mb-3"></div>
+                                <p class="text-xs md:text-sm text-slate-500 font-medium bg-slate-50 py-1 px-3 rounded-full inline-block border border-slate-200">
                                     Pembina Ekstrakurikuler
                                 </p>
                             </div>
