@@ -109,104 +109,60 @@
                     <hr class="border-t-2 border-gray-300 w-full mt-6 md:mt-8 mb-8 md:mb-12">
                 </div>
                 
-                {{-- BAGIAN 2: KONTEN DESKRIPSI & KAPRODI (FIXED GRID SYSTEM) --}}
-<div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem;" class="md:grid-cols-3">
-    
+                {{-- BAGIAN 2: KONTEN DESKRIPSI & KAPRODI (FIXED INLINE LAYOUT) --}}
+                <div class="clearfix" style="display: block; width: 100%; margin-bottom: 3rem;">
+                    
                     {{-- KOLOM KIRI: KARTU KAPRODI --}}
-                    <div style="width: 100%; max-width: 320px; margin: 0 auto;">
-                        <div class="shadow-2xl rounded-xl overflow-hidden border border-gray-100">
-                            {{-- Box Foto dengan ukuran terkunci --}}
-                            <div style="position: relative; width: 100%; aspect-ratio: 1/1; background-color: #f59e0b; overflow: hidden;">
-                                @if($currentKaprodi['foto'])
-                                    <img 
-                                        src="{{ asset('assets/images/kaprodi/' . $currentKaprodi['foto']) }}" 
-                                        alt="{{ $currentKaprodi['nama'] }}"
-                                        style="width: 100%; height: 100%; object-fit: cover; object-position: top;"
-                                        onerror="this.style.display='none'; document.getElementById('ph-kaprodi-{{ $item->kode }}').classList.remove('hidden');"
-                                    >
-                                @endif
-                
-                                    {{-- Placeholder jika foto error/tidak ada --}}
-                                    <div id="ph-kaprodi-{{ $item->kode }}" class="{{ $currentKaprodi['foto'] ? 'hidden' : '' }}" 
-                                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(to bottom right, #fbbf24, #d97706);">
-                                        <span style="font-size: 5rem; font-weight: bold; color: rgba(255,255,255,0.2);">{{ substr($item->kode, 0, 1) }}</span>
-                                    </div>
-
-                                    {{-- Overlay Nama Kaprodi --}}
-                                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-align: center;">
-                                        <h3 style="color: white; font-weight: bold; font-size: 1.1rem; margin-bottom: 0.25rem;">{{ $currentKaprodi['nama'] }}</h3>
-                                        <p style="color: #fcd34d; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">Ketua Program Keahlian</p>
-                                    </div>
-                                </div>
+                    <div class="kaprodi-container" style="width: 100%; max-width: 300px; margin-bottom: 2rem; border-radius: 1rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border: 1px solid #f3f4f6;">
+                        <div style="position: relative; width: 100%; height: 300px; background-color: #f59e0b;">
+                            @if($currentKaprodi['foto'])
+                                <img 
+                                    src="{{ asset('assets/images/kaprodi/' . $currentKaprodi['foto']) }}" 
+                                    alt="{{ $currentKaprodi['nama'] }}"
+                                    style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;"
+                                    onerror="this.style.display='none'; document.getElementById('ph-kaprodi-{{ $item->kode }}').classList.remove('hidden');"
+                                >
+                            @endif
+                            
+                            <div id="ph-kaprodi-{{ $item->kode }}" class="{{ $currentKaprodi['foto'] ? 'hidden' : '' }}" 
+                                 style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(to bottom right, #fbbf24, #d97706);">
+                                <span style="font-size: 5rem; font-weight: bold; color: rgba(255,255,255,0.2);">{{ substr($item->kode, 0, 1) }}</span>
                             </div>
-                        </div>
 
-                        {{-- KOLOM KANAN: TEKS DESKRIPSI (Mengambil 2/3 space di desktop) --}}
-                        <div class="md:col-span-2">
-                            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-justify">
-                                {{-- Konten deskripsi panjang yang kemarin --}}
-                                @if(strtolower($item->kode) === 'tjkt')
-                                    <p class="mb-4"><strong>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong> ... (dan seterusnya)</p>
-                                @endif
-                                {{-- ... tambahkan @elseif lainnya sesuai kode sebelumnya ... --}}
+                            {{-- Label Nama Kaprodi --}}
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-align: center;">
+                                <h3 style="color: white; font-weight: bold; font-size: 1rem; margin: 0;">{{ $currentKaprodi['nama'] }}</h3>
+                                <p style="color: #fcd34d; font-size: 0.7rem; text-transform: uppercase; margin-top: 2px;">Ketua Program Keahlian</p>
                             </div>
                         </div>
                     </div>
 
-                    {{-- TEKS DESKRIPSI LENGKAP --}}
-                    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-justify">
-                        @if(strtolower($item->kode) === 'tjkt')
-                            <p class="mb-4"><strong>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong> adalah program keahlian unggulan di SMK Negeri 5 Samarinda yang dirancang untuk menjawab tantangan industri digital global. Jurusan ini memfokuskan pada penguasaan infrastruktur jaringan komunikasi, mulai dari transmisi data, administrasi server, hingga implementasi teknologi nirkabel tingkat lanjut. Mahasiswa dibimbing untuk memahami arsitektur jaringan masa depan yang menjadi tulang punggung revolusi industri 4.0.</p>
-                            
-                            <p class="mb-4">Kurikulum kami disusun secara integratif mencakup instalasi dan konfigurasi perangkat jaringan (Switch & Router), teknik pengkabelan serat optik (Fiber Optic), administrasi sistem jaringan berbasis Linux dan Windows Server, serta pemeliharaan infrastruktur telekomunikasi. Tidak hanya aspek fisik, siswa juga dibekali kemampuan dalam <strong>Cyber Security</strong> untuk mengamankan data dan jaringan dari berbagai ancaman siber yang kian kompleks.</p>
-                            
-                            <p class="mb-4">SMK Negeri 5 Samarinda bangga menjadi bagian dari <strong>MikroTik Academy</strong> dan bekerja sama dengan berbagai mitra industri terkemuka. Hal ini memungkinkan siswa mendapatkan sertifikasi industri internasional yang diakui secara global saat mereka lulus. Fasilitas laboratorium kami dilengkapi dengan perangkat standar industri (Rack Server, Mikrotik Core Router, Splicer FO) yang memberikan pengalaman belajar nyata layaknya bekerja di Data Center atau ISP profesional.</p>
-                            
-                            <p class="mb-4">Lulusan TJKT memiliki peluang karir yang sangat prestisius sebagai <strong>Network Engineer</strong>, <strong>System Administrator</strong>, <strong>Security Specialist</strong>, atau <strong>IT Support Engineer</strong>. Di tengah masifnya pembangunan Ibu Kota Nusantara (IKN) di Kalimantan Timur, kebutuhan akan ahli telekomunikasi sangat tinggi, menjadikan lulusan program ini garda terdepan dalam pembangunan infrastruktur digital nasional.</p>
-
-                        @elseif(strtolower($item->kode) === 'dkv')
-                            <p class="mb-4"><strong>Desain Komunikasi Visual (DKV)</strong> adalah muara kreatif bagi siswa yang ingin menggabungkan kekuatan estetika seni dengan efektivitas teknologi digital. Program ini mentransformasi ide kreatif menjadi solusi visual yang mampu menggerakkan pasar dan menyampaikan pesan secara persuasif. Di era konten visual seperti sekarang, DKV menjadi salah satu jurusan paling dinamis dan diminati oleh industri kreatif nasional maupun internasional.</p>
-                            
-                            <p class="mb-4">Siswa akan menguasai berbagai pilar utama desain, mulai dari desain grafis (branding & layout), ilustrasi digital, fotografi profesional, hingga produksi multimedia (video editing & motion graphics). Kami mengajarkan cara mengoperasikan standar software industri seperti <strong>Adobe Creative Cloud</strong> (Photoshop, Illustrator, Premiere, After Effects) serta teknik penggunaan peralatan kamera kelas sinematografi untuk menghasilkan karya berkualitas tinggi.</p>
-                            
-                            <p class="mb-4">Selain kemampuan teknis (hard skill), jurusan ini sangat menekankan pengembangan pemikiran desain (Design Thinking). Siswa dilatih untuk menganalisis perilaku konsumen, menyusun strategi kampanye visual, hingga presentasi karya secara profesional. Melalui program <strong>Teaching Factory (TeFa)</strong>, siswa dilibatkan dalam proyek nyata dari klien luar untuk membangun portofolio yang kompetitif sebelum benar-benar memasuki dunia kerja.</p>
-                            
-                            <p class="mb-4">Prospek karir lulusan DKV sangat luas, mencakup posisi sebagai <strong>Graphic Designer</strong>, <strong>Social Media Content Creator</strong>, <strong>Video Editor</strong>, <strong>UI/UX Designer</strong>, hingga <strong>Creative Director</strong>. Lulusan juga memiliki bekal kuat untuk menjadi technopreneur dengan membangun studio kreatif atau jasa agensi mandiri, memanfaatkan peluang ekonomi kreatif yang sedang meledak saat ini.</p>
-
-                        @elseif(strtolower($item->kode) === 'mplb')
-                             <p class="mb-4"><strong>Manajemen Perkantoran dan Layanan Bisnis (MPLB)</strong> di SMK Negeri 5 Samarinda merupakan program yang mengadaptasi standar manajemen modern berbasis digital. Jurusan ini tidak lagi sekadar mencetak tenaga admin konvensional, melainkan asisten manajerial yang profesional, komunikatif, dan mampu mengelola ekosistem bisnis digital secara efisien. MPLB menjadi inti dari kelancaran operasional setiap korporasi dan instansi pemerintahan.</p>
-                             
-                             <p class="mb-4">Kompetensi yang diajarkan meliputi manajemen dokumen elektronik (E-Filing), korespondensi bisnis dalam bahasa internasional, pengelolaan rapat dan acara formal, hingga administrasi keuangan perusahaan. Siswa dididik untuk menguasai teknologi perkantoran terkini, sistem otomatisasi kantor, serta manajemen sumber daya manusia yang berstandar nasional dan internasional.</p>
-                             
-                             <p class="mb-4">Penekanan khusus diberikan pada pembentukan karakter dan etika profesi yang kuat melalui pelatihan <strong>Grooming</strong> (penampilan diri profesional), etiket bisnis, dan <strong>Public Speaking</strong>. Kami memiliki laboratorium perkantoran modern yang disimulasikan sebagai ruang kerja korporat, sehingga siswa terbiasa dengan ritme kerja yang rapi, disiplin, dan berorientasi pada kepuasan pelanggan (Customer Excellence).</p>
-                             
-                             <p class="mb-4">Lulusan MPLB memiliki akses kerja yang merata di semua sektor industri, mulai dari perbankan, perhotelan, hingga instansi pemerintah. Mereka sangat dibutuhkan sebagai <strong>Executive Secretary</strong>, <strong>Human Resource Staff</strong>, <strong>Public Relations Assistant</strong>, hingga <strong>Front Office Manager</strong>. Kemampuan organisasi yang sistematis juga menjadi modal utama bagi mereka yang ingin melanjutkan studi ke jenjang pendidikan tinggi di bidang manajemen atau hukum.</p>
-
-                        @elseif(strtolower($item->kode) === 'pm')
-                             <p class="mb-4"><strong>Pemasaran (Marketing)</strong> adalah ujung tombak dari setiap rantai bisnis global. Program keahlian ini di SMK Negeri 5 Samarinda dirancang untuk mencetak tenaga pemasar yang handal, adaptif, dan jago dalam strategi penjualan di era digital. Fokus kami adalah memadukan psikologi konsumen dengan teknologi untuk menciptakan strategi pemasaran yang efektif, mulai dari pasar konvensional hingga pasar global di internet.</p>
-                             
-                             <p class="mb-4">Materi pembelajaran mencakup riset pasar, strategi branding, tata kelola ritel modern, hingga penguasaan <strong>Digital Marketing</strong> secara utuh. Siswa akan belajar cara mengoptimalkan <strong>Search Engine Optimization (SEO)</strong>, iklan media sosial (Social Media Ads), pengelolaan E-Commerce/Marketplace, hingga teknik Copywriting yang mampu menarik perhatian audiens secara masif.</p>
-                             
-                             <p class="mb-4">Siswa terlibat langsung dalam simulasi bisnis ritel sekolah dan praktik kewirausahaan mandiri. Hal ini bertujuan untuk melatih mentalitas tangguh, kepercayaan diri, dan kemampuan negosiasi tingkat tinggi. Kami bekerja sama dengan jaringan ritel besar dan platform digital untuk memastikan kurikulum yang diberikan selalu relevan dengan tren perilaku belanja konsumen yang terus berubah.</p>
-                             
-                             <p class="mb-4">Lulusan Pemasaran dipersiapkan untuk menjadi tenaga profesional sebagai <strong>Digital Marketer</strong>, <strong>Brand Specialist</strong>, <strong>Social Media Strategist</strong>, atau <strong>Retail Manager</strong>. Selain itu, lulusan memiliki peluang besar untuk sukses sebagai wirausahawan (entrepreneur) muda yang mampu membangun bisnis mandiri dengan memanfaatkan kanal digital sebagai alat pemasaran utamanya.</p>
-
-                        @elseif(strtolower($item->kode) === 'ps')
-                             <p class="mb-4"><strong>Pekerjaan Sosial (Social Work)</strong> merupakan program keahlian yang sangat vital dan menyentuh sisi kemanusiaan terdalam. Jurusan ini mendidik siswa untuk menjadi tenaga profesional di bidang kesejahteraan sosial yang memiliki empati tinggi, keterampilan konseling, dan kemampuan pendampingan masyarakat. Di tengah pesatnya pembangunan fisik, peran tenaga sosial sangat dibutuhkan untuk menjaga keseimbangan kesejahteraan masyarakat.</p>
-                             
-                             <p class="mb-4">Kurikulum kami mencakup pemahaman psikologi perkembangan manusia, teknik komunikasi terapeutik, manajemen kasus sosial, hingga pelayanan perawatan sosial bagi kelompok rentan seperti lansia (Caregiver) dan anak berkebutuhan khusus. Siswa juga dilatih untuk memahami regulasi kebijakan sosial pemerintah dan cara mengorganisir bantuan kemanusiaan dalam situasi bencana atau krisis sosial.</p>
-                             
-                             <p class="mb-4">Siswa jurusan Pekerjaan Sosial SMKN 5 Samarinda secara rutin melaksanakan praktik lapangan di berbagai panti sosial, lembaga rehabilitasi, rumah sakit, dan lembaga kemanusiaan tingkat nasional. Pengalaman langsung ini membentuk karakter siswa yang sabar, solutif, dan memiliki dedikasi tinggi dalam membantu individu maupun kelompok dalam memecahkan masalah kehidupan mereka.</p>
-                             
-                             <p class="mb-4">Prospek karir lulusan sangat luas di lembaga-lembaga kemanusiaan, Dinas Sosial, kementerian, hingga Non-Governmental Organization (LSM) internasional. Lulusan dapat bekerja sebagai <strong>Social Worker</strong>, <strong>Pendamping Program Pemerintah (seperti PKH)</strong>, <strong>Professional Caregiver</strong>, atau tenaga konsultan sosial. Profesi ini bukan hanya menjanjikan karir yang stabil, tetapi juga memberikan kepuasan batin yang tak ternilai melalui pengabdian kepada sesama.</p>
-
-                        @else
-                             <p class="mb-4">Program keahlian ini berkomitmen penuh untuk mencetak lulusan yang tidak hanya unggul dalam kompetensi teknis (hard skill), tetapi juga memiliki karakter yang kuat (soft skill) sesuai kebutuhan dunia industri masa depan. Dengan kurikulum yang selalu diperbarui mengikuti tren teknologi global, kami memastikan setiap siswa siap menghadapi tantangan persaingan kerja yang kian kompetitif.</p>
-                             
-                             <p class="mb-4">Didukung oleh fasilitas laboratorium standar industri dan tenaga pendidik yang merupakan praktisi di bidangnya, proses pembelajaran dilakukan dengan pendekatan yang interaktif dan berbasis proyek (Project Based Learning). Siswa akan mendapatkan pengalaman nyata melalui program Praktik Kerja Lapangan (PKL) di perusahaan-perusahaan mitra strategis kami, membangun jembatan antara teori di sekolah dengan realitas di dunia kerja.</p>
-                             
-                             <p class="mb-4">Lulusan dari program ini disiapkan untuk menjadi tenaga kerja profesional yang mandiri, kreatif, dan inovatif. Bekal sertifikasi keahlian dan jejaring industri yang kami miliki memberikan keuntungan lebih bagi lulusan untuk mendapatkan karir yang cemerlang atau melanjutkan ke jenjang perguruan tinggi impian mereka.</p>
-                        @endif
+                    {{-- KOLOM KANAN: TEKS DESKRIPSI LENGKAP --}}
+                    <div style="width: 100%;">
+                        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-justify">
+                            @if(strtolower($item->kode) === 'tjkt')
+                                <p style="margin-bottom: 1rem;"><strong>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong> adalah program keahlian unggulan di SMK Negeri 5 Samarinda yang dirancang untuk menjawab tantangan industri digital global. Jurusan ini memfokuskan pada penguasaan infrastruktur jaringan komunikasi, mulai dari transmisi data, administrasi server, hingga implementasi teknologi nirkabel tingkat lanjut. Mahasiswa dibimbing untuk memahami arsitektur jaringan masa depan yang menjadi tulang punggung revolusi industri 4.0.</p>
+                                <p style="margin-bottom: 1rem;">Kurikulum kami disusun secara integratif mencakup instalasi dan konfigurasi perangkat jaringan (Switch & Router), teknik pengkabelan serat optik (Fiber Optic), administrasi sistem jaringan berbasis Linux dan Windows Server, serta pemeliharaan infrastruktur telekomunikasi. Tidak hanya aspek fisik, siswa juga dibekali kemampuan dalam <strong>Cyber Security</strong> untuk mengamankan data dan jaringan dari berbagai ancaman siber yang kian kompleks.</p>
+                                <p style="margin-bottom: 1rem;">SMK Negeri 5 Samarinda bangga menjadi bagian dari <strong>MikroTik Academy</strong> dan bekerja sama dengan berbagai mitra industri terkemuka. Hal ini memungkinkan siswa mendapatkan sertifikasi industri internasional yang diakui secara global saat mereka lulus. Fasilitas laboratorium kami dilengkapi dengan perangkat standar industri (Rack Server, Mikrotik Core Router, Splicer FO) yang memberikan pengalaman belajar nyata layaknya bekerja di Data Center atau ISP profesional.</p>
+                                <p>Lulusan TJKT memiliki peluang karir yang sangat prestisius sebagai <strong>Network Engineer</strong>, <strong>System Administrator</strong>, <strong>Security Specialist</strong>, atau <strong>IT Support Engineer</strong>. Di tengah masifnya pembangunan Ibu Kota Nusantara (IKN) di Kalimantan Timur, kebutuhan akan ahli telekomunikasi sangat tinggi, menjadikan lulusan program ini garda terdepan dalam pembangunan infrastruktur digital nasional.</p>
+                            @elseif(strtolower($item->kode) === 'dkv')
+                                <p style="margin-bottom: 1rem;"><strong>Desain Komunikasi Visual (DKV)</strong> adalah muara kreatif bagi siswa yang ingin menggabungkan kekuatan estetika seni dengan efektivitas teknologi digital. Program ini mentransformasi ide kreatif menjadi solusi visual yang mampu menggerakkan pasar dan menyampaikan pesan secara persuasif.</p>
+                                <p style="margin-bottom: 1rem;">Siswa akan menguasai berbagai pilar utama desain, mulai dari desain grafis (branding & layout), ilustrasi digital, fotografi profesional, hingga produksi multimedia (video editing & motion graphics). Kami mengajarkan cara mengoperasikan standar software industri seperti <strong>Adobe Creative Cloud</strong>.</p>
+                                <p>Prospek karir lulusan DKV sangat luas, mencakup posisi sebagai <strong>Graphic Designer</strong>, <strong>Social Media Content Creator</strong>, hingga <strong>Creative Director</strong>.</p>
+                            @elseif(strtolower($item->kode) === 'mplb')
+                                <p style="margin-bottom: 1rem;"><strong>Manajemen Perkantoran dan Layanan Bisnis (MPLB)</strong> di SMK Negeri 5 Samarinda mencetak asisten manajerial yang profesional, komunikatif, dan mampu mengelola ekosistem bisnis digital secara efisien.</p>
+                                <p style="margin-bottom: 1rem;">Kompetensi mencakup manajemen dokumen elektronik (E-Filing), korespondensi bisnis, hingga administrasi keuangan perusahaan menggunakan teknologi perkantoran terkini.</p>
+                                <p>Lulusan MPLB sangat dibutuhkan sebagai <strong>Executive Secretary</strong>, <strong>Human Resource Staff</strong>, atau <strong>Front Office Manager</strong>.</p>
+                            @elseif(strtolower($item->kode) === 'pm')
+                                <p style="margin-bottom: 1rem;"><strong>Pemasaran (Marketing)</strong> dirancang untuk mencetak tenaga pemasar handal di era ekonomi digital, memadukan strategi pemasaran konvensional dengan <strong>Digital Marketing</strong>.</p>
+                                <p style="margin-bottom: 1rem;">Siswa belajar riset pasar, strategi branding, tata kelola ritel modern, hingga penguasaan <strong>SEO</strong> dan Social Media Ads.</p>
+                                <p>Karir mencakup <strong>Digital Marketer</strong>, <strong>Brand Specialist</strong>, atau sukses sebagai wirausahawan (entrepreneur) muda.</p>
+                            @elseif(strtolower($item->kode) === 'ps')
+                                <p style="margin-bottom: 1rem;"><strong>Pekerjaan Sosial (Social Work)</strong> mempersiapkan tenaga profesional dengan kepedulian sosial tinggi untuk menangani masalah kesejahteraan masyarakat.</p>
+                                <p style="margin-bottom: 1rem;">Kurikulum mencakup psikologi perkembangan, teknik komunikasi terapeutik, hingga perawatan lansia (Caregiver) dan pendampingan khusus.</p>
+                                <p>Lulusan dapat bekerja sebagai <strong>Social Worker</strong> di Dinas Sosial, Pendamping PKH, atau aktivis NGO internasional.</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
 
@@ -234,7 +190,7 @@
 
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 w-full gap-0 rounded-2xl overflow-hidden shadow-2xl">
                         @foreach($listGuru as $guru)
-                        <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden border-r border-b border-white/10" style="max-width: 100%;">
+                        <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden border-r border-b border-white/10">
                             <img 
                                 src="{{ asset('assets/images/guruprodi/' . strtolower($item->kode) . '/' . $guru['foto']) }}" 
                                 alt="{{ $guru['nama'] }}"
@@ -282,4 +238,19 @@ function switchJurusan(kode) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
+
+<style>
+    @media (min-width: 768px) {
+        .kaprodi-container {
+            float: left !important;
+            margin-right: 2.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+    }
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
 @endsection
