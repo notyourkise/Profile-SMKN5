@@ -37,11 +37,11 @@ class StatsOverview extends StatsOverviewWidget
             ];
         }
         
-        // Redaktur: Menunggu Review, Sudah Terbit, Draft
+        // Redaktur: Menunggu Review, Sudah Terbit, Total Visible
         if ($user->role === 'redaktur') {
             $menungguReview = Berita::where('status', 'review')->count();
             $sudahTerbit = Berita::where('status', 'published')->count();
-            $draft = Berita::where('status', 'draft')->count();
+            $totalVisible = $menungguReview + $sudahTerbit; // Total berita yang bisa dilihat redaktur
             
             return [
                 Stat::make('Menunggu Review', $menungguReview)
@@ -56,11 +56,11 @@ class StatsOverview extends StatsOverviewWidget
                     ->color('success')
                     ->chart([$sudahTerbit - 5, $sudahTerbit - 3, $sudahTerbit - 1, $sudahTerbit]),
                 
-                Stat::make('Ditolak/Draft', $draft)
-                    ->description('Berita dalam draft')
-                    ->descriptionIcon('heroicon-m-document-text')
-                    ->color('gray')
-                    ->chart([$draft + 2, $draft + 1, $draft, $draft - 1]),
+                Stat::make('Total Berita', $totalVisible)
+                    ->description('Yang bisa Anda lihat')
+                    ->descriptionIcon('heroicon-m-newspaper')
+                    ->color('info')
+                    ->chart([$totalVisible - 3, $totalVisible - 1, $totalVisible, $totalVisible + 2]),
             ];
         }
         

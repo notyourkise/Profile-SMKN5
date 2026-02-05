@@ -42,8 +42,9 @@ class BeritaResource extends Resource
 
     /**
      * ROLE-BASED QUERY SCOPE
-     * Jurnalis can only see their own posts
-     * Redaktur and Admin can see all posts
+     * Jurnalis: Only see their own posts (all statuses)
+     * Redaktur: Only see 'review' and 'published' posts (not draft from jurnalis)
+     * Admin: See all posts
      */
     public static function getEloquentQuery(): Builder
     {
@@ -51,12 +52,17 @@ class BeritaResource extends Resource
 
         $user = auth()->user();
 
-        // If Jurnalis, only show their own posts
+        // If Jurnalis, only show their own posts (all statuses: draft, review, published)
         if ($user && $user->role === 'jurnalis') {
             return $query->where('user_id', $user->id);
         }
 
-        // Redaktur and Admin see all posts
+        // If Redaktur, only show 'review' and 'published' posts (hide draft from jurnalis)
+        if ($user && $user->role === 'redaktur') {
+            return $query->whereIn('status', ['review', 'published']);
+        }
+
+        // Admin sees all posts (all statuses)
         return $query;
     }
 
