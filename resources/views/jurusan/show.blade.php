@@ -109,13 +109,14 @@
                     <hr class="border-t-2 border-gray-300 w-full mt-6 md:mt-8 mb-8 md:mb-12">
                 </div>
                 
-                {{-- BAGIAN 2: KONTEN DESKRIPSI & KAPRODI --}}
-                <div class="block relative clearfix mb-8">
-                    
-                    {{-- KARTU KAPRODI (FIXED SIZE) --}}
-                    <div class="w-full md:w-[300px] md:float-left md:mr-8 mb-8">
-                        <div class="w-full shadow-2xl rounded-xl overflow-hidden border border-gray-100" style="max-width: 300px; margin: 0 auto;">
-                            <div class="relative bg-amber-500 group overflow-hidden" style="height: 300px; width: 100%;">
+                {{-- BAGIAN 2: KONTEN DESKRIPSI & KAPRODI (FIXED GRID SYSTEM) --}}
+<div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem;" class="md:grid-cols-3">
+    
+                    {{-- KOLOM KIRI: KARTU KAPRODI --}}
+                    <div style="width: 100%; max-width: 320px; margin: 0 auto;">
+                        <div class="shadow-2xl rounded-xl overflow-hidden border border-gray-100">
+                            {{-- Box Foto dengan ukuran terkunci --}}
+                            <div style="position: relative; width: 100%; aspect-ratio: 1/1; background-color: #f59e0b; overflow: hidden;">
                                 @if($currentKaprodi['foto'])
                                     <img 
                                         src="{{ asset('assets/images/kaprodi/' . $currentKaprodi['foto']) }}" 
@@ -123,19 +124,31 @@
                                         style="width: 100%; height: 100%; object-fit: cover; object-position: top;"
                                         onerror="this.style.display='none'; document.getElementById('ph-kaprodi-{{ $item->kode }}').classList.remove('hidden');"
                                     >
-                                    <div id="ph-kaprodi-{{ $item->kode }}" class="hidden w-full h-full flex items-center justify-center bg-gradient-to-br from-amber-400 to-amber-600 absolute inset-0 -z-10">
-                                        <span class="text-8xl font-bold text-white/10 select-none">{{ substr($item->kode, 0, 1) }}</span>
-                                    </div>
-                                @else
-                                    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-amber-400 to-amber-600">
-                                        <span class="text-8xl font-bold text-white/10 select-none">{{ substr($item->kode, 0, 1) }}</span>
-                                    </div>
                                 @endif
-                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
-                                <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-center">
-                                    <h3 class="text-white font-bold text-lg mb-1">{{ $currentKaprodi['nama'] }}</h3>
-                                    <p class="text-amber-200 text-xs uppercase font-medium tracking-wider">Ketua Program Keahlian</p>
+                
+                                    {{-- Placeholder jika foto error/tidak ada --}}
+                                    <div id="ph-kaprodi-{{ $item->kode }}" class="{{ $currentKaprodi['foto'] ? 'hidden' : '' }}" 
+                                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(to bottom right, #fbbf24, #d97706);">
+                                        <span style="font-size: 5rem; font-weight: bold; color: rgba(255,255,255,0.2);">{{ substr($item->kode, 0, 1) }}</span>
+                                    </div>
+
+                                    {{-- Overlay Nama Kaprodi --}}
+                                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-align: center;">
+                                        <h3 style="color: white; font-weight: bold; font-size: 1.1rem; margin-bottom: 0.25rem;">{{ $currentKaprodi['nama'] }}</h3>
+                                        <p style="color: #fcd34d; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">Ketua Program Keahlian</p>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        {{-- KOLOM KANAN: TEKS DESKRIPSI (Mengambil 2/3 space di desktop) --}}
+                        <div class="md:col-span-2">
+                            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-justify">
+                                {{-- Konten deskripsi panjang yang kemarin --}}
+                                @if(strtolower($item->kode) === 'tjkt')
+                                    <p class="mb-4"><strong>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong> ... (dan seterusnya)</p>
+                                @endif
+                                {{-- ... tambahkan @elseif lainnya sesuai kode sebelumnya ... --}}
                             </div>
                         </div>
                     </div>
