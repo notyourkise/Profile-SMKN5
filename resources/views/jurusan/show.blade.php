@@ -140,31 +140,59 @@
                         </div>
                     </div>
 
-                    {{-- TEKS DESKRIPSI --}}
+                    {{-- TEKS DESKRIPSI LENGKAP --}}
                     <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-justify">
                         @if(strtolower($item->kode) === 'tjkt')
-                            <p class="mb-4"><strong>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong> merupakan program keahlian yang fokus mencetak tenaga profesional di bidang infrastruktur teknologi...</p>
-                            <p class="mb-4">Kurikulum TJKT di SMKN 5 Samarinda dirancang secara komprehensif mencakup instalasi jaringan lokal (LAN/WAN), administrasi server...</p>
-                            <p>Lulusan TJKT memiliki prospek karir yang sangat luas dan menjanjikan. Mereka dapat bekerja sebagai <strong>Network Engineer</strong>, <strong>System Administrator</strong>...</p>
+                            <p class="mb-4"><strong>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong> adalah program keahlian unggulan di SMK Negeri 5 Samarinda yang dirancang untuk menjawab tantangan industri digital global. Jurusan ini memfokuskan pada penguasaan infrastruktur jaringan komunikasi, mulai dari transmisi data, administrasi server, hingga implementasi teknologi nirkabel tingkat lanjut. Mahasiswa dibimbing untuk memahami arsitektur jaringan masa depan yang menjadi tulang punggung revolusi industri 4.0.</p>
+                            
+                            <p class="mb-4">Kurikulum kami disusun secara integratif mencakup instalasi dan konfigurasi perangkat jaringan (Switch & Router), teknik pengkabelan serat optik (Fiber Optic), administrasi sistem jaringan berbasis Linux dan Windows Server, serta pemeliharaan infrastruktur telekomunikasi. Tidak hanya aspek fisik, siswa juga dibekali kemampuan dalam <strong>Cyber Security</strong> untuk mengamankan data dan jaringan dari berbagai ancaman siber yang kian kompleks.</p>
+                            
+                            <p class="mb-4">SMK Negeri 5 Samarinda bangga menjadi bagian dari <strong>MikroTik Academy</strong> dan bekerja sama dengan berbagai mitra industri terkemuka. Hal ini memungkinkan siswa mendapatkan sertifikasi industri internasional yang diakui secara global saat mereka lulus. Fasilitas laboratorium kami dilengkapi dengan perangkat standar industri (Rack Server, Mikrotik Core Router, Splicer FO) yang memberikan pengalaman belajar nyata layaknya bekerja di Data Center atau ISP profesional.</p>
+                            
+                            <p class="mb-4">Lulusan TJKT memiliki peluang karir yang sangat prestisius sebagai <strong>Network Engineer</strong>, <strong>System Administrator</strong>, <strong>Security Specialist</strong>, atau <strong>IT Support Engineer</strong>. Di tengah masifnya pembangunan Ibu Kota Nusantara (IKN) di Kalimantan Timur, kebutuhan akan ahli telekomunikasi sangat tinggi, menjadikan lulusan program ini garda terdepan dalam pembangunan infrastruktur digital nasional.</p>
+
                         @elseif(strtolower($item->kode) === 'dkv')
-                            <p class="mb-4"><strong>Desain Komunikasi Visual (DKV)</strong> adalah program yang mempersiapkan siswa untuk menjadi desainer profesional yang mampu menciptakan karya visual kreatif...</p>
-                            <p class="mb-4">Materi pembelajaran DKV mencakup berbagai bidang seperti desain grafis, ilustrasi digital, fotografi, videografi...</p>
-                            <p>Prospek karir lulusan DKV sangat menjanjikan di industri kreatif yang terus berkembang pesat...</p>
+                            <p class="mb-4"><strong>Desain Komunikasi Visual (DKV)</strong> adalah muara kreatif bagi siswa yang ingin menggabungkan kekuatan estetika seni dengan efektivitas teknologi digital. Program ini mentransformasi ide kreatif menjadi solusi visual yang mampu menggerakkan pasar dan menyampaikan pesan secara persuasif. Di era konten visual seperti sekarang, DKV menjadi salah satu jurusan paling dinamis dan diminati oleh industri kreatif nasional maupun internasional.</p>
+                            
+                            <p class="mb-4">Siswa akan menguasai berbagai pilar utama desain, mulai dari desain grafis (branding & layout), ilustrasi digital, fotografi profesional, hingga produksi multimedia (video editing & motion graphics). Kami mengajarkan cara mengoperasikan standar software industri seperti <strong>Adobe Creative Cloud</strong> (Photoshop, Illustrator, Premiere, After Effects) serta teknik penggunaan peralatan kamera kelas sinematografi untuk menghasilkan karya berkualitas tinggi.</p>
+                            
+                            <p class="mb-4">Selain kemampuan teknis (hard skill), jurusan ini sangat menekankan pengembangan pemikiran desain (Design Thinking). Siswa dilatih untuk menganalisis perilaku konsumen, menyusun strategi kampanye visual, hingga presentasi karya secara profesional. Melalui program <strong>Teaching Factory (TeFa)</strong>, siswa dilibatkan dalam proyek nyata dari klien luar untuk membangun portofolio yang kompetitif sebelum benar-benar memasuki dunia kerja.</p>
+                            
+                            <p class="mb-4">Prospek karir lulusan DKV sangat luas, mencakup posisi sebagai <strong>Graphic Designer</strong>, <strong>Social Media Content Creator</strong>, <strong>Video Editor</strong>, <strong>UI/UX Designer</strong>, hingga <strong>Creative Director</strong>. Lulusan juga memiliki bekal kuat untuk menjadi technopreneur dengan membangun studio kreatif atau jasa agensi mandiri, memanfaatkan peluang ekonomi kreatif yang sedang meledak saat ini.</p>
+
                         @elseif(strtolower($item->kode) === 'mplb')
-                             <p class="mb-4"><strong>Manajemen Perkantoran dan Layanan Bisnis (MPLB)</strong> adalah program keahlian yang mencetak tenaga administrasi modern...</p>
-                             <p class="mb-4">Siswa MPLB dibekali dengan kompetensi kearsipan digital (E-Arsip), korespondensi bahasa Indonesia dan Inggris...</p>
-                             <p>Peluang kerja lulusan MPLB sangat terbuka lebar di hampir semua sektor industri...</p>
+                             <p class="mb-4"><strong>Manajemen Perkantoran dan Layanan Bisnis (MPLB)</strong> di SMK Negeri 5 Samarinda merupakan program yang mengadaptasi standar manajemen modern berbasis digital. Jurusan ini tidak lagi sekadar mencetak tenaga admin konvensional, melainkan asisten manajerial yang profesional, komunikatif, dan mampu mengelola ekosistem bisnis digital secara efisien. MPLB menjadi inti dari kelancaran operasional setiap korporasi dan instansi pemerintahan.</p>
+                             
+                             <p class="mb-4">Kompetensi yang diajarkan meliputi manajemen dokumen elektronik (E-Filing), korespondensi bisnis dalam bahasa internasional, pengelolaan rapat dan acara formal, hingga administrasi keuangan perusahaan. Siswa dididik untuk menguasai teknologi perkantoran terkini, sistem otomatisasi kantor, serta manajemen sumber daya manusia yang berstandar nasional dan internasional.</p>
+                             
+                             <p class="mb-4">Penekanan khusus diberikan pada pembentukan karakter dan etika profesi yang kuat melalui pelatihan <strong>Grooming</strong> (penampilan diri profesional), etiket bisnis, dan <strong>Public Speaking</strong>. Kami memiliki laboratorium perkantoran modern yang disimulasikan sebagai ruang kerja korporat, sehingga siswa terbiasa dengan ritme kerja yang rapi, disiplin, dan berorientasi pada kepuasan pelanggan (Customer Excellence).</p>
+                             
+                             <p class="mb-4">Lulusan MPLB memiliki akses kerja yang merata di semua sektor industri, mulai dari perbankan, perhotelan, hingga instansi pemerintah. Mereka sangat dibutuhkan sebagai <strong>Executive Secretary</strong>, <strong>Human Resource Staff</strong>, <strong>Public Relations Assistant</strong>, hingga <strong>Front Office Manager</strong>. Kemampuan organisasi yang sistematis juga menjadi modal utama bagi mereka yang ingin melanjutkan studi ke jenjang pendidikan tinggi di bidang manajemen atau hukum.</p>
+
                         @elseif(strtolower($item->kode) === 'pm')
-                             <p class="mb-4"><strong>Pemasaran (Marketing)</strong> adalah ujung tombak dari setiap bisnis, dan program keahlian ini dirancang untuk mencetak tenaga pemasar yang handal...</p>
-                             <p class="mb-4">Dalam proses pembelajaran, siswa diajarkan teknik riset pasar, strategi <strong>branding</strong>, <strong>copywriting</strong>...</p>
-                             <p>Lulusan Pemasaran sangat dibutuhkan oleh perusahaan ritel, start-up, hingga korporasi multinasional...</p>
+                             <p class="mb-4"><strong>Pemasaran (Marketing)</strong> adalah ujung tombak dari setiap rantai bisnis global. Program keahlian ini di SMK Negeri 5 Samarinda dirancang untuk mencetak tenaga pemasar yang handal, adaptif, dan jago dalam strategi penjualan di era digital. Fokus kami adalah memadukan psikologi konsumen dengan teknologi untuk menciptakan strategi pemasaran yang efektif, mulai dari pasar konvensional hingga pasar global di internet.</p>
+                             
+                             <p class="mb-4">Materi pembelajaran mencakup riset pasar, strategi branding, tata kelola ritel modern, hingga penguasaan <strong>Digital Marketing</strong> secara utuh. Siswa akan belajar cara mengoptimalkan <strong>Search Engine Optimization (SEO)</strong>, iklan media sosial (Social Media Ads), pengelolaan E-Commerce/Marketplace, hingga teknik Copywriting yang mampu menarik perhatian audiens secara masif.</p>
+                             
+                             <p class="mb-4">Siswa terlibat langsung dalam simulasi bisnis ritel sekolah dan praktik kewirausahaan mandiri. Hal ini bertujuan untuk melatih mentalitas tangguh, kepercayaan diri, dan kemampuan negosiasi tingkat tinggi. Kami bekerja sama dengan jaringan ritel besar dan platform digital untuk memastikan kurikulum yang diberikan selalu relevan dengan tren perilaku belanja konsumen yang terus berubah.</p>
+                             
+                             <p class="mb-4">Lulusan Pemasaran dipersiapkan untuk menjadi tenaga profesional sebagai <strong>Digital Marketer</strong>, <strong>Brand Specialist</strong>, <strong>Social Media Strategist</strong>, atau <strong>Retail Manager</strong>. Selain itu, lulusan memiliki peluang besar untuk sukses sebagai wirausahawan (entrepreneur) muda yang mampu membangun bisnis mandiri dengan memanfaatkan kanal digital sebagai alat pemasaran utamanya.</p>
+
                         @elseif(strtolower($item->kode) === 'ps')
-                             <p class="mb-4"><strong>Pekerjaan Sosial (Social Work)</strong> adalah program keahlian mulia yang mempersiapkan tenaga profesional dengan kepedulian sosial tinggi...</p>
-                             <p class="mb-4">Kurikulum Pekerjaan Sosial mencakup psikologi dasar, teknik komunikasi terapeutik, perawatan lansia (<strong>caregiver</strong>)...</p>
-                             <p>Lulusan Pekerjaan Sosial memiliki peran vital di masyarakat dan lembaga kemanusiaan...</p>
+                             <p class="mb-4"><strong>Pekerjaan Sosial (Social Work)</strong> merupakan program keahlian yang sangat vital dan menyentuh sisi kemanusiaan terdalam. Jurusan ini mendidik siswa untuk menjadi tenaga profesional di bidang kesejahteraan sosial yang memiliki empati tinggi, keterampilan konseling, dan kemampuan pendampingan masyarakat. Di tengah pesatnya pembangunan fisik, peran tenaga sosial sangat dibutuhkan untuk menjaga keseimbangan kesejahteraan masyarakat.</p>
+                             
+                             <p class="mb-4">Kurikulum kami mencakup pemahaman psikologi perkembangan manusia, teknik komunikasi terapeutik, manajemen kasus sosial, hingga pelayanan perawatan sosial bagi kelompok rentan seperti lansia (Caregiver) dan anak berkebutuhan khusus. Siswa juga dilatih untuk memahami regulasi kebijakan sosial pemerintah dan cara mengorganisir bantuan kemanusiaan dalam situasi bencana atau krisis sosial.</p>
+                             
+                             <p class="mb-4">Siswa jurusan Pekerjaan Sosial SMKN 5 Samarinda secara rutin melaksanakan praktik lapangan di berbagai panti sosial, lembaga rehabilitasi, rumah sakit, dan lembaga kemanusiaan tingkat nasional. Pengalaman langsung ini membentuk karakter siswa yang sabar, solutif, dan memiliki dedikasi tinggi dalam membantu individu maupun kelompok dalam memecahkan masalah kehidupan mereka.</p>
+                             
+                             <p class="mb-4">Prospek karir lulusan sangat luas di lembaga-lembaga kemanusiaan, Dinas Sosial, kementerian, hingga Non-Governmental Organization (LSM) internasional. Lulusan dapat bekerja sebagai <strong>Social Worker</strong>, <strong>Pendamping Program Pemerintah (seperti PKH)</strong>, <strong>Professional Caregiver</strong>, atau tenaga konsultan sosial. Profesi ini bukan hanya menjanjikan karir yang stabil, tetapi juga memberikan kepuasan batin yang tak ternilai melalui pengabdian kepada sesama.</p>
+
                         @else
-                             <p class="mb-4">Program keahlian ini berkomitmen untuk mencetak lulusan yang kompeten, berkarakter, dan siap kerja sesuai standar industri...</p>
-                             <p>Lulusan dari program ini memiliki peluang karir yang luas dan adaptif terhadap perubahan zaman...</p>
+                             <p class="mb-4">Program keahlian ini berkomitmen penuh untuk mencetak lulusan yang tidak hanya unggul dalam kompetensi teknis (hard skill), tetapi juga memiliki karakter yang kuat (soft skill) sesuai kebutuhan dunia industri masa depan. Dengan kurikulum yang selalu diperbarui mengikuti tren teknologi global, kami memastikan setiap siswa siap menghadapi tantangan persaingan kerja yang kian kompetitif.</p>
+                             
+                             <p class="mb-4">Didukung oleh fasilitas laboratorium standar industri dan tenaga pendidik yang merupakan praktisi di bidangnya, proses pembelajaran dilakukan dengan pendekatan yang interaktif dan berbasis proyek (Project Based Learning). Siswa akan mendapatkan pengalaman nyata melalui program Praktik Kerja Lapangan (PKL) di perusahaan-perusahaan mitra strategis kami, membangun jembatan antara teori di sekolah dengan realitas di dunia kerja.</p>
+                             
+                             <p class="mb-4">Lulusan dari program ini disiapkan untuk menjadi tenaga kerja profesional yang mandiri, kreatif, dan inovatif. Bekal sertifikasi keahlian dan jejaring industri yang kami miliki memberikan keuntungan lebih bagi lulusan untuk mendapatkan karir yang cemerlang atau melanjutkan ke jenjang perguruan tinggi impian mereka.</p>
                         @endif
                     </div>
                 </div>
