@@ -4,22 +4,23 @@
 
 @section('content')
 
-{{-- Hero Section with Overlapping Card --}}
-<section class="relative w-full h-[300px] md:h-[500px] mb-[250px] md:mb-[250px] lg:mb-[200px] z-10">
+{{-- Hero Section (FIXED: Menggunakan Inline CSS agar aman di Server) --}}
+<section style="position: relative; width: 100%; height: 500px; margin-bottom: 200px; z-index: 10;">
     
-    {{-- 1. Background Image (Layer Paling Bawah) --}}
+    {{-- 1. Background Image --}}
     <img 
         src="{{ asset('images/drone-smk-1.webp') }}" 
         alt="Pemandangan udara SMKN 5 Samarinda"
-        class="absolute inset-0 w-full h-full object-cover z-0"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;"
     >
     
-    {{-- 2. Dark Overlay (Agar teks putih terbaca jelas) --}}
-    <div class="absolute inset-0 bg-black/50 z-10"></div>
+    {{-- 2. Dark Overlay (Pengganti bg-black/50) --}}
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 10;"></div>
     
-    {{-- 3. Overlapping Card (Kartu menumpuk di perbatasan foto) --}}
-    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full px-4 z-20">
-        <div class="relative bg-[#1e5494] text-white rounded-xl shadow-2xl max-w-4xl mx-auto p-6 md:p-8 lg:p-10">
+    {{-- 3. Overlapping Card --}}
+    {{-- Kita gunakan kombinasi Tailwind untuk layout dasar + Inline Style untuk posisi presisi --}}
+    <div class="absolute w-full px-4" style="bottom: 0; left: 50%; transform: translate(-50%, 50%); z-index: 20;">
+        <div class="relative bg-[#1e5494] text-white rounded-xl shadow-2xl max-w-4xl mx-auto p-8 md:p-10">
             {{-- Badge --}}
             <div class="mb-4">
                 <span class="inline-block px-4 py-1 bg-white/20 text-white text-sm font-semibold rounded-full">
@@ -40,7 +41,10 @@
             {{-- Tombol --}}
             <a href="#sejarah" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#1e5494] font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg">
                 <span>Jelajahi Lebih Lanjut</span>
-                <i class="fa-solid fa-arrow-down"></i>
+                {{-- Icon Panah (SVG Manual) --}}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
             </a>
         </div>
     </div>
