@@ -19,12 +19,12 @@
 
 <section class="relative -mt-16 mb-8">
     <div class="container mx-auto px-4 flex justify-center">
-        <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-2xl p-6 flex flex-wrap gap-4 justify-center items-center">
+        <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-2xl p-4 md:p-6 flex flex-wrap gap-2 md:gap-4 justify-center items-center overflow-x-auto max-w-full">
             @foreach($allJurusan as $item)
             <button 
                 onclick="switchJurusan('{{ $item->kode }}')"
                 id="btn-{{ $item->kode }}"
-                class="px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg {{ $item->id === $jurusan->id ? 'bg-[#1e5494] text-white' : 'bg-gray-100 text-slate-700 hover:bg-gray-200' }}"
+                class="px-4 md:px-8 py-2 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap {{ $item->id === $jurusan->id ? 'bg-[#1e5494] text-white' : 'bg-gray-100 text-slate-700 hover:bg-gray-200' }}"
             >
                 {{ $item->kode }}
             </button>
@@ -33,7 +33,7 @@
     </div>
 </section>
 
-<section class="py-16 bg-white min-h-[600px]">
+<section class="py-8 md:py-16 bg-white min-h-[600px]">
     <div class="container mx-auto px-4">
         @foreach($allJurusan as $item)
         
@@ -99,19 +99,19 @@
             <div class="max-w-5xl mx-auto">
                 
                 {{-- Header Jurusan --}}
-                <div class="text-center mb-12">
-                    <div class="mb-6 flex justify-center">
+                <div class="text-center mb-8 md:mb-12">
+                    <div class="mb-4 md:mb-6 flex justify-center">
                         <img 
                             src="{{ asset('assets/images/logo-jurusan/logo-jurusan-' . strtolower($item->kode) . '.webp') }}" 
                             alt="Logo {{ $item->kode }}" 
-                            class="h-32 w-auto object-contain {{ strtolower($item->kode) === 'mplb' ? 'bg-[#1e5494] p-4 rounded-xl' : '' }}"
+                            class="h-24 md:h-32 w-auto object-contain {{ strtolower($item->kode) === 'mplb' ? 'bg-[#1e5494] p-4 rounded-xl' : '' }}"
                             onerror="this.style.display='none'"
                         >
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800">
+                    <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-800">
                         {{ $item->nama }}
                     </h2>
-                    <hr class="border-t-2 border-gray-300 w-full mt-8 mb-12">
+                    <hr class="border-t-2 border-gray-300 w-full mt-6 md:mt-8 mb-8 md:mb-12">
                 </div>
                 
                 {{-- ========================================================== --}}
@@ -121,9 +121,8 @@
                 <div class="block relative clearfix mb-8">
                     
                     {{-- KARTU KAPRODI --}}
-                    {{-- md:float-left agar teks bisa mengalir di kanannya --}}
-                    {{-- md:w-[320px] untuk MENCEGAH gambar jadi raksasa --}}
-                    <div class="w-full md:w-[320px] md:float-left md:mr-10 mb-6">
+                    {{-- Pada mobile: full width, pada md+: float kiri dengan max-width --}}
+                    <div class="w-full md:w-[320px] md:float-left md:mr-6 lg:mr-10 mb-6">
                         <div class="w-full shadow-2xl rounded-xl overflow-hidden border border-gray-100">
                             {{-- Kaprodi Oranye --}}
                             <div class="relative w-full aspect-square bg-amber-500 group overflow-hidden">
@@ -187,16 +186,16 @@
                 {{--  Posisi: Di bawah teks deskripsi (Clear Float)            --}}
                 {{-- ========================================================== --}}
                 @if(strtolower($item->kode) === 'tjkt')
-                {{-- Gunakan clear-both agar dia turun ke bawah foto jika teksnya pendek --}}
-                <div class="clear-both mb-16 pt-6 text-center animate-fade-in"> 
-                    <div class="inline-flex items-center gap-3 px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg">
-                        <span class="text-xs text-slate-500">Supported by <span class="font-bold text-slate-700">MikroTik Academy</span></span>
-                        <div class="h-4 w-px bg-slate-300"></div>
-                        <a href="#" class="text-xs font-bold text-[#1e5494] hover:underline hover:text-blue-800 transition-colors">
-                            Selengkapnya
-                        </a>
+                    <div class="clear-both mb-16 pt-6 text-center animate-fade-in"> 
+                        <div class="inline-flex items-center gap-3 px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg">
+                            <span class="text-xs text-slate-500">Supported by <span class="font-bold text-slate-700">MikroTik Academy</span></span>
+                            <div class="h-4 w-px bg-slate-300"></div>
+                            {{-- UPDATE LINK DI SINI --}}
+                            <a href="{{ route('mikrotik.index') }}" class="text-xs font-bold text-[#1e5494] hover:underline hover:text-blue-800 transition-colors">
+                                Selengkapnya
+                            </a>
+                        </div>
                     </div>
-                </div>
                 @else
                 {{-- Untuk jurusan lain, beri jarak clear float agar Guru tidak nabrak --}}
                 <div class="clear-both"></div>
@@ -213,7 +212,7 @@
                     </div>
 
                     {{-- Grid Container (grid-cols-2 md:grid-cols-5) --}}
-                    <div class="grid grid-cols-2 md:grid-cols-5 w-full gap-0 rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 w-full gap-0 rounded-2xl overflow-hidden shadow-2xl">
                         
                         @foreach($listGuru as $guru)
                         {{-- Kartu Guru (Biru) --}}
@@ -236,9 +235,9 @@
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
                             
                             {{-- Info Guru --}}
-                            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-center">
-                                <h3 class="text-white font-bold text-sm md:text-base leading-tight mb-1">{{ $guru['nama'] }}</h3>
-                                <p class="text-blue-200 text-[10px] md:text-xs uppercase font-medium tracking-wide">
+                            <div class="absolute bottom-0 left-0 w-full p-3 md:p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-center">
+                                <h3 class="text-white font-bold text-xs md:text-sm lg:text-base leading-tight mb-1">{{ $guru['nama'] }}</h3>
+                                <p class="text-blue-200 text-[9px] md:text-[10px] lg:text-xs uppercase font-medium tracking-wide">
                                     {{ $guru['mapel'] }}
                                 </p>
                             </div>

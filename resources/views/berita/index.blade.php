@@ -3,9 +3,9 @@
 @section('title', 'Berita - SMKN 5 Samarinda')
 
 @section('content')
-<section class="py-16">
+<section class="py-8 md:py-16">
     <div class="container mx-auto px-4">
-        <h1 class="text-4xl font-bold text-center mb-12 dark:text-white">Berita & Artikel</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 dark:text-white">Berita & Artikel</h1>
         
         @if(request('q'))
             <div class="text-center mb-8">
@@ -54,7 +54,7 @@
             </div>
         @else
             <!-- News Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                 @foreach($berita as $item)
                 <a href="{{ route('berita.show', $item->slug) }}" 
                    class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block">

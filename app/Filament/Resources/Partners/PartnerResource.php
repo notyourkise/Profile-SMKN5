@@ -29,6 +29,21 @@ class PartnerResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'company_name';
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Mitra Industri';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Mitra Industri';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Mitra Industri';
+    }
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->role === 'admin';

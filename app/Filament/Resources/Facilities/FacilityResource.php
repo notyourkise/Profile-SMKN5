@@ -29,6 +29,21 @@ class FacilityResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Fasilitas';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Fasilitas';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Fasilitas';
+    }
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->role === 'admin';

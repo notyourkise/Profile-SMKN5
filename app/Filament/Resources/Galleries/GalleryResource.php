@@ -29,6 +29,21 @@ class GalleryResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Galeri';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Galeri';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Galeri';
+    }
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->role === 'admin';

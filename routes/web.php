@@ -124,3 +124,7 @@ Route::get('/fasilitas', function () {
 Route::get('/agenda', function () {
     return redirect()->route('home');
 })->name('agenda.index');
+
+Route::get('/mikrotik-academy', function () {
+    return view('mikrotik.index');
+})->name('mikrotik.index');

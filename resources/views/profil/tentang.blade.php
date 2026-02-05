@@ -5,7 +5,7 @@
 @section('content')
 
 {{-- Hero Section with Overlapping Card --}}
-<section class="relative w-full h-[500px] mb-[200px] md:mb-[250px] z-10">
+<section class="relative w-full h-[300px] md:h-[500px] mb-[250px] md:mb-[250px] lg:mb-[200px] z-10">
     
     {{-- 1. Background Image (Layer Paling Bawah) --}}
     <img 
@@ -19,7 +19,7 @@
     
     {{-- 3. Overlapping Card (Kartu menumpuk di perbatasan foto) --}}
     <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full px-4 z-20">
-        <div class="relative bg-[#1e5494] text-white rounded-xl shadow-2xl max-w-4xl mx-auto p-8 md:p-10">
+        <div class="relative bg-[#1e5494] text-white rounded-xl shadow-2xl max-w-4xl mx-auto p-6 md:p-8 lg:p-10">
             {{-- Badge --}}
             <div class="mb-4">
                 <span class="inline-block px-4 py-1 bg-white/20 text-white text-sm font-semibold rounded-full">
@@ -47,13 +47,13 @@
 </section>
 
 {{-- Sambutan Kepala Sekolah Section --}}
-<section class="relative py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<section class="relative py-8 md:py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
             
             {{-- Left: Image (4 columns) --}}
             <div class="md:col-span-4 flex justify-center md:justify-start">
-                <div class="w-64 h-80 md:w-72 md:h-96">
+                <div class="w-48 h-64 sm:w-56 sm:h-72 md:w-72 md:h-96">
                     <img 
                         src="{{ asset('assets/images/pimpinan/yeni-ronalisa.png') }}" 
                         alt="Kepala Sekolah SMKN 5 Samarinda"
@@ -94,8 +94,8 @@
     </div>
 </section>
 
-{{-- Sejarah Timeline --}}
-<section id="sejarah" class="relative py-24 bg-gradient-to-b from-slate-900 via-gray-900 to-black overflow-hidden">
+{{-- Sejarah Timeline (UPDATED: Start 1992 + New 2024/2026) --}}
+<section id="sejarah" class="relative py-12 md:py-24 bg-gradient-to-b from-slate-900 via-gray-900 to-black overflow-hidden">
     {{-- Optional Grid Pattern Overlay --}}
     <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px] opacity-20"></div>
     
@@ -106,7 +106,7 @@
             <div class="text-center mb-20">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">Transformasi SMKN 5 Samarinda</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">
-                    Evolusi sekolah dari masa ke masa dalam memberikan pendidikan kejuruan terbaik
+                    Jejak langkah pengabdian dalam mencetak generasi emas Kalimantan Timur, dari masa ke masa.
                 </p>
             </div>
 
@@ -117,89 +117,115 @@
 
                 <div class="space-y-16">
                     
-                    {{-- Timeline Item 1 (Left) --}}
-                    <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                        {{-- Left Content --}}
+                    {{-- 1. 1992: PENEGERIAN (KIRI) --}}
+                    <div class="relative grid md:grid-cols-2 gap-4 md:gap-8 items-center">
                         <div class="md:text-right">
-                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-4 md:p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
                                 <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
-                                    1987
+                                    1992
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Berdirinya SMK Negeri 5</h3>
+                                <h3 class="text-xl font-bold text-white mb-2">Penegerian Sekolah</h3>
                                 <p class="text-slate-400 text-sm leading-relaxed">
-                                    SMK Negeri 5 Samarinda didirikan sebagai lembaga pendidikan kejuruan untuk memenuhi kebutuhan tenaga terampil di Kalimantan Timur.
+                                    Resmi beralih status menjadi Sekolah Negeri berdasarkan SK Mendikbud No. 0216/0/1992, menjadi tonggak awal dedikasi sebagai lembaga pendidikan pemerintah.
                                 </p>
                             </div>
                         </div>
-                        {{-- Center Marker --}}
                         <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                             <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
                         </div>
-                        {{-- Right Empty --}}
                         <div></div>
                     </div>
 
-                    {{-- Timeline Item 2 (Right) --}}
+                    {{-- 2. 1997: IDENTITAS BARU (KANAN) --}}
                     <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                        {{-- Left Empty --}}
                         <div></div>
-                        {{-- Center Marker --}}
                         <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                             <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
                         </div>
-                        {{-- Right Content --}}
                         <div>
                             <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
                                 <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
-                                    2005
+                                    1997
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Akreditasi A Pertama Kali</h3>
+                                <h3 class="text-xl font-bold text-white mb-2">Menjadi SMKN 5 Samarinda</h3>
                                 <p class="text-slate-400 text-sm leading-relaxed">
-                                    Meraih akreditasi A untuk pertama kalinya sebagai pengakuan atas kualitas pendidikan yang diberikan.
+                                    Berdasarkan keputusan Depdikbud Prov. Kaltim, nama sekolah resmi ditetapkan menjadi <strong>SMK Negeri 5 Samarinda</strong>, memperluas cakupan keahlian teknologi dan manajemen.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    {{-- Timeline Item 3 (Left) --}}
+                    {{-- 3. 2016: LISENSI LSP (KIRI) --}}
                     <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                        {{-- Left Content --}}
                         <div class="md:text-right">
                             <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
                                 <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
-                                    2015
+                                    2016
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Kerjasama Industri</h3>
+                                <h3 class="text-xl font-bold text-white mb-2">Lisensi LSP-P1</h3>
                                 <p class="text-slate-400 text-sm leading-relaxed">
-                                    Membangun kemitraan strategis dengan berbagai perusahaan nasional dan internasional untuk program magang siswa.
+                                    Mendapatkan lisensi resmi dari BNSP sebagai Lembaga Sertifikasi Profesi (LSP-P1), menjamin setiap lulusan memiliki sertifikat kompetensi yang diakui industri.
                                 </p>
                             </div>
                         </div>
-                        {{-- Center Marker --}}
                         <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                             <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
                         </div>
-                        {{-- Right Empty --}}
                         <div></div>
                     </div>
 
-                    {{-- Timeline Item 4 (Right) --}}
+                    {{-- 4. 2022: PUSAT KEUNGGULAN (KANAN) --}}
                     <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                        {{-- Left Empty --}}
                         <div></div>
-                        {{-- Center Marker --}}
                         <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                             <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
                         </div>
-                        {{-- Right Content --}}
+                        <div>
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
+                                <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                                    2022
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">SMK Pusat Keunggulan</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Ditetapkan Kemendikbudristek sebagai <strong>SMK Pusat Keunggulan (SMK PK)</strong>, menjadi sekolah rujukan nasional dengan kurikulum berbasis industri modern.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- 5. 2024: TEFA & IKN READY (KIRI - NEW!) --}}
+                    <div class="relative grid md:grid-cols-2 gap-8 items-center">
+                        <div class="md:text-right">
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
+                                <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                                    2024
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Teaching Factory & Penyangga IKN</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Optimalisasi <strong>Teaching Factory (TeFa)</strong> dan penguatan kerjasama industri untuk mencetak SDM berkualitas tinggi yang siap menjadi penyangga Ibu Kota Nusantara (IKN).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
+                        </div>
+                        <div></div>
+                    </div>
+
+                    {{-- 6. 2026: DIGITAL ASEAN (KANAN - NEW!) --}}
+                    <div class="relative grid md:grid-cols-2 gap-8 items-center">
+                        <div></div>
+                        <div class="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)]"></div>
+                        </div>
                         <div>
                             <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-500/50 hover:bg-white/10 transition-all duration-300">
                                 <div class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-lg mb-3 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
                                     2026
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Era Digital & Smart School</h3>
+                                <h3 class="text-xl font-bold text-white mb-2">Menuju ASEAN Smart School</h3>
                                 <p class="text-slate-400 text-sm leading-relaxed">
-                                    Implementasi sistem digital learning, smart classroom, dan modernisasi fasilitas untuk menghadapi Industri 4.0.
+                                    Transformasi total menuju ekosistem pendidikan digital (AI Ready) dan perluasan jaringan kerjasama internasional di kawasan ASEAN.
                                 </p>
                             </div>
                         </div>
@@ -213,7 +239,7 @@
 </section>
 
 {{-- Visi Misi (Clean White Background) --}}
-<section class="bg-white py-20">
+<section class="bg-white py-10 md:py-20">
     <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
             
@@ -226,42 +252,44 @@
             </div>
 
             {{-- Grid Container --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 
                 {{-- VISI Card --}}
-                <div class="bg-[#0a61aa] p-10 rounded-2xl shadow-lg">
-                    <div class="text-blue-200 text-sm font-bold tracking-widest mb-4">VISI</div>
-                    <p class="text-white text-base leading-relaxed">
-                        Mewujudkan SMK Negeri 5 Samarinda sebagai lembaga pendidikan kejuruan yang unggul, berwawasan lingkungan, dan berkarakter dalam menghasilkan lulusan yang kompeten dan berdaya saing global.
+                <div class="bg-[#0a61aa] p-6 md:p-10 rounded-2xl shadow-lg flex flex-col justify-center">
+                    {{-- UBAH DI SINI: text-blue-200 JADI text-white --}}
+                    <div class="text-white text-sm font-bold tracking-widest mb-4 border-b border-white/40 pb-2 inline-block w-fit">VISI</div>
+                    <p class="text-white text-lg md:text-xl font-medium leading-relaxed">
+                        "Mewujudkan SMK Negeri 5 Samarinda sebagai lembaga pendidikan kejuruan yang unggul, berwawasan lingkungan, dan berkarakter dalam menghasilkan lulusan yang kompeten dan berdaya saing global."
                     </p>
                 </div>
 
                 {{-- MISI Card --}}
-                <div class="bg-[#0a61aa] p-10 rounded-2xl shadow-lg">
-                    <div class="text-blue-200 text-sm font-bold tracking-widest mb-6">MISI</div>
+                <div class="bg-[#0a61aa] p-6 md:p-10 rounded-2xl shadow-lg">
+                    {{-- UBAH DI SINI: text-blue-200 JADI text-white --}}
+                    <div class="text-white text-sm font-bold tracking-widest mb-6 border-b border-white/40 pb-2 inline-block w-fit">MISI</div>
                     
-                    <ul class="space-y-4">
-                        <li>
-                            <span class="text-white text-base leading-relaxed">
-                                Menyelenggarakan pendidikan berbasis kompetensi dan pembentukan karakter yang kuat
+                    <ol class="list-decimal list-outside pl-5 space-y-4 text-white marker:text-white marker:font-bold">
+                        <li class="pl-2">
+                            <span class="text-white text-base leading-relaxed block">
+                                Menyelenggarakan pendidikan berbasis kompetensi dan pembentukan karakter yang kuat.
                             </span>
                         </li>
-                        <li>
-                            <span class="text-white text-base leading-relaxed">
-                                Mengembangkan kemitraan strategis dengan dunia usaha dan industri
+                        <li class="pl-2">
+                            <span class="text-white text-base leading-relaxed block">
+                                Mengembangkan kemitraan strategis dengan dunia usaha dan industri (DUDI).
                             </span>
                         </li>
-                        <li>
-                            <span class="text-white text-base leading-relaxed">
-                                Membangun budaya lingkungan hijau dan berkelanjutan
+                        <li class="pl-2">
+                            <span class="text-white text-base leading-relaxed block">
+                                Membangun budaya lingkungan hijau dan berkelanjutan di lingkungan sekolah.
                             </span>
                         </li>
-                        <li>
-                            <span class="text-white text-base leading-relaxed">
-                                Meningkatkan profesionalisme tenaga pendidik dan kependidikan
+                        <li class="pl-2">
+                            <span class="text-white text-base leading-relaxed block">
+                                Meningkatkan profesionalisme tenaga pendidik dan kependidikan secara berkelanjutan.
                             </span>
                         </li>
-                    </ul>
+                    </ol>
                 </div>
 
             </div>

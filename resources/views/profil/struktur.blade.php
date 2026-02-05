@@ -13,11 +13,11 @@
 </section>
 
 {{-- Organizational Chart Image Section --}}
-<section class="py-16 bg-slate-50">
+<section class="py-8 md:py-16 bg-slate-50">
     <div class="container mx-auto px-4">
         
         {{-- Image Container --}}
-        <div class="max-w-6xl mx-auto bg-white p-2 md:p-4 rounded-2xl shadow-xl border border-slate-100">
+        <div class="max-w-6xl mx-auto bg-white p-1 md:p-2 lg:p-4 rounded-2xl shadow-xl border border-slate-100">
             
             <a href="{{ asset('images/struktur-organisasi-smkn5.webp') }}" target="_blank" class="block relative group cursor-zoom-in">
                 <img 

@@ -29,6 +29,21 @@ class ExtracurricularResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Ekstrakurikuler'; // Label di Sidebar
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Ekstrakurikuler'; // Label tunggal (misal: Tambah Ekstrakurikuler)
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Ekstrakurikuler'; // Judul Halaman List
+    }
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->role === 'admin';

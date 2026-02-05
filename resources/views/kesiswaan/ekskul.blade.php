@@ -3,143 +3,222 @@
 @section('title', 'Ekstrakurikuler - SMKN 5 Samarinda')
 
 @section('content')
+
+{{-- HEADER SECTION --}}
 <section class="bg-[#1e5494] text-white py-16 pb-24">
-    <div class="container mx-auto px-4">
-        <nav class="mb-6">
-            <ol class="flex space-x-2 text-white/80">
-                <li><a href="{{ route('home') }}" class="hover:text-white">Beranda</a></li>
-                <li>/</li>
-                <li class="text-white font-semibold">Kesiswaan</li>
-            </ol>
-        </nav>
+    <div class="container mx-auto px-4 text-center">
         <h1 class="text-4xl md:text-5xl font-bold">Ekstrakurikuler</h1>
         <p class="mt-4 text-lg text-white/90">Wadah pengembangan bakat, minat, dan karakter siswa SMK Negeri 5 Samarinda</p>
     </div>
 </section>
 
-<section class="relative -mt-16 mb-12">
-    <div class="container mx-auto px-4 flex justify-center">
-        <div class="bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl p-4 md:p-6 flex flex-wrap gap-3 justify-center items-center border border-gray-100">
-            @foreach($allEkskul as $item)
-            <button 
-                onclick="switchEkskul('{{ $item->kode }}')"
-                id="btn-{{ $item->kode }}"
-                class="px-6 py-2 md:px-8 md:py-3 rounded-full font-semibold transition-all duration-300 text-sm md:text-base shadow-sm hover:shadow-md {{ $loop->first ? 'bg-[#1e5494] text-white scale-105 shadow-lg' : 'bg-gray-50 text-slate-700 hover:bg-gray-100' }}"
-            >
-                {{ $item->kode }}
-            </button>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-<section class="py-12 bg-white min-h-[500px]">
+{{-- NAVIGATION & CONTENT SECTION --}}
+<section class="relative -mt-12 mb-20">
     <div class="container mx-auto px-4">
-        @foreach($allEkskul as $item)
-        {{-- Container Utama Konten --}}
-        <div id="content-{{ $item->kode }}" class="{{ $loop->first ? '' : 'hidden' }} transition-all duration-500 ease-in-out">
-            
-            {{-- ... kode sebelumnya ... --}}
-
-{{-- GRID LAYOUT: Kiri Foto, Kanan Teks --}}
-<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-    
-    {{-- KOLOM KIRI: Foto Pembina & Info --}}
-    <div class="lg:col-span-4 lg:sticky lg:top-24">
         
-        {{-- Container pembatas ukuran (agar tidak terlalu besar di layar lebar) --}}
-        <div class="w-full max-w-[350px] mx-auto lg:mx-0 shadow-2xl rounded-xl overflow-hidden">
+        {{-- MENU TABS (Scrollable di HP) --}}
+        <div class="bg-white rounded-xl shadow-lg p-2 mb-10 overflow-x-auto scrollbar-hide">
+            <div class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 min-w-max md:min-w-0">
+                @php
+                    $menus = [
+                        'osis' => 'OSIS',
+                        'pramuka' => 'Pramuka',
+                        'paskas' => 'Paskas',
+                        'basket' => 'Basket',
+                        'futsal' => 'Futsal',
+                        'voli' => 'Voli',
+                        'badminton' => 'Badminton',
+                        'tari' => 'Seni Tari',
+                        'teater' => 'Teater',
+                        'band' => 'Band Musik',
+                        'alam' => 'Sahabat Alam',
+                        'pmr' => 'PMR',
+                        'rohis' => 'Rohis'
+                    ];
+                @endphp
 
-            {{-- === KARTU GAYA BARU (Sesuai Request Boss) === --}}
-            {{-- Menggunakan aspect-square (kotak 1:1) dan style pimpinan --}}
-            <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden">
-                
-                {{-- 1. LAYER FOTO / PLACEHOLDER --}}
-                {{-- Karena belum ada foto asli, kita pakai placeholder gradient biru yang senada, --}}
-                {{-- tapi dengan inisial besar di belakangnya agar tidak kosong melompong. --}}
-                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1e5494] to-[#0b3fa5]">
-                     {{-- Jika nanti sudah ada foto asli, hapus <span> ini dan uncomment <img> di bawah --}}
-                    <span class="text-9xl font-bold text-white/10 select-none">{{ substr($item->kode, 0, 1) }}</span>
+                @foreach($menus as $key => $label)
+                <button onclick="switchEkskul('{{ $key }}')" id="btn-{{ $key }}" 
+                    class="px-4 md:px-5 py-2 md:py-2.5 rounded-lg font-semibold text-xs md:text-sm transition-all duration-300 border border-transparent whitespace-nowrap
+                    {{ $key === 'osis' ? 'bg-[#1e5494] text-white shadow-md' : 'text-slate-600 hover:bg-gray-100' }}">
+                    {{ $label }}
+                </button>
+                @endforeach
+            </div>
+        </div>
+
+        {{-- CONTENT AREA --}}
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 md:p-6 lg:p-10 min-h-[400px]">
+            
+            @php
+                // Master Data Ekskul
+                $dataEkskul = [
+                    'osis' => [
+                        'judul' => 'Organisasi Siswa Intra Sekolah (OSIS)',
+                        'deskripsi' => 'OSIS adalah organisasi induk tingkat sekolah yang menjadi wadah aspirasi siswa. Di SMKN 5 Samarinda, OSIS berperan aktif dalam menyelenggarakan berbagai kegiatan sekolah, mulai dari Class Meeting, Peringatan Hari Besar, hingga kegiatan sosial. Anggota OSIS dilatih untuk memiliki jiwa kepemimpinan (leadership), manajemen organisasi, dan kemampuan komunikasi publik yang baik.',
+                        'pembina' => 'Jiono, S.Pd',
+                        'jadwal' => 'Jumat, 14.00 WITA'
+                    ],
+                    'pramuka' => [
+                        'judul' => 'Praja Muda Karana (Pramuka)',
+                        'deskripsi' => 'Ekstrakurikuler wajib yang membentuk karakter disiplin, mandiri, dan cinta tanah air. Kegiatan Pramuka di SMKN 5 Samarinda mencakup latihan baris-berbaris, pionering, survival, hingga perkemahan. Pramuka menjadi garda terdepan dalam pembentukan moral dan etika siswa.',
+                        'pembina' => '...',
+                        'jadwal' => 'Jumat, 15.30 WITA'
+                    ],
+                    'paskas' => [
+                        'judul' => 'Pasukan Pengibar Bendera Sekolah (Paskas)',
+                        'deskripsi' => 'Wadah bagi siswa yang memiliki ketertarikan dalam tata upacara bendera dan kedisiplinan tinggi. Anggota Paskas dilatih fisik, mental, dan teknik baris-berbaris (PBB) yang presisi untuk bertugas pada upacara bendera setiap hari Senin dan hari besar nasional.',
+                        'pembina' => '...',
+                        'jadwal' => 'Selasa & Kamis, 16.00 WITA'
+                    ],
+                    'basket' => [
+                        'judul' => 'Bola Basket',
+                        'deskripsi' => 'Klub Basket SMKN 5 Samarinda fokus pada pengembangan teknik dasar (dribbling, shooting, passing) hingga strategi permainan tim. Selain latihan rutin, tim basket aktif mengikuti kompetisi DBL dan turnamen antar pelajar se-Kalimantan Timur untuk mengasah mental bertanding.',
+                        'pembina' => 'Ibnu Luthfi Syaari, S.Pd',
+                        'jadwal' => 'Rabu & Sabtu, 16.00 WITA'
+                    ],
+                    'futsal' => [
+                        'judul' => 'Futsal',
+                        'deskripsi' => 'Salah satu ekskul paling populer yang mengutamakan kerjasama tim, kecepatan, dan taktik. Latihan mencakup peningkatan stamina fisik, teknik penguasaan bola, dan skema permainan. Tim Futsal SMKN 5 rutin melakukan sparing partner dengan sekolah lain.',
+                        'pembina' => '...',
+                        'jadwal' => 'Senin & Kamis, 16.00 WITA'
+                    ],
+                    'voli' => [
+                        'judul' => 'Bola Voli',
+                        'deskripsi' => 'Mewadahi siswa yang hobi bermain voli untuk mengembangkan potensi atletik mereka. Latihan difokuskan pada teknik service, passing, smash, dan blocking, serta kekompakan tim di lapangan.',
+                        'pembina' => '...',
+                        'jadwal' => 'Selasa & Jumat, 16.00 WITA'
+                    ],
+                    'badminton' => [
+                        'judul' => 'Badminton (Bulu Tangkis)',
+                        'deskripsi' => 'Ekstrakurikuler yang melatih kelincahan, refleks, dan teknik pukulan. Terbuka bagi siswa putra dan putri, baik untuk sekadar hobi maupun prestasi di ajang O2SN.',
+                        'pembina' => '...',
+                        'jadwal' => 'Sabtu, 08.00 WITA'
+                    ],
+                    'tari' => [
+                        'judul' => 'Seni Tari Tradisional & Modern',
+                        'deskripsi' => 'Sanggar tari sekolah yang melestarikan budaya daerah melalui tari tradisional Dayak dan Kutai, serta mengeksplorasi kreativitas melalui tari kreasi modern. Tim tari sering tampil mengisi acara resmi sekolah dan undangan eksternal.',
+                        'pembina' => '...',
+                        'jadwal' => 'Rabu, 14.00 WITA'
+                    ],
+                    'teater' => [
+                        'judul' => 'Seni Teater',
+                        'deskripsi' => 'Mengasah kemampuan olah vokal, olah rasa, dan olah tubuh. Siswa belajar seni peran, penulisan naskah, hingga manajemen panggung. Teater menjadi sarana ekspresi diri yang positif bagi siswa.',
+                        'pembina' => '...',
+                        'jadwal' => 'Kamis, 15.00 WITA'
+                    ],
+                    'band' => [
+                        'judul' => 'Band & Seni Musik',
+                        'deskripsi' => 'Komunitas musisi sekolah yang terdiri dari vokalis, gitaris, bassist, drummer, dan keyboardist. Kegiatan meliputi latihan aransemen lagu, jamming session, dan persiapan tampil di pensi atau festival musik.',
+                        'pembina' => '...',
+                        'jadwal' => 'Sabtu, 10.00 WITA'
+                    ],
+                    'alam' => [
+                        'judul' => 'Sahabat Alam (Pecinta Alam)',
+                        'deskripsi' => 'Kelompok siswa peduli lingkungan yang kegiatannya meliputi pelestarian alam, daur ulang sampah, penghijauan sekolah (Green School), serta kegiatan outdoor seperti hiking dan observasi alam. Membentuk karakter yang menghargai semesta.',
+                        'pembina' => 'Riza Fahlevi, S.Pd.I',
+                        'jadwal' => 'Minggu (Tentative)'
+                    ],
+                    'pmr' => [
+                        'judul' => 'Palang Merah Remaja (PMR)',
+                        'deskripsi' => 'Membekali siswa dengan kemampuan Pertolongan Pertama (PP), kesiapsiagaan bencana, dan kepedulian sosial. Anggota PMR bertugas sebagai tim kesehatan saat upacara dan event sekolah.',
+                        'pembina' => '...',
+                        'jadwal' => 'Jumat, 14.00 WITA'
+                    ],
+                    'rohis' => [
+                        'judul' => 'Kerohanian Islam (Rohis)',
+                        'deskripsi' => 'Wadah kajian Islam, tahsin Al-Quran, dan kegiatan keagamaan lainnya untuk membentuk pribadi siswa yang beriman, bertakwa, dan berakhlak mulia.',
+                        'pembina' => '...',
+                        'jadwal' => 'Jumat, 11.30 WITA'
+                    ]
+                ];
+            @endphp
+
+            @foreach($dataEkskul as $key => $data)
+            <div id="content-{{ $key }}" class="ekskul-content {{ $key === 'osis' ? '' : 'hidden' }} animate-fade-in">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-10">
                     
-                    {{-- <img class="w-full h-full object-cover absolute inset-0" src="{{ asset('path/to/foto.jpg') }}" alt="..."> --}}
-                </div>
+                    {{-- KOLOM KIRI: Deskripsi --}}
+                    <div class="flex-grow w-full md:w-2/3">
+                        <div class="mb-6 pb-4 border-b border-gray-100">
+                            <h2 class="text-3xl font-bold text-slate-800">{{ $data['judul'] }}</h2>
+                        </div>
+                        
+                        <div class="prose prose-lg text-slate-600 leading-relaxed text-justify mb-8">
+                            <p>{{ $data['deskripsi'] }}</p>
+                        </div>
 
-                {{-- 2. LAYER EFEK HOVER (Gelap jadi Terang) --}}
-                {{-- Ini kuncinya: hitam transparan yang hilang saat di-hover --}}
-                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
+                        {{-- Box Jadwal Latihan --}}
+                        <div class="bg-blue-50 border-l-4 border-[#1e5494] p-4 rounded-r-lg inline-flex items-center gap-3">
+                            <div class="bg-white p-2 rounded-full shadow-sm text-[#1e5494]">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-blue-800 uppercase tracking-wider">Jadwal Latihan</h4>
+                                <p class="text-sm font-medium text-blue-900">{{ $data['jadwal'] }}</p>
+                            </div>
+                        </div>
+                    </div>
 
-                {{-- 3. LAYER TEKS DI BAWAH --}}
-                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-center">
-                    {{-- Nama Pembina --}}
-                    <h3 class="text-white font-bold text-xl md:text-2xl mb-1">{{ $item->pembina_nama }}</h3>
-                    {{-- Jabatan --}}
-                    <p class="text-blue-200 text-sm md:text-base uppercase font-medium tracking-wider">
-                        Pembina {{ $item->nama }}
-                    </p>
+                    {{-- KOLOM KANAN: Card Pembina Simple --}}
+                    <div class="w-full md:w-1/3 flex-shrink-0 order-first md:order-last">
+                        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden md:sticky md:top-8">
+                            {{-- Header Card --}}
+                            <div class="bg-gradient-to-r from-slate-800 to-slate-900 px-6 py-4">
+                                <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    Pembina
+                                </h3>
+                            </div>
+                            
+                            {{-- Body Card --}}
+                            <div class="p-6 text-center">
+                                <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner border border-slate-200">
+                                    {{-- Avatar Inisial --}}
+                                    <span class="font-bold text-slate-400 select-none">
+                                        {{ substr($data['pembina'], 0, 1) }}
+                                    </span>
+                                </div>
+                                
+                                <h4 class="text-xl font-bold text-slate-800 mb-1">{{ $data['pembina'] }}</h4>
+                                <div class="h-1 w-12 bg-amber-400 mx-auto rounded-full mb-3"></div>
+                                <p class="text-sm text-slate-500 font-medium bg-slate-50 py-1 px-3 rounded-full inline-block border border-slate-200">
+                                    Pembina Ekstrakurikuler
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            {{-- === END KARTU GAYA BARU === --}}
+            @endforeach
 
         </div>
-    </div>      
-                {{-- KOLOM KANAN: Deskripsi Teks --}}
-                <div class="lg:col-span-8">
-                    {{-- Judul Ekskul --}}
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 decoration-[#9ac236]/30 underline underline-offset-8">
-                        {{ $item->nama }}
-                    </h2>
-                    
-                    {{-- Deskripsi --}}
-                    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8 text-justify">
-                        <p>{{ $item->deskripsi }}</p>
-                        <p>Bergabunglah dengan {{ $item->nama }} untuk mengembangkan potensi diri Anda. Kegiatan dilaksanakan secara rutin di lingkungan SMKN 5 Samarinda dengan bimbingan pelatih profesional.</p>
-                    </div>
-                </div>
-
-            </div> {{-- End Grid --}}
-        </div>
-        @endforeach
     </div>
 </section>
 
+{{-- SCRIPT --}}
 <script>
-function switchEkskul(kode) {
-    const allButtons = document.querySelectorAll('[id^="btn-"]');
-    const allContents = document.querySelectorAll('[id^="content-"]');
-    
-    // Hide all contents
-    allContents.forEach(el => {
-        el.classList.add('hidden', 'opacity-0');
-        el.classList.remove('opacity-100');
-    });
-    
-    // Show selected content with fade effect
-    const selectedContent = document.getElementById(`content-${kode}`);
-    if (selectedContent) {
-        selectedContent.classList.remove('hidden');
-        setTimeout(() => {
-             selectedContent.classList.remove('opacity-0');
-             selectedContent.classList.add('opacity-100');
-        }, 50); // Give browser a moment to render hidden removal
-    }
-    
-    // Update button styles
-    allButtons.forEach(btn => {
-        const btnKode = btn.id.replace('btn-', '');
-        if (btnKode === kode) {
-            btn.classList.remove('bg-gray-50', 'text-slate-700', 'hover:bg-gray-100');
-            btn.classList.add('bg-[#1e5494]', 'text-white', 'scale-105', 'shadow-lg');
-        } else {
-            btn.classList.remove('bg-[#1e5494]', 'text-white', 'scale-105', 'shadow-lg');
-            btn.classList.add('bg-gray-50', 'text-slate-700', 'hover:bg-gray-100');
-        }
+function switchEkskul(key) {
+    // 1. Hide all content
+    document.querySelectorAll('.ekskul-content').forEach(el => {
+        el.classList.add('hidden');
     });
 
-    // Optional: Scroll sedikit ke atas agar pas di konten
-    const contentArea = document.querySelector('.relative.-mt-16');
-    if (contentArea) {
-        contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // 2. Reset all buttons
+    document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+        btn.classList.remove('bg-[#1e5494]', 'text-white', 'shadow-md');
+        btn.classList.add('text-slate-600', 'hover:bg-gray-100');
+    });
+
+    // 3. Show selected content
+    document.getElementById('content-' + key).classList.remove('hidden');
+
+    // 4. Activate button
+    const activeBtn = document.getElementById('btn-' + key);
+    activeBtn.classList.remove('text-slate-600', 'hover:bg-gray-100');
+    activeBtn.classList.add('bg-[#1e5494]', 'text-white', 'shadow-md');
 }
 </script>
+
 @endsection

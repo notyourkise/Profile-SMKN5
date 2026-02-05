@@ -4,11 +4,11 @@
 
 @section('content')
 <!-- Article Detail - Portal News Style -->
-<section class="py-8 bg-gray-50">
+<section class="py-4 md:py-8 bg-gray-50">
     <div class="container mx-auto px-4 max-w-7xl">
         
         <!-- Breadcrumb -->
-        <nav class="mb-6">
+        <nav class="mb-4 md:mb-6">
             <ol class="flex items-center space-x-2 text-sm text-gray-500">
                 <li>
                     <a href="{{ route('home') }}" class="hover:text-blue-600 transition">
@@ -25,14 +25,14 @@
         </nav>
 
         <!-- Main Grid Layout: 70% Content + 30% Sidebar -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
             
             <!-- LEFT COLUMN: Main Content (70%) -->
             <div class="lg:col-span-2">
                 <article class="bg-white rounded-xl overflow-hidden">
                     
                     <!-- Article Header -->
-                    <div class="p-6 md:p-8 pb-4">
+                    <div class="p-4 md:p-6 lg:p-8 pb-3 md:pb-4">
                         <!-- Meta Info -->
                         <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
                             <div class="flex items-center gap-2">
@@ -53,7 +53,7 @@
 
                     <!-- Featured Image -->
                     @if($berita->gambar)
-                    <div class="px-6 md:px-8 mb-6">
+                    <div class="px-4 md:px-6 lg:px-8 mb-4 md:mb-6">
                         <img 
                             src="{{ asset('storage/' . $berita->gambar) }}" 
                             alt="{{ $berita->judul }}" 
@@ -63,8 +63,8 @@
                     @endif
                     
                     <!-- Article Content -->
-                    <div class="px-6 md:px-8 pb-8">
-                        <div class="prose prose-lg max-w-none
+                    <div class="px-4 md:px-6 lg:px-8 pb-6 md:pb-8">
+                        <div class="prose prose-base md:prose-lg max-w-none
                                     prose-headings:text-gray-900 prose-headings:font-bold
                                     prose-p:text-gray-700 prose-p:leading-relaxed prose-p:text-[1.1rem]
                                     prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
@@ -77,7 +77,7 @@
                     </div>
 
                     <!-- Share & Back Button -->
-                    <div class="px-6 md:px-8 pb-8 pt-6 border-t border-gray-200">
+                    <div class="px-4 md:px-6 lg:px-8 pb-6 md:pb-8 pt-4 md:pt-6 border-t border-gray-200">
                         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                             <!-- Share Buttons -->
                             <div class="flex items-center gap-3 flex-wrap">
@@ -122,8 +122,8 @@
             <!-- RIGHT COLUMN: Sidebar (30%) -->
             <aside class="lg:col-span-1">
                 <!-- Recent News Widget -->
-                <div class="bg-white rounded-xl p-6 sticky top-24">
-                    <h3 class="text-xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-blue-600">
+                <div class="bg-white rounded-xl p-4 md:p-6 lg:sticky lg:top-24">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 pb-2 md:pb-3 border-b-2 border-blue-600">
                         <i class="fa-solid fa-newspaper text-blue-600 mr-2"></i>
                         Berita Terbaru
                     </h3>
@@ -132,14 +132,14 @@
                     <div class="space-y-5">
                         @foreach($recentNews as $news)
                         <a href="{{ route('berita.show', $news->slug) }}" 
-                           class="flex gap-4 group hover:bg-gray-50 p-3 rounded-lg transition">
+                           class="flex gap-3 md:gap-4 group hover:bg-gray-50 p-2 md:p-3 rounded-lg transition">
                             <!-- Thumbnail -->
                             @if($news->gambar)
                             <div class="flex-shrink-0">
                                 <img 
                                     src="{{ asset('storage/' . $news->gambar) }}" 
                                     alt="{{ $news->judul }}"
-                                    class="w-20 h-20 object-cover rounded-lg shadow-sm group-hover:shadow-md transition"
+                                    class="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg shadow-sm group-hover:shadow-md transition"
                                 >
                             </div>
                             @endif

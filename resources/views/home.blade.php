@@ -4,34 +4,34 @@
 
 @section('content')
 <!-- Hero Section - Full Screen Parallax -->
-<section class="relative h-screen w-full bg-fixed bg-center bg-cover bg-no-repeat -mt-20" style="background-image: url('{{ asset('images/drone-smk-2.webp') }}')">
+<section class="relative h-[100svh] md:h-screen w-full bg-fixed bg-center bg-cover bg-no-repeat -mt-20" style="background-image: url('{{ asset('images/drone-smk-2.webp') }}')">
     <!-- Gradient Overlay (Dark Bottom → Transparent Top) -->
     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-black/10"></div>
     
     <!-- Content Container -->
-    <div class="relative z-10 h-full flex items-end pb-20">
+    <div class="relative z-10 h-full flex items-end pb-12 md:pb-20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl">
                 <!-- Headline -->
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-lg leading-tight">
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-lg leading-tight">
                     SMK NEGERI 5 SAMARINDA
                 </h1>
                 
                 <!-- Subheadline -->
-                <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl font-medium drop-shadow-md">
+                <p class="mt-3 md:mt-4 text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl font-medium drop-shadow-md">
                     Mewujudkan Lingkungan Belajar Unggul, Hijau, dan Berkarakter dengan Fasilitas Terlengkap.
                 </p>
                 
                 <!-- CTA Buttons -->
-                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <div class="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 md:gap-4">
                     <!-- Primary Button (Green) -->
-                    <a href="https://smkn5smr.sch.id/portal" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-bold transition shadow-lg flex items-center justify-center gap-2">
+                    <a href="https://smkn5smr.sch.id/portal" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-bold transition shadow-lg flex items-center justify-center gap-2 text-sm md:text-base">
                         <span>Portal SMKN 5</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                     
                     <!-- Secondary Button (Outline White) -->
-                    <a href="#jurusan" class="backdrop-blur-md bg-white/10 border-2 border-white/70 text-white hover:bg-white/20 px-8 py-3 rounded-full font-bold transition flex items-center justify-center gap-2">
+                    <a href="jurusan/dkv" class="backdrop-blur-md bg-white/10 border-2 border-white/70 text-white hover:bg-white/20 px-6 md:px-8 py-2.5 md:py-3 rounded-full font-bold transition flex items-center justify-center gap-2 text-sm md:text-base">
                         <span>Kompetensi Keahlian</span>
                     </a>
                 </div>
@@ -44,14 +44,14 @@
 @include('components.statistics-section')
 
 <!-- Headmaster Welcome Section -->
-<section class="py-16 bg-white">
+<section class="py-8 md:py-16 bg-white">
     <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 
                 <!-- Left Column: Headmaster Photo -->
                 <div class="order-2 lg:order-1 flex justify-center">
-                    <div class="w-64 md:w-80 lg:w-96">
+                    <div class="w-full max-w-xs md:w-80 lg:w-96 px-4 md:px-0">
                         <!-- Main Image - No Border, No Background -->
                         <img 
                             src="{{ asset('/assets/images/pimpinan/yeni-ronalisa.png') }}" 
