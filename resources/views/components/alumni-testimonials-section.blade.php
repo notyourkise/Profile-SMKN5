@@ -90,44 +90,6 @@
                         </div>
                     </div>
 
-                    {{-- Slide 3: Alumni MPLB --}}
-                    <div class="swiper-slide">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                            {{-- Left: Photo --}}
-                            <div class="flex justify-center lg:justify-end">
-                                <img 
-                                    src="https://i.pravatar.cc/400?img=33" 
-                                    alt="Ahmad Rizki - Alumni MPLB" 
-                                    class="w-full max-w-md h-auto rounded-xl shadow-lg"
-                                >
-                            </div>
-                            
-                            {{-- Right: Testimonial --}}
-                            <div class="text-center lg:text-left">
-                                {{-- Quote Icon --}}
-                                <i class="fa-solid fa-quote-left text-5xl text-[#1e5494] mb-6 opacity-20"></i>
-                                
-                                {{-- Headline --}}
-                                <h3 class="text-2xl font-bold text-[#1e5494] mb-4 leading-tight">
-                                    Bekal Logistik & Supply Chain dari SMKN 5
-                                </h3>
-                                
-                                {{-- Body Testimonial --}}
-                                <p class="text-gray-600 leading-relaxed mb-8 text-justify">
-                                    Saat ini saya bekerja di PT Pupuk Kaltim sebagai Logistic Coordinator. 
-                                    Pembelajaran tentang manajemen pergudangan, distribusi, dan sistem inventory di sekolah 
-                                    memberikan fondasi kuat untuk berkembang di industri manufaktur.
-                                </p>
-                                
-                                {{-- Profile Info --}}
-                                <div class="border-t-2 border-yellow-400 pt-4 inline-block">
-                                    <p class="text-lg font-bold text-[#1e5494]">Ahmad Rizki (MPLB 2022)</p>
-                                    <p class="text-sm text-gray-500">Logistic Coordinator di PT Pupuk Kaltim</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
