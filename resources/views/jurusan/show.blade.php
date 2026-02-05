@@ -37,11 +37,7 @@
     <div class="container mx-auto px-4">
         @foreach($allJurusan as $item)
         
-        {{-- ========================================================== --}}
-        {{--  BAGIAN 1: KONFIGURASI DATA (KAPRODI & GURU PRODUKTIF)    --}}
-        {{-- ========================================================== --}}
         @php
-            // 1. Data Kaprodi
             $dataKaprodi = [
                 'TJKT' => ['nama' => 'Fachrul Arland Suntoro, S.Kom.', 'foto' => 'kaprodi-tjkt.webp'],
                 'DKV'  => ['nama' => 'Julia M.Y , S.Kom.', 'foto' => 'kaprodi-dkv.webp'],
@@ -51,9 +47,7 @@
             ];
             $currentKaprodi = $dataKaprodi[$item->kode] ?? ['nama' => 'Kepala Program ' . $item->kode, 'foto' => null];
 
-            // 2. Data Guru Produktif
             $listGuru = [];
-            
             if($item->kode == 'TJKT') {
                 $listGuru = [
                     ['nama' => 'Andre Puji Purwadi, S.Kom', 'mapel' => 'Kejuruan TJKT', 'foto' => 'Andre.webp'],
@@ -104,7 +98,8 @@
                         <img 
                             src="{{ asset('assets/images/logo-jurusan/logo-jurusan-' . strtolower($item->kode) . '.webp') }}" 
                             alt="Logo {{ $item->kode }}" 
-                            class="h-24 md:h-32 w-auto object-contain {{ strtolower($item->kode) === 'mplb' ? 'bg-[#1e5494] p-4 rounded-xl' : '' }}"
+                            style="max-height: 128px; width: auto; object-fit: contain;"
+                            class="{{ strtolower($item->kode) === 'mplb' ? 'bg-[#1e5494] p-4 rounded-xl' : '' }}"
                             onerror="this.style.display='none'"
                         >
                     </div>
@@ -114,23 +109,18 @@
                     <hr class="border-t-2 border-gray-300 w-full mt-6 md:mt-8 mb-8 md:mb-12">
                 </div>
                 
-                {{-- ========================================================== --}}
-                {{--  BAGIAN 2: KONTEN DESKRIPSI & KAPRODI (WRAP LAYOUT)       --}}
-                {{-- ========================================================== --}}
-                {{-- KEMBALI KE BLOCK untuk support Float Wrapping --}}
+                {{-- BAGIAN 2: KONTEN DESKRIPSI & KAPRODI --}}
                 <div class="block relative clearfix mb-8">
                     
-                    {{-- KARTU KAPRODI --}}
-                    {{-- Pada mobile: full width, pada md+: float kiri dengan max-width --}}
-                    <div class="w-full md:w-[320px] md:float-left md:mr-6 lg:mr-10 mb-6">
-                        <div class="w-full shadow-2xl rounded-xl overflow-hidden border border-gray-100">
-                            {{-- Kaprodi Oranye --}}
-                            <div class="relative w-full aspect-square bg-amber-500 group overflow-hidden">
+                    {{-- KARTU KAPRODI (FIXED SIZE) --}}
+                    <div class="w-full md:w-[300px] md:float-left md:mr-8 mb-8">
+                        <div class="w-full shadow-2xl rounded-xl overflow-hidden border border-gray-100" style="max-width: 300px; margin: 0 auto;">
+                            <div class="relative bg-amber-500 group overflow-hidden" style="height: 300px; width: 100%;">
                                 @if($currentKaprodi['foto'])
                                     <img 
                                         src="{{ asset('assets/images/kaprodi/' . $currentKaprodi['foto']) }}" 
                                         alt="{{ $currentKaprodi['nama'] }}"
-                                        class="w-full h-full object-cover object-top"
+                                        style="width: 100%; height: 100%; object-fit: cover; object-position: top;"
                                         onerror="this.style.display='none'; document.getElementById('ph-kaprodi-{{ $item->kode }}').classList.remove('hidden');"
                                     >
                                     <div id="ph-kaprodi-{{ $item->kode }}" class="hidden w-full h-full flex items-center justify-center bg-gradient-to-br from-amber-400 to-amber-600 absolute inset-0 -z-10">
@@ -142,108 +132,84 @@
                                     </div>
                                 @endif
                                 <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
-                                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-center">
-                                    <h3 class="text-white font-bold text-xl mb-1">{{ $currentKaprodi['nama'] }}</h3>
-                                    <p class="text-amber-200 text-sm uppercase font-medium tracking-wider">Ketua Program Keahlian</p>
+                                <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-center">
+                                    <h3 class="text-white font-bold text-lg mb-1">{{ $currentKaprodi['nama'] }}</h3>
+                                    <p class="text-amber-200 text-xs uppercase font-medium tracking-wider">Ketua Program Keahlian</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {{-- TEKS DESKRIPSI --}}
-                    {{-- Tidak perlu flex-grow, biarkan default block agar wrapping terjadi --}}
                     <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-justify">
                         @if(strtolower($item->kode) === 'tjkt')
-                            <p class="mb-4"><strong>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong> merupakan program keahlian yang fokus mencetak tenaga profesional di bidang infrastruktur teknologi. Di era digital yang serba terkoneksi ini, kebutuhan akan ahli jaringan yang mampu merancang, mengamankan, dan memelihara sistem komunikasi data menjadi sangat krusial, baik di perusahaan swasta maupun instansi pemerintahan.</p>
-                            <p class="mb-4">Kurikulum TJKT di SMKN 5 Samarinda dirancang secara komprehensif mencakup instalasi jaringan lokal (LAN/WAN), administrasi server berbasis Linux dan Windows, teknologi Fiber Optik, hingga keamanan siber (<strong>Cyber Security</strong>). Siswa juga dibekali sertifikasi industri internasional seperti MikroTik dan Cisco, serta pemahaman mendalam tentang teknologi nirkabel dan <strong>Internet of Things (IoT)</strong>.</p>
-                            <p>Lulusan TJKT memiliki prospek karir yang sangat luas dan menjanjikan. Mereka dapat bekerja sebagai <strong>Network Engineer</strong>, <strong>System Administrator</strong>, <strong>IT Support Specialist</strong>, <strong>Fiber Optic Technician</strong>, atau konsultan keamanan jaringan. Selain itu, bekal kewirausahaan yang diberikan memungkinkan lulusan untuk membuka usaha jasa instalasi jaringan (ISP) atau service center perangkat komputer secara mandiri.</p>
+                            <p class="mb-4"><strong>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</strong> merupakan program keahlian yang fokus mencetak tenaga profesional di bidang infrastruktur teknologi...</p>
+                            <p class="mb-4">Kurikulum TJKT di SMKN 5 Samarinda dirancang secara komprehensif mencakup instalasi jaringan lokal (LAN/WAN), administrasi server...</p>
+                            <p>Lulusan TJKT memiliki prospek karir yang sangat luas dan menjanjikan. Mereka dapat bekerja sebagai <strong>Network Engineer</strong>, <strong>System Administrator</strong>...</p>
                         @elseif(strtolower($item->kode) === 'dkv')
-                            <p class="mb-4"><strong>Desain Komunikasi Visual (DKV)</strong> adalah program yang mempersiapkan siswa untuk menjadi desainer profesional yang mampu menciptakan karya visual kreatif dan inovatif. Program ini menggabungkan seni, desain, dan teknologi untuk menghasilkan komunikasi visual yang efektif dalam menyampaikan pesan kepada audiens melalui berbagai media, baik cetak maupun digital.</p>
-                            <p class="mb-4">Materi pembelajaran DKV mencakup berbagai bidang seperti desain grafis, ilustrasi digital, fotografi, videografi, animasi 2D dan 3D, motion graphics, hingga <strong>UI/UX Design</strong>. Siswa dilatih menggunakan standar software industri seperti Adobe Creative Cloud (Photoshop, Illustrator, Premiere) dan peralatan fotografi modern untuk menghasilkan karya yang estetik dan fungsional sesuai kebutuhan pasar.</p>
-                            <p>Prospek karir lulusan DKV sangat menjanjikan di industri kreatif yang terus berkembang pesat. Lulusan dapat bekerja sebagai <strong>Graphic Designer</strong>, <strong>Illustrator</strong>, <strong>Video Editor</strong>, <strong>Content Creator</strong>, <strong>Social Media Specialist</strong>, <strong>Brand Identity Designer</strong>, atau membuka studio kreatif sendiri (Creative Agency). Kemampuan visual yang kuat menjadi aset utama lulusan untuk bersaing di era konten digital saat ini.</p>
+                            <p class="mb-4"><strong>Desain Komunikasi Visual (DKV)</strong> adalah program yang mempersiapkan siswa untuk menjadi desainer profesional yang mampu menciptakan karya visual kreatif...</p>
+                            <p class="mb-4">Materi pembelajaran DKV mencakup berbagai bidang seperti desain grafis, ilustrasi digital, fotografi, videografi...</p>
+                            <p>Prospek karir lulusan DKV sangat menjanjikan di industri kreatif yang terus berkembang pesat...</p>
                         @elseif(strtolower($item->kode) === 'mplb')
-                             <p class="mb-4"><strong>Manajemen Perkantoran dan Layanan Bisnis (MPLB)</strong> adalah program keahlian yang mencetak tenaga administrasi modern yang terampil, rapi, dan komunikatif. Program ini mentransformasi peran staf administrasi konvensional menjadi manajer informasi yang mampu mengelola dokumen digital, merencanakan agenda bisnis, dan memberikan pelayanan prima kepada relasi perusahaan.</p>
-                             <p class="mb-4">Siswa MPLB dibekali dengan kompetensi kearsipan digital (E-Arsip), korespondensi bahasa Indonesia dan Inggris, manajemen rapat, serta teknologi perkantoran terkini. Selain hard skill, program ini sangat menekankan pada pengembangan soft skill seperti <strong>public speaking</strong>, etika profesi, <strong>grooming</strong> (penampilan diri), dan <strong>customer service excellence</strong> untuk membangun citra positif perusahaan.</p>
-                             <p>Peluang kerja lulusan MPLB sangat terbuka lebar di hampir semua sektor industri. Lulusan dapat mengisi posisi strategis sebagai Sekretaris Eksekutif, Staf Administrasi, <strong>Front Office</strong>, <strong>Customer Service Representative</strong>, Resepsionis Hotel, hingga Asisten Manajer. Keterampilan organisasi yang kuat juga menjadi modal berharga bagi lulusan yang ingin melanjutkan studi ke jenjang perguruan tinggi.</p>
+                             <p class="mb-4"><strong>Manajemen Perkantoran dan Layanan Bisnis (MPLB)</strong> adalah program keahlian yang mencetak tenaga administrasi modern...</p>
+                             <p class="mb-4">Siswa MPLB dibekali dengan kompetensi kearsipan digital (E-Arsip), korespondensi bahasa Indonesia dan Inggris...</p>
+                             <p>Peluang kerja lulusan MPLB sangat terbuka lebar di hampir semua sektor industri...</p>
                         @elseif(strtolower($item->kode) === 'pm')
-                             <p class="mb-4"><strong>Pemasaran (Marketing)</strong> adalah ujung tombak dari setiap bisnis, dan program keahlian ini dirancang untuk mencetak tenaga pemasar yang handal di era ekonomi digital. Fokus utama jurusan ini adalah memadukan strategi pemasaran konvensional dengan <strong>Digital Marketing</strong> untuk memperluas jangkauan pasar dan meningkatkan penjualan produk atau jasa secara efektif.</p>
-                             <p class="mb-4">Dalam proses pembelajaran, siswa diajarkan teknik riset pasar, strategi <strong>branding</strong>, <strong>copywriting</strong>, pengelolaan <strong>marketplace</strong> (E-Commerce), hingga optimasi media sosial (<strong>Social Media Marketing</strong>). Siswa juga aktif melakukan praktik penjualan langsung dan simulasi bisnis ritel modern untuk melatih mental negosiasi, kepercayaan diri, dan kemampuan analisis perilaku konsumen.</p>
-                             <p>Lulusan Pemasaran sangat dibutuhkan oleh perusahaan ritel, start-up, hingga korporasi multinasional. Karir yang dapat ditempuh antara lain sebagai <strong>Digital Marketer</strong>, <strong>Social Media Specialist</strong>, <strong>Sales Executive</strong>, <strong>Content Planner</strong>, atau <strong>Store Manager</strong>. Selain bekerja, lulusan PM memiliki mental wirausaha yang kuat untuk membangun bisnis <strong>online shop</strong> atau agensi pemasaran mereka sendiri.</p>
+                             <p class="mb-4"><strong>Pemasaran (Marketing)</strong> adalah ujung tombak dari setiap bisnis, dan program keahlian ini dirancang untuk mencetak tenaga pemasar yang handal...</p>
+                             <p class="mb-4">Dalam proses pembelajaran, siswa diajarkan teknik riset pasar, strategi <strong>branding</strong>, <strong>copywriting</strong>...</p>
+                             <p>Lulusan Pemasaran sangat dibutuhkan oleh perusahaan ritel, start-up, hingga korporasi multinasional...</p>
                         @elseif(strtolower($item->kode) === 'ps')
-                             <p class="mb-4"><strong>Pekerjaan Sosial (Social Work)</strong> adalah program keahlian mulia yang mempersiapkan tenaga profesional dengan kepedulian sosial tinggi untuk menangani berbagai masalah kesejahteraan masyarakat. Jurusan ini melatih siswa untuk menjadi fasilitator, konselor, dan pendamping yang mampu memberikan solusi nyata bagi individu, kelompok, atau komunitas yang membutuhkan.</p>
-                             <p class="mb-4">Kurikulum Pekerjaan Sosial mencakup psikologi dasar, teknik komunikasi terapeutik, perawatan lansia (<strong>caregiver</strong>), pendampingan anak berkebutuhan khusus, serta manajemen bencana. Siswa sering dilibatkan dalam praktik lapangan di panti sosial, rumah sakit, dan lembaga rehabilitasi untuk mengasah empati dan keterampilan penanganan kasus secara langsung di lapangan.</p>
-                             <p>Lulusan Pekerjaan Sosial memiliki peran vital di masyarakat dan lembaga kemanusiaan. Karir yang dapat dijalani meliputi <strong>Social Worker</strong> di Dinas Sosial, Pendamping Program Keluarga Harapan (PKH), <strong>Caregiver</strong> di panti werdha atau rumah sakit, aktivis NGO (LSM), hingga tenaga penyuluh masyarakat. Profesi ini menawarkan kepuasan batin yang tinggi dalam membantu sesama.</p>
+                             <p class="mb-4"><strong>Pekerjaan Sosial (Social Work)</strong> adalah program keahlian mulia yang mempersiapkan tenaga profesional dengan kepedulian sosial tinggi...</p>
+                             <p class="mb-4">Kurikulum Pekerjaan Sosial mencakup psikologi dasar, teknik komunikasi terapeutik, perawatan lansia (<strong>caregiver</strong>)...</p>
+                             <p>Lulusan Pekerjaan Sosial memiliki peran vital di masyarakat dan lembaga kemanusiaan...</p>
                         @else
-                             <p class="mb-4">Program keahlian ini berkomitmen untuk mencetak lulusan yang kompeten, berkarakter, dan siap kerja sesuai standar industri. Dengan fasilitas laboratorium yang lengkap dan tenaga pengajar yang berpengalaman, siswa dibimbing untuk menguasai keterampilan teknis maupun non-teknis yang dibutuhkan di dunia kerja modern saat ini.</p>
-                             <p class="mb-4">Kurikulum yang diterapkan selalu diselaraskan dengan perkembangan teknologi dan kebutuhan dunia usaha/dunia industri (DUDI). Siswa tidak hanya belajar teori di kelas, tetapi juga melaksanakan praktik intensif, kunjungan industri, dan program Praktik Kerja Lapangan (PKL) untuk mendapatkan pengalaman nyata di lingkungan profesional.</p>
-                             <p>Lulusan dari program ini memiliki peluang karir yang luas dan adaptif terhadap perubahan zaman. Bekal sertifikasi kompetensi yang dimiliki menjadi nilai tambah saat melamar pekerjaan atau melanjutkan pendidikan ke jenjang yang lebih tinggi. Bergabunglah bersama kami untuk meraih masa depan yang gemilang.</p>
+                             <p class="mb-4">Program keahlian ini berkomitmen untuk mencetak lulusan yang kompeten, berkarakter, dan siap kerja sesuai standar industri...</p>
+                             <p>Lulusan dari program ini memiliki peluang karir yang luas dan adaptif terhadap perubahan zaman...</p>
                         @endif
                     </div>
                 </div>
 
-                {{-- ========================================================== --}}
-                {{--  BAGIAN SISIPAN: MIKROTIK ACADEMY (KHUSUS TJKT)           --}}
-                {{--  Posisi: Di bawah teks deskripsi (Clear Float)            --}}
-                {{-- ========================================================== --}}
+                {{-- MIKROTIK ACADEMY (KHUSUS TJKT) --}}
                 @if(strtolower($item->kode) === 'tjkt')
                     <div class="clear-both mb-16 pt-6 text-center animate-fade-in"> 
                         <div class="inline-flex items-center gap-3 px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg">
                             <span class="text-xs text-slate-500">Supported by <span class="font-bold text-slate-700">MikroTik Academy</span></span>
                             <div class="h-4 w-px bg-slate-300"></div>
-                            {{-- UPDATE LINK DI SINI --}}
                             <a href="{{ route('mikrotik.index') }}" class="text-xs font-bold text-[#1e5494] hover:underline hover:text-blue-800 transition-colors">
                                 Selengkapnya
                             </a>
                         </div>
                     </div>
                 @else
-                {{-- Untuk jurusan lain, beri jarak clear float agar Guru tidak nabrak --}}
-                <div class="clear-both"></div>
+                    <div class="clear-both"></div>
                 @endif
 
-                {{-- ========================================================== --}}
-                {{--  BAGIAN 3: DAFTAR GURU PRODUKTIF (NEW SECTION)            --}}
-                {{-- ========================================================== --}}
+                {{-- BAGIAN 3: DAFTAR GURU PRODUKTIF --}}
                 <div class="mt-8 w-full">
-                    {{-- Judul Section --}}
                     <div class="flex items-center mb-8">
                         <div class="w-1.5 h-8 bg-[#1e5494] mr-4 rounded-full"></div>
                         <h3 class="text-2xl md:text-3xl font-bold text-slate-800">Guru Produktif & Staf Pengajar</h3>
                     </div>
 
-                    {{-- Grid Container (grid-cols-2 md:grid-cols-5) --}}
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 w-full gap-0 rounded-2xl overflow-hidden shadow-2xl">
-                        
                         @foreach($listGuru as $guru)
-                        {{-- Kartu Guru (Biru) --}}
-                        <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden border-r border-b border-white/10">
-                            
-                            {{-- Foto Guru (WEBP) --}}
+                        <div class="relative w-full aspect-square bg-[#0b3fa5] group overflow-hidden border-r border-b border-white/10" style="max-width: 100%;">
                             <img 
                                 src="{{ asset('assets/images/guruprodi/' . strtolower($item->kode) . '/' . $guru['foto']) }}" 
                                 alt="{{ $guru['nama'] }}"
-                                class="w-full h-full object-cover object-top"
+                                style="width: 100%; height: 100%; object-fit: cover; object-position: top;"
                                 onerror="this.style.display='none'; document.getElementById('ph-guru-{{ $loop->index }}-{{ $item->kode }}').classList.remove('hidden');"
                             >
-
-                            {{-- Placeholder jika foto tidak ada --}}
                             <div id="ph-guru-{{ $loop->index }}-{{ $item->kode }}" class="hidden w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1e5494] to-[#0b3fa5] absolute inset-0 -z-10">
                                 <span class="text-6xl font-bold text-white/20 select-none">{{ substr($guru['nama'], 0, 1) }}</span>
                             </div>
-
-                            {{-- Overlay Gelap --}}
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-all duration-500"></div>
-                            
-                            {{-- Info Guru --}}
                             <div class="absolute bottom-0 left-0 w-full p-3 md:p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-center">
                                 <h3 class="text-white font-bold text-xs md:text-sm lg:text-base leading-tight mb-1">{{ $guru['nama'] }}</h3>
-                                <p class="text-blue-200 text-[9px] md:text-[10px] lg:text-xs uppercase font-medium tracking-wide">
-                                    {{ $guru['mapel'] }}
-                                </p>
+                                <p class="text-blue-200 text-[9px] md:text-[10px] lg:text-xs uppercase font-medium tracking-wide">{{ $guru['mapel'] }}</p>
                             </div>
                         </div>
                         @endforeach
-
                     </div>
                 </div>
 
@@ -259,7 +225,6 @@ function switchJurusan(kode) {
     const allContents = document.querySelectorAll('[id^="content-"]');
     
     allContents.forEach(el => el.classList.add('hidden'));
-    
     allButtons.forEach(btn => {
         btn.classList.remove('bg-[#1e5494]', 'text-white', 'scale-105', 'shadow-lg');
         btn.classList.add('bg-gray-100', 'text-slate-700', 'hover:bg-gray-200');
@@ -269,12 +234,10 @@ function switchJurusan(kode) {
     const selectedBtn = document.getElementById(`btn-${kode}`);
 
     if (selectedContent) selectedContent.classList.remove('hidden');
-    
     if (selectedBtn) {
         selectedBtn.classList.remove('bg-gray-100', 'text-slate-700', 'hover:bg-gray-200');
         selectedBtn.classList.add('bg-[#1e5494]', 'text-white', 'scale-105', 'shadow-lg');
     }
-    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
